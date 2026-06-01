@@ -1,0 +1,4 @@
+# ŚRODOWISKO TESTOWE — blokada indeksowania
+# Zmień na Allow: / przed wdrożeniem produkcyjnym
+User-agent: *
+Disallow: /

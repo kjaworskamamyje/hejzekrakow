@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Administracyjny — Hejże Kraków</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F4F1EC;--surface:#FFFFFF;--sidebar:#1A1A18;--sidebar-hover:#2A2A28;
+  --accent:#9B3A2A;--accent-light:#C4614E;--border:#E0D9D0;
+  --text:#1A1A18;--text-light:#7A7570;--text-muted:#B0A89F;
+  --font:'Inter',system-ui,sans-serif;
+  --radius:6px;--shadow:0 1px 3px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.06);
+}
+html,body{height:100%;overflow:hidden;}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.5;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:var(--font);font-size:14px;}
+
+/* ── LOGIN ── */
+#login-wrap{position:fixed;inset:0;background:var(--sidebar);display:flex;align-items:center;justify-content:center;z-index:9999;}
+.login-box{background:var(--surface);border-radius:12px;padding:48px 40px;width:380px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);}
+.login-logo{font-family:'Georgia',serif;font-size:24px;font-weight:400;color:var(--text);margin-bottom:6px;}
+.login-sub{font-size:12px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:36px;}
+.login-label{display:block;text-align:left;font-size:12px;font-weight:500;color:var(--text-light);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+.login-input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:15px;font-family:var(--font);background:var(--bg);color:var(--text);transition:border-color .2s;outline:none;}
+.login-input:focus{border-color:var(--accent);}
+.login-btn{width:100%;margin-top:18px;padding:13px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);font-size:15px;font-weight:500;letter-spacing:.04em;transition:background .2s;}
+.login-btn:hover{background:var(--accent-light);}
+.login-err{color:var(--accent);font-size:13px;margin-top:12px;min-height:20px;}
+
+/* ── LAYOUT ── */
+#app{display:none;height:100vh;display:none;flex-direction:column;}
+#app.visible{display:flex;}
+.topbar{height:56px;background:var(--sidebar);display:flex;align-items:center;justify-content:space-between;padding:0 24px;flex-shrink:0;}
+.topbar-logo{font-family:'Georgia',serif;font-size:18px;color:#fff;opacity:.9;}
+.topbar-right{display:flex;align-items:center;gap:12px;}
+.tb-btn{padding:7px 16px;border-radius:var(--radius);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;}
+.tb-save{background:var(--accent);color:#fff;}
+.tb-save:hover{background:var(--accent-light);}
+.tb-export{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);}
+.tb-export:hover{background:rgba(255,255,255,.18);color:#fff;}
+.tb-reset{background:rgba(255,255,255,.06);color:rgba(255,255,255,.45);}
+.tb-reset:hover{background:rgba(220,50,50,.2);color:#f66;}
+.tb-preview{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55);}
+.tb-preview:hover{background:rgba(255,255,255,.15);color:#fff;}
+.tb-logout{background:none;border:none;color:rgba(255,255,255,.35);font-size:12px;letter-spacing:.06em;cursor:pointer;}
+.tb-logout:hover{color:rgba(255,255,255,.7);}
+
+.body-wrap{display:flex;flex:1;overflow:hidden;}
+
+/* ── SIDEBAR ── */
+.sidebar{width:220px;background:var(--sidebar);display:flex;flex-direction:column;padding:16px 0;overflow-y:auto;flex-shrink:0;}
+.sidebar-section-label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);padding:16px 20px 6px;}
+.sidebar-item{display:flex;align-items:center;gap:10px;padding:9px 20px;font-size:13px;color:rgba(255,255,255,.55);cursor:pointer;transition:all .15s;border-left:2px solid transparent;}
+.sidebar-item:hover{background:var(--sidebar-hover);color:rgba(255,255,255,.85);}
+.sidebar-item.active{background:var(--sidebar-hover);color:#fff;border-left-color:var(--accent);}
+.sidebar-icon{font-size:15px;width:20px;text-align:center;opacity:.7;}
+
+/* ── MAIN CONTENT ── */
+.main{flex:1;overflow-y:auto;padding:28px 36px;}
+.page{display:none;}
+.page.active{display:block;}
+.page-title{font-size:22px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.page-sub{font-size:13px;color:var(--text-light);margin-bottom:28px;}
+
+/* ── CARDS ── */
+.card{background:var(--surface);border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow);}
+.card-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.card-badge{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:var(--bg);color:var(--text-muted);padding:3px 8px;border-radius:20px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+
+/* ── FIELDS ── */
+.field{margin-bottom:16px;}
+.field:last-child{margin-bottom:0;}
+.flabel{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;}
+.finput,.ftextarea,.fselect{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:13px;font-family:var(--font);background:var(--bg);color:var(--text);transition:border-color .2s;outline:none;resize:vertical;}
+.finput:focus,.ftextarea:focus,.fselect:focus{border-color:var(--accent);background:#fff;}
+.ftextarea{min-height:80px;line-height:1.6;}
+.ftextarea.tall{min-height:140px;}
+.img-field{display:flex;gap:12px;align-items:flex-start;}
+.img-field-inputs{flex:1;min-width:0;}
+.img-preview{width:80px;height:80px;border-radius:var(--radius);border:1.5px solid var(--border);object-fit:cover;flex-shrink:0;background:var(--bg);}
+.fhint{font-size:11px;color:var(--text-muted);margin-top:5px;}
+.img-size-hint{font-size:11px;color:var(--text-muted);margin-top:6px;padding:6px 10px;background:var(--bg);border-radius:4px;border-left:2px solid var(--border);line-height:1.5;}
+.img-size-hint strong{color:var(--text-light);font-weight:600;}
+.upload-row{display:flex;align-items:center;gap:10px;margin-top:8px;}
+.upload-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);font-size:12px;font-weight:500;color:var(--text-light);cursor:pointer;transition:all .2s;white-space:nowrap;}
+.upload-btn:hover{border-color:var(--accent);color:var(--accent);}
+.compress-info{font-size:11px;font-weight:500;color:#888;transition:color .3s;}
+.compress-info.ok{color:#4caf50;}
+.compress-info.warn{color:#f59e0b;}
+.compress-badge{display:inline-block;background:#e8f5e9;color:#2e7d32;font-size:10px;font-weight:600;padding:2px 6px;border-radius:3px;letter-spacing:.04em;}
+.storage-bar-wrap{margin-top:8px;}
+.storage-bar-label{font-size:11px;color:var(--text-muted);margin-bottom:4px;display:flex;justify-content:space-between;}
+.storage-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.storage-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .5s;}
+
+/* ── PRODUCT TABS ── */
+.prod-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
+.prod-tab{padding:7px 16px;border-radius:20px;font-size:12px;font-weight:500;background:var(--surface);border:1.5px solid var(--border);color:var(--text-light);cursor:pointer;transition:all .15s;}
+.prod-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.prod-panel{display:none;}
+.prod-panel.active{display:block;}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:28px;right:28px;background:var(--sidebar);color:#fff;padding:12px 20px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transform:translateY(8px);transition:all .3s;pointer-events:none;z-index:9999;border-left:3px solid var(--accent);}
+#toast.show{opacity:1;transform:none;}
+
+/* ── IMPORT ── */
+#import-file{display:none;}
+
+/* ── SETTINGS ── */
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);}
+.settings-row:last-child{border-bottom:none;}
+.settings-label{font-size:14px;font-weight:500;color:var(--text);}
+.settings-desc{font-size:12px;color:var(--text-muted);margin-top:2px;}
+.settings-action{flex-shrink:0;margin-left:24px;}
+.btn-sm{padding:7px 16px;border-radius:var(--radius);font-size:12px;font-weight:500;border:none;cursor:pointer;transition:all .2s;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{background:var(--accent-light);}
+.btn-secondary{background:var(--bg);color:var(--text-light);border:1.5px solid var(--border);}
+.btn-secondary:hover{border-color:var(--text-light);color:var(--text);}
+.btn-danger{background:#fee;color:#c00;border:1.5px solid #fcc;}
+.btn-danger:hover{background:#fcc;}
+.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4caf50;margin-right:8px;}
+.status-dot.empty{background:var(--text-muted);}
+
+@media(max-width:768px){
+  .sidebar{width:180px;}
+  .main{padding:20px;}
+  .grid-2,.grid-3{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-wrap">
+  <div class="login-box">
+    <div class="login-logo">Hejże Kraków</div>
+    <div class="login-sub">Panel administracyjny</div>
+    <label class="login-label" for="pw">Hasło</label>
+    <input class="login-input" type="password" id="pw" placeholder="••••••••" autocomplete="current-password">
+    <button class="login-btn" onclick="tryLogin()">Zaloguj się</button>
+    <div class="login-err" id="login-err"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <span class="topbar-logo">Hejże Kraków · CMS</span>
+    <div class="topbar-right">
+      <button class="tb-btn tb-preview" onclick="window.open('index.html','_blank')">Podgląd strony ↗</button>
+      <button class="tb-btn tb-export" onclick="exportJSON()">Eksportuj JSON</button>
+      <label class="tb-btn tb-export" style="cursor:pointer;" for="import-file">Importuj JSON</label>
+      <input type="file" id="import-file" accept=".json" onchange="importJSON(this)">
+      <button class="tb-btn tb-reset" onclick="confirmReset()">Reset do domyślnych</button>
+      <button class="tb-btn tb-save" onclick="saveAll()">💾 Zapisz zmiany</button>
+      <button class="tb-logout" onclick="logout()">Wyloguj</button>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-section-label">Treści</div>
+      <div class="sidebar-item active" data-page="hero" onclick="navTo(this)">
+        <span class="sidebar-icon">🏠</span> Strona Główna
+      </div>
+      <div class="sidebar-item" data-page="products" onclick="navTo(this)">
+        <span class="sidebar-icon">🛍️</span> Produkty
+      </div>
+      <div class="sidebar-item" data-page="stories" onclick="navTo(this)">
+        <span class="sidebar-icon">📖</span> Legendy
+      </div>
+      <div class="sidebar-item" data-page="pracownia" onclick="navTo(this)">
+        <span class="sidebar-icon">✏️</span> Pracownia
+      </div>
+      <div class="sidebar-item" data-page="testimonials" onclick="navTo(this)">
+        <span class="sidebar-icon">💬</span> Opinie
+      </div>
+      <div class="sidebar-item" data-page="contact" onclick="navTo(this)">
+        <span class="sidebar-icon">📬</span> Kontakt
+      </div>
+      <div class="sidebar-section-label">System</div>
+      <div class="sidebar-item" data-page="settings" onclick="navTo(this)">
+        <span class="sidebar-icon">⚙️</span> Ustawienia
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- ═══ STRONA GŁÓWNA ═══ -->
+      <div class="page active" id="page-hero">
+        <div class="page-title">Strona Główna</div>
+        <div class="page-sub">Hero, pasek brandowy, kolekcje i nagłówki sekcji</div>
+
+        <div class="card">
+          <div class="card-title">Hero — Nagłówek główny</div>
+          <div class="grid-3">
+            <div class="field">
+              <label class="flabel">Linia 1 (duża)</label>
+              <input class="finput" id="hero.h1a" type="text" placeholder="Kraków">
+            </div>
+            <div class="field">
+              <label class="flabel">Linia 2</label>
+              <input class="finput" id="hero.h1b" type="text" placeholder="rysowany">
+            </div>
+            <div class="field">
+              <label class="flabel">Linia 3</label>
+              <input class="finput" id="hero.h1c" type="text" placeholder="tuszem">
+            </div>
+          </div>
+          <div class="field">
+            <label class="flabel">Eyebrow (mały tekst nad tytułem)</label>
+            <input class="finput" id="hero.eyebrow" type="text" placeholder="Autorskie ilustracje · Kraków">
+          </div>
+          <div class="field">
+            <label class="flabel">Podtytuł</label>
+            <input class="finput" id="hero.sub" type="text" placeholder="Autorskie ilustracje na produktach...">
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label class="flabel">Przycisk 1 (główny)</label>
+              <input class="finput" id="hero.cta1" type="text" placeholder="Zobacz kolekcje">
+            </div>
+            <div class="field">
+              <label class="flabel">Przycisk 2 (wtórny)</label>
+              <input class="finput" id="hero.cta2" type="text" placeholder="Oferta dla firm">
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Pasek brandowy <span class="card-badge">3 kafelki</span></div>
+          <div class="grid-3">
+            <div>
+              <div class="field"><label class="flabel">Kafelek 1 — Tytuł</label><input class="finput" id="strip.t1" type="text"></div>
+              <div class="field"><label class="flabel">Kafelek 1 — Opis</label><textarea class="ftextarea" id="strip.d1"></textarea></div>
+            </div>
+            <div>
+              <div class="field"><label class="flabel">Kafelek 2 — Tytuł</label><input class="finput" id="strip.t2" type="text"></div>
+              <div class="field"><label class="flabel">Kafelek 2 — Opis</label><textarea class="ftextarea" id="strip.d2"></textarea></div>
+            </div>
+            <div>
+              <div class="field"><label class="flabel">Kafelek 3 — Tytuł</label><input class="finput" id="strip.t3" type="text"></div>
+              <div class="field"><label class="flabel">Kafelek 3 — Opis</label><textarea class="ftextarea" id="strip.d3"></textarea></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Sekcja Kolekcje</div>
+          <div class="grid-2">
+            <div class="field"><label class="flabel">Nagłówek</label><input class="finput" id="coll.heading" type="text"></div>
+            <div class="field"><label class="flabel">Etykieta (mały tekst)</label><input class="finput" id="coll.label" type="text"></div>
+          </div>
+          <div class="grid-3">
+            <div class="field"><label class="flabel">Kolekcja 1 — Nazwa</label><input class="finput" id="coll.c1" type="text"></div>
+            <div class="field"><label class="flabel">Kolekcja 2 — Nazwa</label><input class="finput" id="coll.c2" type="text"></div>
+            <div class="field"><label class="flabel">Kolekcja 3 — Nazwa</label><input class="finput" id="coll.c3" type="text"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Sekcja B2B</div>
+          <div class="field"><label class="flabel">Nagłówek</label><input class="finput" id="b2b.heading" type="text"></div>
+          <div class="field"><label class="flabel">Podtytuł</label><textarea class="ftextarea" id="b2b.sub"></textarea></div>
+          <div class="grid-2">
+            <div>
+              <div class="field"><label class="flabel">Kafelek 1 — Tytuł</label><input class="finput" id="b2b.t1" type="text"></div>
+              <div class="field"><label class="flabel">Kafelek 1 — Opis</label><textarea class="ftextarea" id="b2b.d1"></textarea></div>
+            </div>
+            <div>
+              <div class="field"><label class="flabel">Kafelek 2 — Tytuł</label><input class="finput" id="b2b.t2" type="text"></div>
+              <div class="field"><label class="flabel">Kafelek 2 — Opis</label><textarea class="ftextarea" id="b2b.d2"></textarea></div>
+            </div>
+            <div>
+              <div class="field"><label class="flabel">Kafelek 3 — Tytuł</label><input class="finput" id="b2b.t3" type="text"></div>
+              <div class="field"><label class="flabel">Kafelek 3 — Opis</label><textarea class="ftextarea" id="b2b.d3"></textarea></div>
+            </div>
+            <div>
+              <div class="field"><label class="flabel">Kafelek 4 — Tytuł</label><input class="finput" id="b2b.t4" type="text"></div>
+              <div class="field"><label class="flabel">Kafelek 4 — Opis</label><textarea class="ftextarea" id="b2b.d4"></textarea></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PRODUKTY ═══ -->
+      <div class="page" id="page-products">
+        <div class="page-title">Produkty</div>
+        <div class="page-sub">Nazwy, ceny i zdjęcia 6 produktów na stronie głównej</div>
+
+        <div class="prod-tabs">
+          <button class="prod-tab active" data-prod="1" onclick="showProd(this)">Torba Wawel</button>
+          <button class="prod-tab" data-prod="2" onclick="showProd(this)">Pocztówka Smok</button>
+          <button class="prod-tab" data-prod="3" onclick="showProd(this)">Kubek Rynek</button>
+          <button class="prod-tab" data-prod="4" onclick="showProd(this)">Notes Kazimierz</button>
+          <button class="prod-tab" data-prod="5" onclick="showProd(this)">Koszulka Lajkonik</button>
+          <button class="prod-tab" data-prod="6" onclick="showProd(this)">Plakat Sukiennice</button>
+        </div>
+
+        <!-- Prod panels 1–6 -->
+        <script>
+        const PROD_DEFAULTS = [
+          {n:1, cat:'Torba',    name:'Torba płócienna „Wawel"',        price:'od 59 zł', img:'prod-img-1'},
+          {n:2, cat:'Pocztówka',name:'Pocztówka „Smok Wawelski"',      price:'od 9 zł',  img:'prod-img-2'},
+          {n:3, cat:'Kubek',    name:'Kubek „Krakowski Rynek"',         price:'od 45 zł', img:'prod-img-3'},
+          {n:4, cat:'Notes',    name:'Notes „Kazimierz"',               price:'od 39 zł', img:'prod-img-4'},
+          {n:5, cat:'Koszulka', name:'Koszulka „Lajkonik"',             price:'od 79 zł', img:'prod-img-5'},
+          {n:6, cat:'Plakat',   name:'Plakat „Sukiennice"',             price:'od 29 zł', img:'prod-img-6'},
+        ];
+        PROD_DEFAULTS.forEach(p => {
+          document.write(`
+          <div class="prod-panel${p.n===1?' active':''}" id="prod-panel-${p.n}">
+            <div class="card">
+              <div class="card-title">Produkt ${p.n} — ${p.name}</div>
+              <div class="grid-2">
+                <div class="field"><label class="flabel">Kategoria</label><input class="finput" id="prod.cat${p.n}" type="text" placeholder="${p.cat}"></div>
+                <div class="field"><label class="flabel">Cena</label><input class="finput" id="prod.price${p.n}" type="text" placeholder="${p.price}"></div>
+              </div>
+              <div class="field"><label class="flabel">Nazwa produktu</label><input class="finput" id="prod.name${p.n}" type="text" placeholder="${p.name}"></div>
+              <div class="field">
+                <label class="flabel">Zdjęcie — URL lub plik</label>
+                <div class="img-field">
+                  <div class="img-field-inputs">
+                    <input class="finput" id="img.${p.img}" type="text" placeholder="https://... lub wgraj plik poniżej" oninput="previewImg(this,'prev-${p.img}')">
+                    <div class="img-size-hint">
+                      📐 <strong>400 × 400 px</strong> — kwadrat, format produktowy &nbsp;·&nbsp;
+                      JPEG lub PNG &nbsp;·&nbsp; max 2 MB przed kompresją<br>
+                      Po kompresji: automatyczne skalowanie do 400×400, jakość 85%, zapisany rozmiar ≈ 30–80 KB
+                    </div>
+                    <div class="upload-row">
+                      <label class="upload-btn" for="file-${p.img}">📁 Wgraj zdjęcie</label>
+                      <input type="file" id="file-${p.img}" accept="image/*" style="display:none"
+                             onchange="compressImage(this,'img.${p.img}','prev-${p.img}',400,400,'cinfo-${p.img}')">
+                      <span class="compress-info" id="cinfo-${p.img}"></span>
+                    </div>
+                  </div>
+                  <img class="img-preview" id="prev-${p.img}" src="" alt="Podgląd" onerror="this.style.opacity='.2'" onload="this.style.opacity='1'">
+                </div>
+              </div>
+            </div>
+          </div>`);
+        });
+        </script>
+      </div>
+
+      <!-- ═══ LEGENDY ═══ -->
+      <div class="page" id="page-stories">
+        <div class="page-title">Legendy — Karty na stronie głównej</div>
+        <div class="page-sub">Tytuły, opisy i zdjęcia 5 historii ilustracji</div>
+
+        <script>
+        const STORY_DEFAULTS = [
+          {n:1, label:'Legenda',   title:'Smok Wawelski',              img:'https://picsum.photos/seed/dragon-legend/500/600'},
+          {n:2, label:'Tradycja',  title:'Lajkonik',                   img:'https://picsum.photos/seed/lajkonik-krakow/500/600'},
+          {n:3, label:'Muzyka',    title:'Hejnał z Wieży Mariackiej',  img:'https://picsum.photos/seed/mariacki-tower-krakow/500/600'},
+          {n:4, label:'Zaklęcie',  title:'Gołębie na Rynku',           img:'https://picsum.photos/seed/krakow-pigeons-square/500/600'},
+          {n:5, label:'Pakt',      title:'Pan Twardowski',             img:'https://picsum.photos/seed/twardowski-moon-legend/500/600'},
+        ];
+        STORY_DEFAULTS.forEach(s => {
+          document.write(`
+          <div class="card">
+            <div class="card-title">${s.n}. ${s.title}</div>
+            <div class="grid-2">
+              <div class="field"><label class="flabel">Etykieta (kategoria)</label><input class="finput" id="story${s.n}.label" type="text" placeholder="${s.label}"></div>
+              <div class="field"><label class="flabel">Tytuł</label><input class="finput" id="story${s.n}.title" type="text" placeholder="${s.title}"></div>
+            </div>
+            <div class="field"><label class="flabel">Opis skrócony (na stronie głównej)</label><textarea class="ftextarea" id="story${s.n}.body" placeholder="Krótki opis legendy..."></textarea></div>
+            <div class="field">
+              <label class="flabel">Zdjęcie — URL lub plik</label>
+              <div class="img-field">
+                <div class="img-field-inputs">
+                  <input class="finput" id="img.story-img-${s.n}" type="text" placeholder="${s.img}" oninput="previewImg(this,'prev-story-${s.n}')">
+                  <div class="img-size-hint">
+                    📐 <strong>500 × 600 px</strong> — portret pionowy (proporcje 5:6) &nbsp;·&nbsp;
+                    JPEG lub PNG &nbsp;·&nbsp; max 2 MB przed kompresją<br>
+                    Po kompresji: automatyczne skalowanie do 500×600, jakość 85%, zapisany rozmiar ≈ 40–100 KB
+                  </div>
+                  <div class="upload-row">
+                    <label class="upload-btn" for="file-story-${s.n}">📁 Wgraj zdjęcie</label>
+                    <input type="file" id="file-story-${s.n}" accept="image/*" style="display:none"
+                           onchange="compressImage(this,'img.story-img-${s.n}','prev-story-${s.n}',500,600,'cinfo-story-img-${s.n}')">
+                    <span class="compress-info" id="cinfo-story-img-${s.n}"></span>
+                  </div>
+                </div>
+                <img class="img-preview" id="prev-story-${s.n}" src="${s.img}" alt="Podgląd">
+              </div>
+            </div>
+          </div>`);
+        });
+        </script>
+      </div>
+
+      <!-- ═══ PRACOWNIA ═══ -->
+      <div class="page" id="page-pracownia">
+        <div class="page-title">Pracownia</div>
+        <div class="page-sub">Sekcja "Z pracowni ilustratorki" na stronie głównej</div>
+
+        <div class="card">
+          <div class="card-title">Tekst sekcji</div>
+          <div class="grid-2">
+            <div class="field"><label class="flabel">Etykieta</label><input class="finput" id="prac.label" type="text"></div>
+            <div class="field"><label class="flabel">Nagłówek</label><input class="finput" id="prac.heading" type="text"></div>
+          </div>
+          <div class="field"><label class="flabel">Treść (akapit)</label><textarea class="ftextarea tall" id="prac.body"></textarea></div>
+          <div class="field"><label class="flabel">Cytat (pull quote)</label><textarea class="ftextarea" id="prac.quote"></textarea></div>
+          <div class="field"><label class="flabel">Tekst linku do bio artystki</label><input class="finput" id="prac.cta" type="text"></div>
+        </div>
+      </div>
+
+      <!-- ═══ OPINIE ═══ -->
+      <div class="page" id="page-testimonials">
+        <div class="page-title">Opinie klientów</div>
+        <div class="page-sub">3 cytaty w sekcji testimoniali</div>
+
+        <script>
+        [1,2,3].forEach(n => {
+          document.write(`
+          <div class="card">
+            <div class="card-title">Opinia ${n}</div>
+            <div class="field"><label class="flabel">Treść opinii</label><textarea class="ftextarea tall" id="testi.q${n}"></textarea></div>
+            <div class="grid-2">
+              <div class="field"><label class="flabel">Imię i nazwisko</label><input class="finput" id="testi.n${n}" type="text"></div>
+              <div class="field"><label class="flabel">Firma / stanowisko</label><input class="finput" id="testi.c${n}" type="text"></div>
+            </div>
+          </div>`);
+        });
+        </script>
+      </div>
+
+      <!-- ═══ KONTAKT ═══ -->
+      <div class="page" id="page-contact">
+        <div class="page-title">Kontakt</div>
+        <div class="page-sub">Nagłówki sekcji kontaktowej</div>
+
+        <div class="card">
+          <div class="card-title">Sekcja kontakt</div>
+          <div class="grid-2">
+            <div class="field"><label class="flabel">Etykieta</label><input class="finput" id="contact.label" type="text"></div>
+            <div class="field"><label class="flabel">Nagłówek</label><input class="finput" id="contact.heading" type="text"></div>
+          </div>
+          <div class="field"><label class="flabel">Intro (podtytuł)</label><textarea class="ftextarea" id="contact.intro"></textarea></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Formularz kontaktowy — etykiety</div>
+          <div class="grid-2">
+            <div class="field"><label class="flabel">Placeholder: Imię</label><input class="finput" id="form.name" type="text"></div>
+            <div class="field"><label class="flabel">Placeholder: Email</label><input class="finput" id="form.email" type="text"></div>
+          </div>
+          <div class="field"><label class="flabel">Tekst przycisku wyślij</label><input class="finput" id="form.submit" type="text"></div>
+          <div class="field"><label class="flabel">Tytuł wiadomości po wysłaniu</label><input class="finput" id="form.ty.title" type="text"></div>
+          <div class="field"><label class="flabel">Tekst po wysłaniu</label><input class="finput" id="form.ty.text" type="text"></div>
+        </div>
+      </div>
+
+      <!-- ═══ USTAWIENIA ═══ -->
+      <div class="page" id="page-settings">
+        <div class="page-title">Ustawienia</div>
+        <div class="page-sub">Zarządzanie panelem i danymi CMS</div>
+
+        <div class="card">
+          <div class="card-title">Status danych</div>
+
+          <div class="settings-row">
+            <div style="flex:1">
+              <div class="settings-label"><span class="status-dot" id="cms-dot"></span>Dane CMS w przeglądarce</div>
+              <div class="settings-desc" id="cms-status">Sprawdzanie...</div>
+              <div class="storage-bar-wrap" style="margin-top:10px;">
+                <div class="storage-bar-label">
+                  <span>Zajętość localStorage (zdjęcia base64 zajmują najwięcej)</span>
+                  <span id="storage-used-label" style="font-weight:600;">—</span>
+                </div>
+                <div class="storage-bar"><div class="storage-bar-fill" id="storage-bar-fill" style="width:0%"></div></div>
+              </div>
+            </div>
+            <div class="settings-action">
+              <button class="btn-sm btn-secondary" onclick="exportJSON()">Pobierz kopię JSON</button>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Import z pliku JSON</div>
+              <div class="settings-desc">Przywróć wcześniej wyeksportowane dane</div>
+            </div>
+            <div class="settings-action">
+              <label class="btn-sm btn-secondary" for="import-file" style="cursor:pointer;">Wybierz plik...</label>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Reset do domyślnych</div>
+              <div class="settings-desc">Usuwa wszystkie zmiany — strona wróci do oryginalnych tekstów</div>
+            </div>
+            <div class="settings-action">
+              <button class="btn-sm btn-danger" onclick="confirmReset()">Resetuj</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Zmiana hasła</div>
+          <div class="grid-2">
+            <div class="field">
+              <label class="flabel">Nowe hasło</label>
+              <input class="finput" type="password" id="new-pw" placeholder="Minimum 6 znaków">
+            </div>
+            <div class="field">
+              <label class="flabel">Powtórz hasło</label>
+              <input class="finput" type="password" id="new-pw2" placeholder="">
+            </div>
+          </div>
+          <button class="btn-sm btn-primary" style="margin-top:4px;" onclick="changePassword()">Zmień hasło</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Domyślne hasło</div>
+          <p style="font-size:13px;color:var(--text-light);line-height:1.7;">
+            Domyślne hasło do panelu to <strong>hejze2024</strong>. Zmień je powyżej po pierwszym zalogowaniu.<br>
+            Hasło jest przechowywane lokalnie w tej przeglądarce (localStorage). Nie jest bezpieczne w sieci — panel powinien być dostępny tylko lokalnie lub za hasłem serwera.
+          </p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════
+//  DEFAULTS — odzwierciedlają aktualne wartości
+// ══════════════════════════════════════════════
+const DEFAULTS = {
+  'hero.eyebrow':'Autorskie ilustracje · Kraków',
+  'hero.h1a':'Kraków','hero.h1b':'rysowany','hero.h1c':'tuszem',
+  'hero.sub':'Autorskie ilustracje na produktach, które opowiadają historię miasta',
+  'hero.cta1':'Zobacz kolekcje','hero.cta2':'Oferta dla firm',
+  'strip.t1':'Rysowane ręcznie','strip.d1':'Każda ilustracja powstaje tuszem i piórkiem — żadnych cyfrowych skrótów, tylko ręczna kreska na papierze czerpanym.',
+  'strip.t2':'Inspirowane legendami','strip.d2':'Historia Krakowa — smok, Wawel, Kazimierz — w każdym produkcie. Ilustracje, które niosą opowieść.',
+  'strip.t3':'Produkowane lokalnie','strip.d3':'Z dbałością o jakość i autentyczność. Druk, produkcja i pakowanie — wszystko w Krakowie.',
+  'coll.label':'nasze kolekcje','coll.heading':'Kraków w każdym detalu',
+  'coll.c1':'Kolekcja Wawel','coll.c2':'Kolekcja Kazimierz','coll.c3':'Kolekcja Legendy',
+  'prod.label':'produkty','prod.heading':'Każdy produkt to historia',
+  'prod.cat1':'Torba','prod.name1':'Torba płócienna „Wawel"','prod.price1':'od 59 zł',
+  'prod.cat2':'Pocztówka','prod.name2':'Pocztówka „Smok Wawelski"','prod.price2':'od 9 zł',
+  'prod.cat3':'Kubek','prod.name3':'Kubek „Krakowski Rynek"','prod.price3':'od 45 zł',
+  'prod.cat4':'Notes','prod.name4':'Notes „Kazimierz"','prod.price4':'od 39 zł',
+  'prod.cat5':'Koszulka','prod.name5':'Koszulka „Lajkonik"','prod.price5':'od 79 zł',
+  'prod.cat6':'Plakat','prod.name6':'Plakat „Sukiennice"','prod.price6':'od 29 zł',
+  'stories.label':'historie ilustracji','stories.heading':'Za każdym rysunkiem stoi historia',
+  'story1.label':'Legenda','story1.title':'Smok Wawelski',
+  'story1.body':'Smok Wawelski to serce krakowskiej mitologii. Ilustracja powstała z jednego długiego oddechu — pióro nie odrywało się od papieru. W każdej skali ukryta jest historia królewskiego strachu i chłopskiej przebiegłości, która uratowała miasto.',
+  'story2.label':'Tradycja','story2.title':'Lajkonik',
+  'story2.body':'Brodaty jeździec w tatarskim stroju, który co roku przemierza ulice Krakowa — to jedna z najbardziej niezwykłych tradycji w Polsce. Ilustracja próbuje uchwycić ten moment, gdy historia zamienia się w taniec.',
+  'story3.label':'Muzyka','story3.title':'Hejnał z Wieży Mariackiej',
+  'story3.body':'Cztery strony świata, cztery razy dziennie — i zawsze ten sam urwany dźwięk. Trębacz, który oddał życie ostrzegając miasto, żyje w tej chwilowej ciszy między nutami.',
+  'story4.label':'Zaklęcie','story4.title':'Gołębie na Rynku',
+  'story4.body':'Każdy, kto stał na Rynku Głównym i patrzył, jak setki gołębi unoszą się w powietrze, wie że coś tu jest niezwykłego. Legenda mówi, że to rycerze księcia Henryka, zaklęci przez czarownicę. Czekają.',
+  'story5.label':'Pakt','story5.title':'Pan Twardowski',
+  'story5.body':'Sprzedał duszę diabłu, by poznać tajemnice świata. Oszukał śmierć, uciekł na Księżyc — i tam siedzi do dziś, na pajęczej sieci, patrząc na Kraków z góry. Polska wersja Fausta, pełna humoru i melancholii.',
+  'prac.label':'z pracowni ilustratorki','prac.heading':'Każda linia ma znaczenie',
+  'prac.body':'Zaczynam od spaceru. Bruki Kazimierza, mury Wawelu, zapach starego kamienia po deszczu — to jest mój szkicownik. Potem wracam do pracowni, otwieram słoik z tuszem i zaczynam słuchać, co chce powiedzieć miasto. Pióro nie kłamie. Każda kreska jest decyzją, każdy błąd — częścią historii. Tak powstają ilustracje Hejże Kraków: nieśpiesznie, z miłością do detalu, z respektem dla miejsca.',
+  'prac.quote':'„Rysuję Kraków tak, jak go czuję — nieśpiesznie, z miłością do detalu."',
+  'prac.cta':'Poznaj moją historię →',
+  'b2b.heading':'Twój brand.\nNasza ilustracja.',
+  'b2b.sub':'Współpracujemy z hotelami, sklepami z pamiątkami, organizatorami wydarzeń i firmami zamawiającymi upominki korporacyjne.',
+  'b2b.t1':'Hotele i apartamenty','b2b.d1':'Unikalne upominki dla gości. Własna ilustracja hotelu lub krakowskie motywy pod marką obiektu.',
+  'b2b.t2':'Sklepy z pamiątkami','b2b.d2':'Oryginalne ilustracje, które wyróżnią Twój sklep. Dostawa hurtowa, możliwość własnej serii.',
+  'b2b.t3':'Upominki firmowe','b2b.d3':'Zestawy korporacyjne z ilustracjami Krakowa lub autorskim projektem na Twoje zamówienie.',
+  'b2b.t4':'Eventy i konferencje','b2b.d4':'Pamiątki eventowe, zaproszenia z ilustracją, materiały konferencyjne. Realizacje na czas.',
+  'testi.label':'mówią o nas','testi.heading':'Słowa naszych klientów',
+  'testi.q1':'Zamówiliśmy autorską ilustrację naszego hotelu na kolekcję upominków dla gości. Efekt przeszedł nasze oczekiwania — goście pytają o ilustratorkę z imienia. To nie są zwykłe pamiątki, to małe dzieła sztuki.',
+  'testi.n1':'Marta Kowalczyk','testi.c1':'Dyrektor, Boutique Hotel Kazimierz',
+  'testi.q2':'Hejże Kraków to najlepsza decyzja zakupowa naszego sklepu w tym roku. Klienci od razu widzą różnicę — ręczna kreska mówi sama za siebie. Sprzedaje się nieporównywalnie lepiej od masowej produkcji.',
+  'testi.n2':'Tomasz Bąk','testi.c2':'Właściciel, Galeria Pamiątek Rynek Główny',
+  'testi.q3':'Na naszą konferencję zamówiłam 200 zestawów z krakowskimi ilustracjami. Uczestnicy z całej Europy byli zachwyceni. Kilka osób specjalnie pytało, gdzie można kupić więcej. Polecam bez wahania.',
+  'testi.n3':'Agnieszka Wiśniewska','testi.c3':'Event Manager, Forum Ekonomiczne Kraków',
+  'contact.label':'kontakt','contact.heading':'Zacznijmy razem coś wyjątkowego',
+  'contact.intro':'Niezależnie czy jesteś właścicielem sklepu, hotelu, czy szukasz oryginalnego upominku firmowego — chętnie porozmawiamy o współpracy.',
+  'form.name':'Imię i nazwisko','form.email':'Adres e-mail',
+  'form.submit':'Wyślij zapytanie','form.ty.title':'Dziękujemy!','form.ty.text':'Odezwiemy się w ciągu 24 godzin.',
+};
+
+// ══════════════════════════════════════════════
+//  AUTH
+// ══════════════════════════════════════════════
+const PW_KEY = 'hejze_admin_pw';
+const CMS_KEY = 'hejze_cms';
+
+function getPassword(){ return localStorage.getItem(PW_KEY) || 'hejze2024'; }
+
+function tryLogin(){
+  const val = document.getElementById('pw').value;
+  if(val === getPassword()){
+    document.getElementById('login-wrap').style.display='none';
+    document.getElementById('app').classList.add('visible');
+    loadAllFields();
+    updateStatus();
+    updateStorageBar();
+  } else {
+    document.getElementById('login-err').textContent = 'Nieprawidłowe hasło.';
+    document.getElementById('pw').value='';
+    document.getElementById('pw').focus();
+  }
+}
+document.getElementById('pw').addEventListener('keydown', e => { if(e.key==='Enter') tryLogin(); });
+
+function logout(){
+  document.getElementById('app').classList.remove('visible');
+  document.getElementById('login-wrap').style.display='flex';
+  document.getElementById('pw').value='';
+  document.getElementById('login-err').textContent='';
+}
+
+function changePassword(){
+  const p1 = document.getElementById('new-pw').value;
+  const p2 = document.getElementById('new-pw2').value;
+  if(p1.length < 6){ toast('Hasło musi mieć min. 6 znaków','error'); return; }
+  if(p1 !== p2){ toast('Hasła się nie zgadzają','error'); return; }
+  localStorage.setItem(PW_KEY, p1);
+  document.getElementById('new-pw').value='';
+  document.getElementById('new-pw2').value='';
+  toast('Hasło zmienione pomyślnie');
+}
+
+// ══════════════════════════════════════════════
+//  NAVIGATION
+// ══════════════════════════════════════════════
+function navTo(el){
+  document.querySelectorAll('.sidebar-item').forEach(i=>i.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('page-'+el.dataset.page).classList.add('active');
+}
+
+function showProd(btn){
+  document.querySelectorAll('.prod-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.prod-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('prod-panel-'+btn.dataset.prod).classList.add('active');
+}
+
+// ══════════════════════════════════════════════
+//  LOAD / SAVE
+// ══════════════════════════════════════════════
+function loadAllFields(){
+  const saved = JSON.parse(localStorage.getItem(CMS_KEY) || '{}');
+  const pl = saved.pl || {};
+  const imgs = saved.images || {};
+
+  // Text fields
+  Object.entries(DEFAULTS).forEach(([key, def]) => {
+    const el = document.getElementById(key);
+    if(el) el.value = pl[key] !== undefined ? pl[key] : def;
+  });
+
+  // Image fields
+  Object.keys(imgs).forEach(key => {
+    const el = document.getElementById('img.'+key);
+    if(el){
+      el.value = imgs[key];
+      const prevId = 'prev-' + key.replace('prod-img-','prod-img-').replace('story-img-','story-img-');
+      const prev = document.getElementById(prevId) || document.getElementById('prev-'+key);
+      if(prev && imgs[key]) prev.src = imgs[key];
+    }
+  });
+}
+
+function saveAll(){
+  const pl = {};
+  const images = {};
+
+  // Collect text fields
+  Object.keys(DEFAULTS).forEach(key => {
+    const el = document.getElementById(key);
+    if(el && el.value.trim() !== DEFAULTS[key]){
+      pl[key] = el.value;
+    }
+  });
+
+  // Collect image fields
+  document.querySelectorAll('[id^="img."]').forEach(el => {
+    if(el.value.trim()){
+      const key = el.id.replace('img.','');
+      images[key] = el.value.trim();
+    }
+  });
+
+  const data = { pl, en:{}, images, _saved: new Date().toISOString() };
+  localStorage.setItem(CMS_KEY, JSON.stringify(data));
+  toast('Zmiany zapisane — odśwież stronę główną żeby zobaczyć efekt');
+  updateStatus();
+}
+
+// ══════════════════════════════════════════════
+//  EXPORT / IMPORT / RESET
+// ══════════════════════════════════════════════
+function exportJSON(){
+  const data = localStorage.getItem(CMS_KEY) || '{}';
+  const blob = new Blob([JSON.stringify(JSON.parse(data), null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'hejze-cms-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast('Plik JSON pobrany');
+}
+
+function importJSON(input){
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      localStorage.setItem(CMS_KEY, JSON.stringify(data));
+      loadAllFields();
+      updateStatus();
+      toast('Import zakończony — załadowano dane z pliku');
+    } catch(err){
+      toast('Błąd: nieprawidłowy plik JSON','error');
+    }
+    input.value = '';
+  };
+  reader.readAsText(file);
+}
+
+function confirmReset(){
+  if(confirm('Usunąć wszystkie zmiany CMS? Strona wróci do domyślnych tekstów.')){
+    localStorage.removeItem(CMS_KEY);
+    loadAllFields();
+    updateStatus();
+    toast('Reset wykonany — przywrócono domyślne wartości');
+  }
+}
+
+// ══════════════════════════════════════════════
+//  IMAGE PREVIEW
+// ══════════════════════════════════════════════
+function previewImg(input, prevId){
+  const prev = document.getElementById(prevId);
+  if(prev && input.value.trim()){
+    prev.src = input.value.trim();
+    prev.style.opacity = '1';
+  }
+}
+
+// ══════════════════════════════════════════════
+//  IMAGE COMPRESSION (Canvas API)
+// ══════════════════════════════════════════════
+function compressImage(fileInput, targetFieldId, prevId, maxW, maxH, infoId) {
+  const file = fileInput.files[0];
+  if (!file) return;
+
+  const MAX_MB = 2;
+  if (file.size > MAX_MB * 1024 * 1024) {
+    toast(`Plik za duży (${(file.size/1024/1024).toFixed(1)} MB). Max ${MAX_MB} MB.`, 'error');
+    fileInput.value = '';
+    return;
+  }
+
+  const infoEl = document.getElementById(infoId);
+  if (infoEl) { infoEl.textContent = '⏳ Komprymuję...'; infoEl.className = 'compress-info'; }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      // Scale down keeping aspect ratio, fitting within maxW × maxH
+      let w = img.naturalWidth, h = img.naturalHeight;
+      const ratio = Math.min(maxW / w, maxH / h, 1); // never upscale
+      w = Math.round(w * ratio);
+      h = Math.round(h * ratio);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+
+      // White background for PNGs with transparency
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, w, h);
+      ctx.drawImage(img, 0, 0, w, h);
+
+      // Try quality 0.85, if still too big drop to 0.70
+      let dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+      if (dataUrl.length > 400 * 1024 * 1.37) { // ~400 KB as base64
+        dataUrl = canvas.toDataURL('image/jpeg', 0.70);
+      }
+
+      // Approximate byte sizes
+      const origKB  = Math.round(file.size / 1024);
+      const compKB  = Math.round(dataUrl.length * 0.75 / 1024);
+      const saved   = Math.max(0, Math.round((1 - compKB / origKB) * 100));
+
+      // Fill the URL field with data URL
+      const targetEl = document.getElementById(targetFieldId);
+      if (targetEl) targetEl.value = dataUrl;
+
+      // Update preview
+      const prev = document.getElementById(prevId);
+      if (prev) { prev.src = dataUrl; prev.style.opacity = '1'; }
+
+      // Show stats
+      if (infoEl) {
+        infoEl.innerHTML =
+          `<span class="compress-badge">✓ Skompresowane</span> ` +
+          `${origKB} KB → <strong>${compKB} KB</strong> (−${saved}%) · ${w}×${h} px`;
+        infoEl.className = 'compress-info ' + (compKB < 150 ? 'ok' : 'warn');
+      }
+
+      // Update localStorage usage indicator
+      updateStorageBar();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function updateStorageBar() {
+  try {
+    let total = 0;
+    for (let k in localStorage) {
+      if (Object.prototype.hasOwnProperty.call(localStorage, k)) {
+        total += (localStorage[k].length + k.length) * 2; // UTF-16 bytes
+      }
+    }
+    const usedKB  = Math.round(total / 1024);
+    const limitKB = 5120; // ~5 MB typical limit
+    const pct     = Math.min(100, Math.round(usedKB / limitKB * 100));
+    const bar     = document.getElementById('storage-bar-fill');
+    const label   = document.getElementById('storage-used-label');
+    if (bar)   { bar.style.width = pct + '%'; bar.style.background = pct > 80 ? '#f59e0b' : 'var(--accent)'; }
+    if (label) label.textContent = `${usedKB} KB / ~5 120 KB (${pct}%)`;
+  } catch(e) {}
+}
+
+// ══════════════════════════════════════════════
+//  STATUS
+// ══════════════════════════════════════════════
+function updateStatus(){
+  const saved = localStorage.getItem(CMS_KEY);
+  const dot = document.getElementById('cms-dot');
+  const status = document.getElementById('cms-status');
+  if(!status) return;
+  if(saved){
+    const d = JSON.parse(saved);
+    const count = Object.keys(d.pl||{}).length + Object.keys(d.images||{}).length;
+    dot.classList.remove('empty');
+    const date = d._saved ? new Date(d._saved).toLocaleString('pl-PL') : '—';
+    status.textContent = `${count} zmienione pola · Ostatni zapis: ${date}`;
+  } else {
+    dot.classList.add('empty');
+    status.textContent = 'Brak zapisanych zmian — używane są domyślne teksty';
+  }
+}
+
+// ══════════════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════════════
+let toastTimer;
+function toast(msg, type='ok'){
+  const el = document.getElementById('toast');
+  el.textContent = type==='error' ? '✕ '+msg : '✓ '+msg;
+  el.style.borderLeftColor = type==='error' ? '#e55' : 'var(--accent)';
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>el.classList.remove('show'), 3200);
+}
+</script>
+</body>
+</html>

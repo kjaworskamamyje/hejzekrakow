@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legendy Krakowa — Hejże Kraków</title>
+<meta name="description" content="Poznaj legendy Krakowa — Smok Wawelski, Lajkonik, Hejnał Mariacki, Gołębie na Rynku, Pan Twardowski. Ilustrowane tuszem przez Annę Milcarz.">
+<meta name="keywords" content="legendy krakowskie, Smok Wawelski, Lajkonik, Hejnał Mariacki, Pan Twardowski, Gołębie na Rynku, ilustracje legend Kraków">
+<meta name="author" content="Anna Milcarz">
+<meta name="robots" content="index, follow">
+<!-- Open Graph i Schema są ustawiane dynamicznie przez JS per legenda -->
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="Hejże Kraków">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://hejzekrakow.pl/og-image.jpg">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hejzekrakow.pl/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital@1&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-bg:#F9F6F0;--color-bg-warm:#F2EDE3;--color-bg-dark:#1A1A18;
+  --color-text:#1A1A18;--color-text-light:#7A7570;--color-ink:#0D0D0B;
+  --color-brick:#9B3A2A;--color-brick-light:#C4614E;--color-paper:#EDE8DF;
+  --color-border:#D8D0C4;
+  --font-display:'Cormorant Garamond',serif;--font-story:'EB Garamond',serif;--font-body:'Jost',sans-serif;
+  --nav-h:72px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.035;pointer-events:none;z-index:9000;}
+img{display:block;width:100%;height:100%;object-fit:cover;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);display:flex;align-items:center;background:rgba(249,246,240,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-border);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-ink);}
+.nav-logo svg{width:22px;height:22px;}
+.nav-back{display:flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-light);transition:color .2s;}
+.nav-back:hover{color:var(--color-brick);}
+.nav-back svg{width:16px;height:16px;}
+
+/* HERO */
+.story-hero{padding-top:var(--nav-h);min-height:80vh;display:grid;grid-template-columns:1fr 1fr;}
+.hero-text-col{display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,100px) clamp(32px,5vw,72px);position:relative;overflow:hidden;}
+.hero-bg-num{position:absolute;font-family:var(--font-display);font-size:clamp(180px,22vw,320px);font-weight:300;color:var(--color-ink);opacity:.04;line-height:1;bottom:-0.1em;left:-0.05em;pointer-events:none;user-select:none;}
+.hero-label{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--color-brick);display:block;margin-bottom:18px;}
+.hero-h1{font-family:var(--font-display);font-size:clamp(42px,5.5vw,80px);font-weight:300;line-height:1.05;color:var(--color-ink);margin-bottom:18px;}
+.ink-line{display:block;margin-bottom:28px;}
+.ink-line svg{width:clamp(120px,28%,240px);height:12px;overflow:visible;}
+.ink-path{stroke-dasharray:500;stroke-dashoffset:500;animation:drawLine 1.6s ease forwards .4s;}
+@keyframes drawLine{to{stroke-dashoffset:0;}}
+.hero-tagline{font-family:var(--font-display);font-size:clamp(16px,1.7vw,20px);font-style:italic;font-weight:300;color:var(--color-text-light);line-height:1.6;max-width:380px;margin-bottom:36px;}
+.breadcrumb{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--color-text-light);transition:color .2s;}
+.breadcrumb:hover{color:var(--color-brick);}
+
+.hero-img-col{position:relative;overflow:hidden;min-height:80vh;}
+.hero-img-col img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(18%) contrast(1.08) saturate(.82);}
+
+/* INK DIVIDER */
+.ink-div{line-height:0;display:block;}
+.ink-div svg{width:100%;display:block;}
+
+/* LEGENDA SECTION */
+.legenda-section{padding:clamp(64px,8vw,120px) 0;background:var(--color-bg);}
+.legenda-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:start;}
+.legenda-text-col{}
+.section-label{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--color-brick);display:block;margin-bottom:20px;}
+.legenda-h2{font-family:var(--font-display);font-size:clamp(30px,3.5vw,52px);font-weight:300;color:var(--color-ink);line-height:1.1;margin-bottom:32px;}
+.legenda-body p{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--color-text-light);line-height:1.9;margin-bottom:20px;}
+.legenda-body p:last-child{margin-bottom:0;}
+.pull-quote{font-family:var(--font-story);font-size:clamp(17px,2vw,22px);font-style:italic;color:var(--color-ink);line-height:1.65;border-left:2px solid var(--color-brick);padding:8px 0 8px 24px;margin:36px 0;}
+
+.legenda-img-col{display:flex;flex-direction:column;gap:24px;position:sticky;top:calc(var(--nav-h) + 32px);}
+.sketch-main{aspect-ratio:3/4;overflow:hidden;}
+.sketch-main img{width:100%;height:100%;object-fit:cover;filter:grayscale(88%) contrast(1.3) brightness(1.1) sepia(8%);}
+.sketch-small-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sketch-sm{aspect-ratio:1;overflow:hidden;}
+.sketch-sm img{width:100%;height:100%;object-fit:cover;filter:grayscale(88%) contrast(1.3) brightness(1.1) sepia(8%);}
+.sketch-caption{font-family:var(--font-body);font-size:11px;font-weight:300;color:var(--color-text-light);letter-spacing:.08em;margin-top:12px;text-align:center;}
+
+/* PROCES SECTION */
+.proces-section{padding:clamp(64px,8vw,120px) 0;background:var(--color-paper);}
+.proces-head{margin-bottom:52px;}
+.proces-h2{font-family:var(--font-display);font-size:clamp(30px,3.5vw,52px);font-weight:300;color:var(--color-ink);line-height:1.1;margin-bottom:16px;}
+.proces-intro{font-family:var(--font-display);font-size:clamp(16px,1.8vw,20px);font-style:italic;font-weight:300;color:var(--color-text-light);line-height:1.7;max-width:600px;}
+.proces-body{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--color-text-light);line-height:1.9;max-width:700px;}
+.proces-body p{margin-bottom:20px;}
+.proces-body p:last-child{margin-bottom:0;}
+.proces-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+.gal-item{aspect-ratio:3/4;overflow:hidden;}
+.gal-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(90%) contrast(1.35) brightness(1.08) sepia(10%);}
+
+/* INNE LEGENDY */
+.inne-section{padding:clamp(64px,8vw,100px) 0;background:var(--color-bg);}
+.inne-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:44px;}
+.inne-h2{font-family:var(--font-display);font-size:clamp(26px,3vw,40px);font-weight:300;color:var(--color-ink);}
+.inne-all{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brick);border-bottom:1px solid var(--color-brick-light);padding-bottom:2px;transition:color .2s;}
+.inne-all:hover{color:var(--color-brick-light);}
+.inne-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.inne-card{display:block;cursor:pointer;}
+.inne-img{aspect-ratio:4/5;overflow:hidden;margin-bottom:18px;}
+.inne-img img{width:100%;height:100%;object-fit:cover;filter:sepia(16%) contrast(1.05) saturate(.85);transition:transform .5s;}
+.inne-card:hover .inne-img img{transform:scale(1.04);}
+.inne-label{font-family:var(--font-body);font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--color-brick);display:block;margin-bottom:6px;}
+.inne-title{font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-ink);margin-bottom:8px;line-height:1.2;}
+.inne-body{font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--color-text-light);line-height:1.7;margin-bottom:12px;}
+.inne-link{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brick);border-bottom:1px solid var(--color-brick-light);padding-bottom:2px;}
+
+/* FOOTER */
+.foot-strip{background:var(--color-bg-dark);padding:40px 0;}
+.foot-inner{display:flex;align-items:center;justify-content:space-between;}
+.foot-logo{font-family:var(--font-display);font-size:20px;font-weight:300;color:var(--color-bg);letter-spacing:.04em;}
+.foot-copy{font-family:var(--font-body);font-size:11px;font-weight:300;color:rgba(249,246,240,.35);letter-spacing:.1em;}
+
+/* NOT FOUND */
+.not-found{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:20px;padding:var(--nav-h) 24px 0;}
+.not-found-num{font-family:var(--font-display);font-size:clamp(80px,15vw,160px);font-weight:300;color:var(--color-ink);opacity:.08;line-height:1;}
+.not-found h1{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);font-weight:300;color:var(--color-ink);}
+.not-found p{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--color-text-light);}
+.not-found a{font-family:var(--font-body);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-brick);border-bottom:1px solid var(--color-brick-light);padding-bottom:2px;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .story-hero{grid-template-columns:1fr;}
+  .hero-img-col{min-height:50vw;order:-1;}
+  .legenda-inner{grid-template-columns:1fr;}
+  .legenda-img-col{position:static;flex-direction:row;flex-wrap:wrap;}
+  .sketch-main{flex:1 1 280px;aspect-ratio:4/5;}
+  .sketch-small-row{flex:1 1 200px;}
+  .inne-grid{grid-template-columns:1fr 1fr;}
+  .proces-gallery{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .inne-grid{grid-template-columns:1fr;}
+  .proces-gallery{grid-template-columns:1fr 1fr;}
+  .inne-head{flex-direction:column;gap:12px;}
+  .sketch-small-row{grid-template-columns:1fr 1fr;}
+}
+
+/* FADE IN */
+.fi{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+.fi.on{opacity:1;transform:none;}
+.d1{transition-delay:.12s;}
+.d2{transition-delay:.24s;}
+.d3{transition-delay:.36s;}
+
+@media(prefers-reduced-motion:reduce){
+  .fi{opacity:1;transform:none;transition:none;}
+  .ink-path{animation:none;stroke-dashoffset:0;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.5 2 6 5 6 8c0 5 6 14 6 14s6-9 6-14c0-3-2.5-6-6-6z"/><circle cx="12" cy="8" r="2"/></svg>
+      Hejże Kraków
+    </a>
+    <a href="index.html#stories" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+      Wszystkie legendy
+    </a>
+  </div>
+</nav>
+
+<div id="root"></div>
+
+<script>
+const STORIES = {
+
+  'smok-wawelski': {
+    num: '01',
+    label: 'Legenda',
+    title: 'Smok Wawelski',
+    tagline: 'Ogień, strach i chłopska przebiegłość',
+    heroImg: 'https://picsum.photos/seed/dragon-legend-hero/900/800',
+    legendTitle: 'Jak smok przegrał z szewcem',
+    legendParas: [
+      'W dawnych czasach, gdy Kraków był jeszcze młodym miastem, u stóp wzgórza wawelskiego mieszkał okrutny smok. Co noc wychodził ze swojej jaskini i siał terror wśród mieszkańców. Pożerał bydło, palił domy, porywał dzieci. Król Krak szukał rycerzy zdolnych pokonać potwora — lecz wszyscy ponieśli klęskę.',
+      'Wtedy zgłosił się Skuba — prosty szewc bez zbroi i miecza. Napchał baranią skórę siarką i smołą i zostawił przed wejściem do jaskini. Smok połknął przynętę łapczywie. Ogień w jego brzuchu rozgorzał od środka. Zwierzę rzuciło się do Wisły i piło, piło, piło... aż pękło.',
+      'Miasto odetchnęło. Skuba ożenił się z królewską córką. A jaskinia przy Wawelu — Smocza Jama — do dziś zionę ogniem (za pomocą gazowego palnika) dla turystów z całego świata. Wizualna metafora przetrwała wieki: najprostsza broń często jest najskuteczniejsza.',
+      'To nie jest historia o sile. To historia o sprytze. Smok reprezentuje wszelkie wielkie, przytłaczające zagrożenia — a chłopska przebiegłość to odpowiedź, która przechytrzyła każdego dzielnego rycerza. Dlatego ta legenda przeżywa kolejne pokolenia — jest fundamentalnie ludzka.',
+    ],
+    pullQuote: '"Pióro nie odrywało się od papieru przez całe trzy godziny. Smok musiał powstać za jednym oddechem — tak jak ostrzegali mnie starzy mistrzowie tuszu."',
+    sketchMain: 'https://picsum.photos/seed/dragon-sketch-main/600/800',
+    sketchSmall: [
+      'https://picsum.photos/seed/dragon-sketch-sm1/400/400',
+      'https://picsum.photos/seed/dragon-sketch-sm2/400/400',
+    ],
+    sketchCaption: 'Szkice robocze — detale łusek i ogona, pierwsze kompozycje',
+    processTitle: 'Jak powstała ta ilustracja',
+    processParas: [
+      'Zaczęłam od ogona — długiego, zakręconego, który zajął całą lewą stronę kartki. Potem łuski, każda rysowana osobno. Smok wymagał cierpliwości: trzy tygodnie szkicowania, zanim znalazłam formę, która wyglądała groźnie i pięknie jednocześnie.',
+      'Użyłam najtwardszego pióra z mojej kolekcji — linia musiała być pewna jak skała. Żadnych poprawek, żadnych gumek. Tusz na papierze jest decyzją nieodwracalną. Podobnie jak chłopska przebiegłość Skuby — raz podrzucona barania skóra, dalej nie było odwrotu.',
+      'Na finalnej wersji znalazły się szczegóły, które widać dopiero pod lupą: każda łuska ma inny wzór, w rozwarciu pyska ukryta jest maleńka sylweta Wawelu. Smok jest też strażnikiem — nie tylko wrogiem.',
+    ],
+    galImgs: [
+      'https://picsum.photos/seed/dragon-gal1/500/700',
+      'https://picsum.photos/seed/dragon-gal2/500/700',
+      'https://picsum.photos/seed/dragon-gal3/500/700',
+    ],
+    related: ['lajkonik','hejnal-mariacki','twardowski'],
+  },
+
+  'lajkonik': {
+    num: '02',
+    label: 'Tradycja',
+    title: 'Lajkonik',
+    tagline: 'Kiedy historia zamienia się w taniec',
+    heroImg: 'https://picsum.photos/seed/lajkonik-hero/900/800',
+    legendTitle: 'Flisacy, Tatarzy i brodaty jeździec',
+    legendParas: [
+      'Rok 1241. Hordy tatarskie po raz drugi zagrażają Krakowowi. Flisacy ze Zwierzyńca — dzielni mężczyźni z wiklinowymi koszami i wiosłami — pokonują oddział Tatarów próbujący podejść miasto od strony rzeki. W euforii zwycięstwa jeden z nich przywdziewa strój tatarskiego wodza i wjeżdża konno w ulice Krakowa, zbierając oklaski i sypane kwiaty.',
+      'Tak mówi legenda. Historia powiedziałaby co innego — ale to legenda wygrała. Każdego roku, w oktawę Bożego Ciała, Lajkonik wyrusza spod klasztoru Norbertanek w Zwierzyńcu i maszeruje przez miasto do Rynku Głównego. Kolorowe stroje, muzyka kapeli, tłumy wzdłuż ulic — i ten charakterystyczny kij, którym Lajkonik uderza przechodniów na szczęście.',
+      'Dotknięcie kija Lajkonika przynosi pomyślność przez cały rok. To tradycja, która trwa ponad siedemset lat — żywa, ruchliwa, hałaśliwa. Zupełnie nie taka jak inne legendy wyklute w bibliotecznej ciszy.',
+      'Lajkonik jest wyjątkowy, bo to legenda, której się nie tylko słucha — w którą się wchodzi. Można dostać kijem. Można dać mu datek. Można wmieszać się w tłum i przez chwilę poczuć, że historia nie skończyła się siedem wieków temu.',
+    ],
+    pullQuote: '"Lajkonik nie pozwala się narysować na spokojnie. Cały czas się kręci, tańczy, ucieka spod pióra — musiałam go gonić po Krakowie ze szkicownikiem pod pachą."',
+    sketchMain: 'https://picsum.photos/seed/lajkonik-sketch-main/600/800',
+    sketchSmall: [
+      'https://picsum.photos/seed/lajkonik-sketch-sm1/400/400',
+      'https://picsum.photos/seed/lajkonik-sketch-sm2/400/400',
+    ],
+    sketchCaption: 'Szkice z procesji — kompozycja tłumu, detale stroju',
+    processTitle: 'Jak powstała ta ilustracja',
+    processParas: [
+      'Lajkonik jest kłopotliwym modelem — nie stoi w miejscu. Robiłam szkice podczas procesji, siedząc na krawężniku z blokiem na kolanach. Najważniejsze były proporcje: jak blisko siebie stoją ludzie w tłumie, jak wysoko siedzi jeździec na „koniu", który sam jest człowiekiem.',
+      'Strój Lajkonika to osobna historia — hafty, guzy, dzwoneczki, proporczyk. Każdy element ma swoje znaczenie i swoje miejsce. Spędziłam godzinę fotografując go z bliska, zanim dotknęłam pióra. Detal jest ważniejszy niż ogólna sylweta.',
+      'Ostateczna ilustracja ma w sobie ten ruch — peleryna wywiana przez wiatr, kij w połowie gestu, tłum zamazany w tle. Jakby zaraz miała wyskoczyć z kartki. Lajkonik to jedyna moja ilustracja, która nie chce stać spokojnie.',
+    ],
+    galImgs: [
+      'https://picsum.photos/seed/lajkonik-gal1/500/700',
+      'https://picsum.photos/seed/lajkonik-gal2/500/700',
+      'https://picsum.photos/seed/lajkonik-gal3/500/700',
+    ],
+    related: ['smok-wawelski','hejnal-mariacki','golebie-rynek'],
+  },
+
+  'hejnal-mariacki': {
+    num: '03',
+    label: 'Muzyka',
+    title: 'Hejnał z Wieży Mariackiej',
+    tagline: 'Melodia, która urywa się w połowie',
+    heroImg: 'https://picsum.photos/seed/mariacki-tower-hero/900/800',
+    legendTitle: 'Trębacz, który oddał życie za miasto',
+    legendParas: [
+      'Jest rok 1241. Tatarzy zbliżają się do Krakowa. Na szczycie wieży kościoła Mariackiego stoi wartownik — młody trębacz. Widzi tumany kurzu na horyzoncie, podnosi trąbkę i zaczyna grać hejnał, żeby ostrzec miasto.',
+      'Strzała tatarskiego łucznika trafia go w gardło w połowie melodii.',
+      'Miasto zdążyło się schronić. Trębacz zginął. I od tego dnia — przez setki lat, bez przerwy, co godzina, na cztery strony świata — hejnał Mariacki jest przerywany w tym samym miejscu. Ta chwila ciszy po urwanej nucie to hołd złożony anonimowemu trębaczowi, który oddał życie za Kraków.',
+      'Dziś hejnał gra Straż Miejska Krakowa — i co godzina, w południe, transmituje go Polskie Radio. Melodia rozlega się na cały kraj. To najdłużej grany utwór w historii polskiej muzyki — i chyba jedyny, którego niedokończenie jest jego treścią.',
+      'Historycy spierają się, czy Tatarzy dotarli do Krakowa. Ale każdy, kto stał na Rynku i słyszał tę urwaną nutę, rozumie, że niektóre legendy są prawdziwsze niż fakty.',
+    ],
+    pullQuote: '"Ta urwana nuta jest doskonalsza niż każda ukończona melodia. Niedokończone rzeczy mają więcej sensu niż skończone — i to właśnie narysowałam."',
+    sketchMain: 'https://picsum.photos/seed/mariacki-sketch-main/600/800',
+    sketchSmall: [
+      'https://picsum.photos/seed/mariacki-sketch-sm1/400/400',
+      'https://picsum.photos/seed/mariacki-sketch-sm2/400/400',
+    ],
+    sketchCaption: 'Szkice wieży — linia gotycka, perspektywa z dołu, noc i świt',
+    processTitle: 'Jak powstała ta ilustracja',
+    processParas: [
+      'Wieżę Mariacką rysowałam wiele razy — i za każdym razem wychodziła mi zbyt prosta, zbyt precyzyjna. Architektura gotycka jest skomplikowana i łatwo utknąć w detalach kosztem emocji. W końcu narysowałam ją nocą, przy jednej świecy, bez linijki.',
+      'Linie są nieco drżące — i właśnie to sprawiło, że stała się prawdziwa. Wieża nocą wygląda inaczej niż w dzień. Kamień robi się ciemniejszy, okna latarnialne jaśniejsze, sylweta ostra na tle nieba. Trębacz jest małą figurką na samym szczycie — ledwo widoczną, ale tam jest.',
+      'Dźwięku nie da się narysować. Ale można narysować moment przed dźwiękiem — i moment po. Wybrałam ten drugi: pustą wieżę, otwarte okno, kawałek nieba. Cisza jest głośna, kiedy wiesz, co się właśnie urwało.',
+    ],
+    galImgs: [
+      'https://picsum.photos/seed/mariacki-gal1/500/700',
+      'https://picsum.photos/seed/mariacki-gal2/500/700',
+      'https://picsum.photos/seed/mariacki-gal3/500/700',
+    ],
+    related: ['smok-wawelski','lajkonik','twardowski'],
+  },
+
+  'golebie-rynek': {
+    num: '04',
+    label: 'Zaklęcie',
+    title: 'Gołębie na Rynku Krakowskim',
+    tagline: 'Rycerze, których czas zasnął',
+    heroImg: 'https://picsum.photos/seed/krakow-pigeons-hero/900/800',
+    legendTitle: 'Zaklęta drużyna księcia Henryka',
+    legendParas: [
+      'Gdy patrzysz na gołębie na Rynku Głównym — tysiące szarych ptaków, które wzlatują i opadają w rytmie turystycznych kroków — widzisz zaklętych rycerzy.',
+      'Tak mówi legenda. Książę Henryk Pobożny, gotując się do walki z Tatarami pod Legnicą, miał przy sobie wierną drużynę. Czarownica — według jednej wersji przysłana przez wrogów, według innej zazdrosna kobieta — zaklęła całą drużynę w gołębie. Kiedy Henryk padnie w boju, jego rycerze będą krążyć nad Krakowem i czekać na chwilę, gdy będą mogli znów stać się ludźmi.',
+      'Henryk Pobożny poległ pod Legnicą 9 kwietnia 1241 roku. Tatarzy odcięli mu głowę i nosili ją na włóczni. Jego rycerze nigdy go nie uratowali — bo byli ptakami. Są tu do dziś. Szare, niespokojne, krążące nad wieżami.',
+      'Legenda daje im tożsamość i godność. To nie są zwykłe miejskie ptaki — to strażnicy. Każdy gołąb na krakowskim Rynku był kiedyś rycerzem. Dlatego tak trudno ich przepędzić — i dlatego tak dobrze prosperują.',
+    ],
+    pullQuote: '"Czterdzieści jeden gołębi na finalnej ilustracji. Tyle, ile rycerzy miał podobno Henryk Pobożny w swojej przybocznej straży. Liczyłam je trzy razy."',
+    sketchMain: 'https://picsum.photos/seed/pigeons-sketch-main/600/800',
+    sketchSmall: [
+      'https://picsum.photos/seed/pigeons-sketch-sm1/400/400',
+      'https://picsum.photos/seed/pigeons-sketch-sm2/400/400',
+    ],
+    sketchCaption: 'Studia ptaków w locie — każdy gołąb to osobna szkic',
+    processTitle: 'Jak powstała ta ilustracja',
+    processParas: [
+      'Gołębie są najtrudniejszym modelem na świecie — nigdy nie stoją spokojnie dłużej niż sekundę. Rysowałam je z fotografii, ale każdą w trochę innym momencie ruchu, żeby ilustracja miała tę samą energię co prawdziwy klucz ptaków unoszący się nad Rynkiem.',
+      'Kompozycja zajęła najwięcej czasu: jak ułożyć czterdzieści jeden ptaków tak, żeby tworzyły spójną całość, a nie chaos. W tle widać zarys Sukiennic — ledwo naszkicowany, celowo — żeby gołębie były bohaterami, nie architektura.',
+      'Narysowałam każdego ptaka osobno na kawałkach papierowego szkicownika, a potem ułożyłam kompozycję na stole, przesuwając je jak puzzle. Dopiero gdy całość zadziałała, przepisałam ją tuszem na finalny arkusz. To był najbardziej fizyczny proces ze wszystkich moich ilustracji.',
+    ],
+    galImgs: [
+      'https://picsum.photos/seed/pigeons-gal1/500/700',
+      'https://picsum.photos/seed/pigeons-gal2/500/700',
+      'https://picsum.photos/seed/pigeons-gal3/500/700',
+    ],
+    related: ['smok-wawelski','lajkonik','twardowski'],
+  },
+
+  'twardowski': {
+    num: '05',
+    label: 'Pakt',
+    title: 'Pan Twardowski',
+    tagline: 'Polska wersja Fausta, który uciekł na Księżyc',
+    heroImg: 'https://picsum.photos/seed/twardowski-hero/900/800',
+    legendTitle: 'Czarnoksiężnik, który przechytrzył diabła',
+    legendParas: [
+      'Jan Twardowski żył w XVI wieku — był szlachcicem, astrologiem i alchemikiem. Według legendy sprzedał duszę diabłu w zamian za magiczne moce: mógł ożywiać umarłych, rozmawiać z duchami, przemieniać metale. Warunek był jeden — diabeł odbierze duszę dopiero w Rzymie.',
+      'Twardowski objechał pół Europy, uważnie omijając wieczne miasto. Lata mijały, a diabeł się niecierpliwił. Aż pewnej nocy zwabił czarnoksiężnika do gospody — tej samej, która nazywała się "Rzym" (gdzieś na Mazowszu albo w Karpatach, zależnie od wersji). Pakt był precyzyjny: "w Rzymie". Diabeł miał rację — formalnie.',
+      'Gdy diabeł chwycił Twardowskiego, czarnoksiężnik zaczął śpiewać kołysankę, którą nuciła mu matka. Maryjną pieśń. Siła tej pieśni uniosła go ponad zasięg diabła — prosto na Księżyc.',
+      'Siedzi tam do dziś. Na pajęczej sieci, z książkami i przyrządami astronomicznymi, obserwując Kraków przez teleskop. Podobno co noc ktoś widzi w świetle księżyca sylwetkę starego czarownika. A pająk, który go tam zaniósł, jest symbolem mądrości — nie złowrogości.',
+    ],
+    pullQuote: '"Najlepsze legendy mają w sobie humor. Twardowski oszukał diabła — i to jest powód do śmiechu, nie do strachu. Narysowałam go z leciutkim uśmiechem na twarzy."',
+    sketchMain: 'https://picsum.photos/seed/twardowski-sketch-main/600/800',
+    sketchSmall: [
+      'https://picsum.photos/seed/twardowski-sketch-sm1/400/400',
+      'https://picsum.photos/seed/twardowski-sketch-sm2/400/400',
+    ],
+    sketchCaption: 'Szkice — sierp księżyca, pajęczyna, Wawel w dole',
+    processTitle: 'Jak powstała ta ilustracja',
+    processParas: [
+      'Twardowski jest moją ulubioną postacią spośród wszystkich krakowskich legend. Ma w sobie coś fundamentalnie ludzkiego — jest sprytny, trochę nieodpowiedzialny, w końcu skruszony. Narysowałam go siedzącego na sierpie księżyca, z pajęczyną jako fotelem i Wawelem w tle — malutkim, daleko w dole.',
+      'Księżyc jest najtrudniejszym obiektem do narysowania tuszem: okrąg musi być idealny, ale nie może wyglądać jak narysowany cyrklem. Ćwiczyłam okrągłe pociągnięcia tygodniami, zanim dostałam tę właściwą krzywiznę — trochę drżącą, trochę żywą.',
+      'Ilustracja ma w sobie melancholię i humor jednocześnie — tak jak legenda. Twardowski tęskni za Krakowem, ale jednocześnie ma widok, o jakim większość z nas może tylko marzyć. To jest właśnie polska dusza: nostalgia spleciona z pogodą ducha.',
+    ],
+    galImgs: [
+      'https://picsum.photos/seed/twardowski-gal1/500/700',
+      'https://picsum.photos/seed/twardowski-gal2/500/700',
+      'https://picsum.photos/seed/twardowski-gal3/500/700',
+    ],
+    related: ['smok-wawelski','lajkonik','golebie-rynek'],
+  },
+
+};
+
+const ALL_STORIES = {
+  'smok-wawelski':  { label:'Legenda',   title:'Smok Wawelski',                  img:'https://picsum.photos/seed/dragon-legend/500/600',           body:'Smok Wawelski to serce krakowskiej mitologii. Pióro nie odrywało się od papieru przez całe trzy godziny.' },
+  'lajkonik':       { label:'Tradycja',  title:'Lajkonik',                        img:'https://picsum.photos/seed/lajkonik-krakow/500/600',           body:'Brodaty jeździec w tatarskim stroju, który co roku przemierza ulice Krakowa. Historia, która zamienia się w taniec.' },
+  'hejnal-mariacki':{ label:'Muzyka',    title:'Hejnał z Wieży Mariackiej',       img:'https://picsum.photos/seed/mariacki-tower-krakow/500/600',    body:'Cztery strony świata, cztery razy dziennie — i zawsze ten sam urwany dźwięk. Niedokończone jest doskonałe.' },
+  'golebie-rynek':  { label:'Zaklęcie',  title:'Gołębie na Rynku Krakowskim',     img:'https://picsum.photos/seed/krakow-pigeons-square/500/600',    body:'Każdy gołąb na Rynku Głównym był kiedyś rycerzem. Zaklęci przez czarownicę, czekają na swój powrót.' },
+  'twardowski':     { label:'Pakt',      title:'Pan Twardowski',                  img:'https://picsum.photos/seed/twardowski-moon-legend/500/600',   body:'Sprzedał duszę diabłu, przechytrzył go kołysanką i uciekł na Księżyc. Siedzi tam do dziś.' },
+};
+
+function inkDivider(fill='#F9F6F0'){
+  return `<div class="ink-div" aria-hidden="true">
+    <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,8 C360,24 720,-4 1080,16 C1260,24 1380,8 1440,12 L1440,48 L0,48Z" fill="${fill}"/>
+      <circle cx="400" cy="14" r="4" fill="${fill}" opacity=".06"/>
+      <circle cx="900" cy="10" r="3" fill="${fill}" opacity=".04"/>
+    </svg></div>`;
+}
+
+function render(id) {
+  const s = STORIES[id];
+  if (!s) {
+    document.getElementById('root').innerHTML = `
+      <div class="not-found" style="padding-top:var(--nav-h)">
+        <div class="not-found-num">404</div>
+        <h1>Tej legendy nie znamy</h1>
+        <p>Ale Kraków ma ich więcej — wróć i wybierz inną.</p>
+        <a href="index.html#stories">← Wszystkie legendy</a>
+      </div>`;
+    document.title = 'Nie znaleziono — Hejże Kraków';
+    return;
+  }
+
+  document.title = `${s.title} — Legenda Krakowa | Hejże Kraków`;
+
+  // --- SEO: meta description + OG + canonical ---
+  const BASE = 'https://hejzekrakow.pl/';
+  const canonicalUrl = `${BASE}historia.html?id=${id}`;
+  const ogDesc = `Poznaj legendę: ${s.title}. ${s.tagline}. Ilustracja tuszem autorstwa Anny Milcarz.`;
+
+  const setMeta = (sel, attr, val) => {
+    let el = document.querySelector(sel);
+    if(!el){ el = document.createElement('meta'); document.head.appendChild(el); }
+    el.setAttribute(attr, val);
+  };
+  setMeta('meta[name="description"]','content', ogDesc);
+  setMeta('meta[property="og:title"]','content', `${s.title} — Legenda Krakowa | Hejże Kraków`);
+  setMeta('meta[property="og:description"]','content', ogDesc);
+  setMeta('meta[property="og:url"]','content', canonicalUrl);
+  setMeta('meta[name="twitter:title"]','content', `${s.title} — Legenda Krakowa`);
+  setMeta('meta[name="twitter:description"]','content', ogDesc);
+
+  let canon = document.querySelector('link[rel="canonical"]');
+  if(!canon){ canon = document.createElement('link'); canon.rel='canonical'; document.head.appendChild(canon); }
+  canon.href = canonicalUrl;
+
+  // --- Schema.org Article ---
+  let ldScript = document.getElementById('ld-json');
+  if(!ldScript){ ldScript = document.createElement('script'); ldScript.id='ld-json'; ldScript.type='application/ld+json'; document.head.appendChild(ldScript); }
+  ldScript.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": `${s.title} — legenda krakowska`,
+    "description": ogDesc,
+    "image": s.heroImg,
+    "url": canonicalUrl,
+    "inLanguage": "pl",
+    "author": { "@type": "Person", "name": "Anna Milcarz", "url": `${BASE}artystka.html` },
+    "publisher": { "@type": "Organization", "name": "Hejże Kraków", "url": BASE },
+    "about": { "@type": "Thing", "name": s.title, "description": s.tagline },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Hejże Kraków", "item": BASE },
+        { "@type": "ListItem", "position": 2, "name": "Legendy", "item": `${BASE}index.html#stories` },
+        { "@type": "ListItem", "position": 3, "name": s.title, "item": canonicalUrl }
+      ]
+    }
+  });
+
+  const relatedCards = s.related.map(rid => {
+    const r = ALL_STORIES[rid];
+    if (!r) return '';
+    return `<a class="inne-card fi" href="historia.html?id=${rid}">
+      <div class="inne-img"><img src="${r.img}" alt="${r.title}" loading="lazy"></div>
+      <span class="inne-label">${r.label}</span>
+      <h3 class="inne-title">${r.title}</h3>
+      <p class="inne-body">${r.body}</p>
+      <span class="inne-link">Czytaj więcej →</span>
+    </a>`;
+  }).join('');
+
+  const legendParasHTML = s.legendParas.map(p => `<p>${p}</p>`).join('');
+  const processParasHTML = s.processParas.map(p => `<p>${p}</p>`).join('');
+
+  document.getElementById('root').innerHTML = `
+
+    <!-- HERO -->
+    <section class="story-hero">
+      <div class="hero-text-col">
+        <div class="hero-bg-num" aria-hidden="true">${s.num}</div>
+        <a href="index.html#stories" class="breadcrumb">← Wszystkie legendy</a>
+        <span class="hero-label">${s.label}</span>
+        <h1 class="hero-h1">${s.title}</h1>
+        <span class="ink-line">
+          <svg viewBox="0 0 260 12" fill="none">
+            <path class="ink-path" d="M0,9 C40,3 80,11 120,7 C160,3 200,10 260,6" stroke="#9B3A2A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          </svg>
+        </span>
+        <p class="hero-tagline">${s.tagline}</p>
+      </div>
+      <div class="hero-img-col">
+        <img src="${s.heroImg}" alt="${s.title}">
+      </div>
+    </section>
+
+    ${inkDivider('#F9F6F0')}
+
+    <!-- LEGENDA -->
+    <section class="legenda-section">
+      <div class="container">
+        <div class="legenda-inner">
+          <div class="legenda-text-col fi">
+            <span class="section-label">Legenda i inspiracja</span>
+            <h2 class="legenda-h2">${s.legendTitle}</h2>
+            <div class="legenda-body">${legendParasHTML}</div>
+            <blockquote class="pull-quote">${s.pullQuote}</blockquote>
+          </div>
+          <div class="legenda-img-col fi d1">
+            <div class="sketch-main">
+              <img src="${s.sketchMain}" alt="Szkic — ${s.title}" loading="lazy">
+            </div>
+            <div class="sketch-small-row">
+              <div class="sketch-sm"><img src="${s.sketchSmall[0]}" alt="Szkic roboczy" loading="lazy"></div>
+              <div class="sketch-sm"><img src="${s.sketchSmall[1]}" alt="Szkic roboczy" loading="lazy"></div>
+            </div>
+            <p class="sketch-caption">${s.sketchCaption}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    ${inkDivider('#EDE8DF')}
+
+    <!-- PROCES -->
+    <section class="proces-section">
+      <div class="container">
+        <div class="proces-head fi">
+          <span class="section-label">Z pracowni ilustratorki</span>
+          <h2 class="proces-h2">${s.processTitle}</h2>
+        </div>
+        <div class="proces-body fi d1">${processParasHTML}</div>
+        <div class="proces-gallery fi d2">
+          ${s.galImgs.map((img,i) => `<div class="gal-item"><img src="${img}" alt="Proces twórczy ${i+1}" loading="lazy"></div>`).join('')}
+        </div>
+      </div>
+    </section>
+
+    ${inkDivider('#F9F6F0')}
+
+    <!-- INNE LEGENDY -->
+    <section class="inne-section">
+      <div class="container">
+        <div class="inne-head fi">
+          <h2 class="inne-h2">Inne legendy Krakowa</h2>
+          <a href="index.html#stories" class="inne-all">Zobacz wszystkie →</a>
+        </div>
+        <div class="inne-grid">${relatedCards}</div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="foot-strip">
+      <div class="container foot-inner">
+        <span class="foot-logo">Hejże Kraków</span>
+        <span class="foot-copy">© 2024 Hejże Kraków</span>
+      </div>
+    </footer>
+  `;
+
+  // Fade-in observer
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }});
+  }, {threshold:.12});
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+}
+
+const id = new URLSearchParams(window.location.search).get('id');
+render(id);
+</script>
+</body>
+</html>

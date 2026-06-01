@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produkt — Hejże Kraków</title>
+<meta name="description" content="Autorskie produkty z ilustracjami krakowskich legend i architektury — torby, kubki, pocztówki, plakaty, notesy, koszulki. Ręcznie rysowane tuszem przez Annę Milcarz.">
+<meta name="author" content="Anna Milcarz">
+<meta name="robots" content="index, follow">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="Hejże Kraków">
+<meta property="og:type" content="product">
+<meta property="og:image" content="https://hejzekrakow.pl/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hejzekrakow.pl/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital@1&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-bg:#F9F6F0;--color-bg-warm:#F2EDE3;--color-bg-dark:#1A1A18;
+  --color-text:#1A1A18;--color-text-light:#7A7570;--color-ink:#0D0D0B;
+  --color-brick:#9B3A2A;--color-brick-light:#C4614E;--color-paper:#EDE8DF;
+  --color-border:#D8D0C4;
+  --font-display:'Cormorant Garamond',serif;
+  --font-story:'EB Garamond',serif;
+  --font-body:'Jost',sans-serif;
+  --nav-h:72px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.035;pointer-events:none;z-index:9000;}
+img{display:block;width:100%;height:100%;object-fit:cover;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,64px);}
+.label-sm{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:var(--color-brick);display:block;margin-bottom:14px;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);display:flex;align-items:center;background:rgba(249,246,240,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-border);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-ink);}
+.nav-logo svg{width:22px;height:22px;}
+.nav-back{display:flex;align-items:center;gap:7px;font-family:var(--font-body);font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-light);transition:color .2s;}
+.nav-back:hover{color:var(--color-brick);}
+
+/* ── HERO ── */
+.p-hero{padding-top:var(--nav-h);display:grid;grid-template-columns:1fr 1fr;min-height:92vh;}
+.p-hero-img{position:relative;overflow:hidden;}
+.p-hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(14%) contrast(1.05) saturate(.88);}
+.p-hero-text{display:flex;flex-direction:column;justify-content:center;padding:clamp(44px,6vw,90px) clamp(32px,5vw,72px);}
+.p-breadcrumb{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-body);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-text-light);margin-bottom:36px;transition:color .2s;}
+.p-breadcrumb:hover{color:var(--color-brick);}
+.p-name{font-family:var(--font-display);font-size:clamp(38px,5vw,68px);font-weight:300;line-height:1.06;color:var(--color-ink);margin-bottom:8px;}
+.ink-underline{margin-bottom:24px;display:block;}
+.ink-underline svg{width:clamp(120px,28%,240px);height:11px;overflow:visible;}
+.ink-path{stroke-dasharray:480;stroke-dashoffset:480;animation:drawInk 1.5s ease forwards .5s;}
+@keyframes drawInk{to{stroke-dashoffset:0;}}
+.p-tagline{font-family:var(--font-story);font-size:clamp(16px,1.7vw,20px);font-style:italic;color:var(--color-text-light);line-height:1.7;margin-bottom:36px;max-width:380px;}
+.p-price-row{display:flex;align-items:center;gap:20px;margin-bottom:32px;}
+.p-price{font-family:var(--font-display);font-size:32px;font-weight:300;color:var(--color-ink);}
+.p-collection-link{font-family:var(--font-body);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-text-light);border-bottom:1px solid var(--color-border);padding-bottom:2px;transition:color .2s,border-color .2s;}
+.p-collection-link:hover{color:var(--color-brick);border-color:var(--color-brick);}
+.p-cta{display:inline-block;font-family:var(--font-body);font-size:12px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;padding:15px 36px;background:var(--color-ink);color:var(--color-bg);border:1px solid var(--color-ink);transition:background .25s,border-color .25s;}
+.p-cta:hover{background:var(--color-brick);border-color:var(--color-brick);}
+.p-details-mini{margin-top:36px;padding-top:28px;border-top:1px solid var(--color-border);display:flex;gap:28px;flex-wrap:wrap;}
+.p-detail-mini{display:flex;flex-direction:column;gap:3px;}
+.p-detail-mini-lbl{font-family:var(--font-body);font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--color-text-light);}
+.p-detail-mini-val{font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--color-text);}
+
+/* ── DIVIDER ── */
+.ink-div{width:100%;overflow:hidden;line-height:0;}
+.ink-div svg{display:block;width:100%;}
+
+/* ── LEGENDA I INSPIRACJA ── */
+.p-legend{padding:clamp(64px,8vw,110px) 0;background:var(--color-paper);position:relative;overflow:hidden;}
+.p-legend-bg-num{position:absolute;font-family:var(--font-display);font-size:clamp(160px,22vw,280px);font-weight:300;color:var(--color-ink);opacity:.04;line-height:1;top:50%;left:-20px;transform:translateY(-50%);pointer-events:none;user-select:none;}
+.p-legend-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:start;position:relative;z-index:1;}
+.p-legend-heading{font-family:var(--font-display);font-size:clamp(32px,4vw,54px);font-weight:300;color:var(--color-ink);line-height:1.1;margin-bottom:32px;}
+.p-legend-body p{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--color-text-light);line-height:1.9;margin-bottom:18px;}
+.p-legend-body p:last-child{margin-bottom:0;}
+.p-legend-img-col{display:flex;flex-direction:column;gap:12px;}
+.p-legend-img{aspect-ratio:4/5;overflow:hidden;}
+.p-legend-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(80%) contrast(1.3) sepia(15%) brightness(1.05);}
+.p-legend-img-sm{aspect-ratio:16/9;overflow:hidden;}
+.p-legend-img-sm img{width:100%;height:100%;object-fit:cover;filter:grayscale(80%) contrast(1.3) sepia(15%);}
+.p-pull-quote{text-align:center;padding:clamp(44px,5vw,72px) 0 0;position:relative;z-index:1;}
+.p-pull-quote blockquote{font-family:var(--font-story);font-size:clamp(20px,2.4vw,28px);font-style:italic;color:var(--color-ink);line-height:1.65;max-width:700px;margin:0 auto;}
+.p-pull-quote-mark{font-family:var(--font-display);font-size:72px;font-weight:300;color:var(--color-ink);opacity:.12;line-height:.6;display:block;text-align:left;margin-left:calc(50% - 350px);}
+
+/* ── PROCES TWÓRCZY ── */
+.p-process{padding:clamp(64px,8vw,110px) 0;background:var(--color-bg);}
+.p-process-head{margin-bottom:56px;}
+.p-process-heading{font-family:var(--font-display);font-size:clamp(30px,3.5vw,50px);font-weight:300;color:var(--color-ink);margin-bottom:16px;}
+.p-process-intro{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--color-text-light);max-width:580px;line-height:1.85;}
+.p-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,48px);margin-bottom:64px;}
+.p-step{padding-top:24px;border-top:1px solid var(--color-border);}
+.p-step-num{font-family:var(--font-display);font-size:48px;font-weight:300;color:var(--color-ink);opacity:.12;line-height:1;margin-bottom:12px;}
+.p-step-title{font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-ink);margin-bottom:10px;}
+.p-step-text{font-family:var(--font-body);font-size:14px;font-weight:300;color:var(--color-text-light);line-height:1.8;}
+.p-sketch-gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;}
+.p-sketch-main{grid-row:1/3;overflow:hidden;}
+.p-sketch-main img{width:100%;height:100%;object-fit:cover;filter:grayscale(90%) contrast(1.35) brightness(1.08) sepia(10%);}
+.p-sketch-sm{overflow:hidden;aspect-ratio:4/3;}
+.p-sketch-sm img{width:100%;height:100%;object-fit:cover;filter:grayscale(90%) contrast(1.35) brightness(1.08) sepia(10%);}
+.p-sketch-caption{font-family:var(--font-body);font-size:11px;font-weight:300;color:var(--color-text-light);letter-spacing:.08em;text-align:center;margin-top:14px;}
+
+/* ── SZCZEGÓŁY ── */
+.p-spec{padding:clamp(48px,6vw,80px) 0;background:var(--color-bg-warm);}
+.p-spec-heading{font-family:var(--font-display);font-size:clamp(26px,3vw,40px);font-weight:300;color:var(--color-ink);margin-bottom:36px;}
+.p-spec-table{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.p-spec-row{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--color-border);}
+.p-spec-row:last-child{border-bottom:none;}
+.p-spec-key{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--color-text-light);padding-top:2px;}
+.p-spec-val{font-family:var(--font-body);font-size:14px;font-weight:300;color:var(--color-text);line-height:1.7;}
+
+/* ── POWIĄZANE ── */
+.p-related{padding:clamp(56px,7vw,90px) 0;background:var(--color-bg);}
+.p-related-heading{font-family:var(--font-display);font-size:clamp(26px,3vw,40px);font-weight:300;color:var(--color-ink);margin-bottom:40px;}
+.p-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.rel-card{background:var(--color-bg);}
+.rel-img-wrap{aspect-ratio:1;overflow:hidden;position:relative;}
+.rel-img-wrap img{width:100%;height:100%;object-fit:cover;filter:sepia(16%) contrast(1.03) saturate(.88);transition:transform .5s;}
+.rel-card:hover .rel-img-wrap img{transform:scale(1.04);}
+.rel-hover{position:absolute;inset:0;background:rgba(249,246,240,.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
+.rel-card:hover .rel-hover{opacity:1;}
+.rel-cta{font-family:var(--font-body);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--color-ink);border-bottom:1px solid var(--color-ink);padding-bottom:2px;}
+.rel-info{padding:16px 0 0;}
+.rel-cat{font-family:var(--font-body);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-brick);display:block;margin-bottom:4px;}
+.rel-name{font-family:var(--font-display);font-size:18px;font-weight:400;color:var(--color-ink);margin-bottom:4px;}
+.rel-price{font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--color-text-light);}
+
+/* ── FOOTER ── */
+.foot-strip{background:var(--color-bg-dark);padding:40px 0;}
+.foot-strip-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.foot-logo{font-family:var(--font-display);font-size:20px;font-weight:400;color:var(--color-bg);display:flex;align-items:center;gap:9px;}
+.foot-links{display:flex;gap:28px;list-style:none;}
+.foot-links a{font-family:var(--font-body);font-size:13px;font-weight:300;color:rgba(249,246,240,.45);transition:color .2s;}
+.foot-links a:hover{color:var(--color-bg);}
+.foot-copy{font-family:var(--font-body);font-size:12px;font-weight:300;color:rgba(249,246,240,.22);}
+
+/* ── FADE IN ── */
+.fi{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+.fi.on{opacity:1;transform:none;}
+.fi.d1{transition-delay:.1s;}.fi.d2{transition-delay:.2s;}.fi.d3{transition-delay:.3s;}
+
+/* ── 404 ── */
+.not-found{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;text-align:center;padding:40px;}
+.not-found h1{font-family:var(--font-display);font-size:clamp(48px,8vw,96px);font-weight:300;color:var(--color-ink);margin-bottom:16px;}
+.not-found p{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--color-text-light);margin-bottom:32px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .p-hero{grid-template-columns:1fr;}
+  .p-hero-img{min-height:55vw;position:relative;}
+  .p-hero-img img{position:relative;height:55vw;}
+  .p-legend-inner{grid-template-columns:1fr;}
+  .p-legend-img-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .p-legend-img{aspect-ratio:auto;}
+  .p-sketch-gallery{grid-template-columns:1fr 1fr;}
+  .p-sketch-main{grid-row:auto;}
+  .p-spec-table{grid-template-columns:1fr;}
+  .p-related-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){
+  .p-steps{grid-template-columns:1fr;}
+  .p-sketch-gallery{grid-template-columns:1fr;}
+  .p-related-grid{grid-template-columns:1fr 1fr;}
+  .p-pull-quote-mark{margin-left:0;}
+  .p-spec-row{grid-template-columns:1fr;gap:6px;}
+  .p-legend-img-col{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 2 L17 9 L11 17 L5 9 Z" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".7"/>
+          <line x1="11" y1="17" x2="11" y2="21" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        Hejże Kraków
+      </a>
+      <a href="index.html#products" class="nav-back" id="nav-back">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M10 4 L6 8 L10 12"/></svg>
+        Produkty
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Render target -->
+<div id="root"></div>
+
+<!-- FOOTER -->
+<footer class="foot-strip">
+  <div class="container">
+    <div class="foot-strip-inner">
+      <a href="index.html" class="foot-logo">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+          <path d="M11 2 L17 9 L11 17 L5 9 Z" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".7"/>
+          <line x1="11" y1="17" x2="11" y2="21" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        Hejże Kraków
+      </a>
+      <ul class="foot-links">
+        <li><a href="index.html#collections">Kolekcje</a></li>
+        <li><a href="index.html#products">Produkty</a></li>
+        <li><a href="index.html#contact">Kontakt</a></li>
+      </ul>
+      <span class="foot-copy">© 2025 Hejże Kraków</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════
+   PRODUCT DATABASE
+═══════════════════════════════════════════ */
+const PRODUCTS = {
+
+  'torba-wawel': {
+    name: 'Torba płócienna „Wawel"',
+    category: 'Torba',
+    collection: 'Kolekcja Wawel',
+    collectionUrl: 'kolekcja-wawel.html',
+    price: 'od 59 zł',
+    heroImg: 'bag-krakow/700/860',
+    tagline: 'Wzgórze Wawelskie zawsze przy tobie — w każdym przejściu przez miasto.',
+    legendLabel: 'Miejsce',
+    legendTitle: 'Wzgórze Wawelskie',
+    legendText: [
+      'Wawel to nie tylko zamek. To siedem wieków historii Polski zapisanych w kamieniu, w sklepieniach, w kryptach pod katedrą. Wzgórze wyłania się nad Wisłą jak strażnik, który pamięta wszystko — od Bolesława Chrobrego po Jana Pawła II.',
+      'Ilustracja na tej torbie to nie dosłowny portret architektury. To nastrój miejsca o poranku, kiedy nie ma jeszcze tłumów — tylko mgła nad Wisłą i zarys murów na tle bladego nieba. Właśnie wtedy Wawel opowiada.',
+      'Każda linia była rysowana z pamięci, po wielu godzinach siedzenia na murach. Tusz nie wybacza — każde pociągnięcie jest ostateczne. To właśnie ta nieodwołalność sprawia, że ilustracja żyje.'
+    ],
+    legendQuote: '„Każdy Krakowianin nosi Wawel w sobie — ja postanowiłam przenieść go na płótno."',
+    legendSketch: 'wawel-royal-castle/500/600',
+    legendSketchSm: 'wawel-dawn-poster/500/300',
+    processTitle: 'Od szkicu do płótna',
+    processIntro: 'Praca nad ilustracją Wawelu trwała trzy tygodnie. Dziesiątki szkiców, cztery różne perspektywy, dwa pełne odcinki — zanim tusz trafił na papier docelowy.',
+    steps: [
+      { num: '01', title: 'Obserwacja i spacer', text: 'Wszystko zaczyna się od chodzenia. Wawel o świcie, w południe, przy zachodzie słońca. Robię zdjęcia telefonem, ale głównie chłonę nastrój. Rysunek zaczyna się w głowie, zanim sięgnę po ołówek.' },
+      { num: '02', title: 'Szkice i selekcja', text: 'Kilkanaście szkiców ołówkowych — różne perspektywy, różne fragmenty. Wybieram kompozycję, która opowiada historię miejsca, a nie tylko je dokumentuje. To największy etap pracy.' },
+      { num: '03', title: 'Tusz i finał', text: 'Finalna ilustracja powstaje jednym ciągłym ruchem — pióro nie powinno się wahać. Tusz kładę cienko w partiach, które mają oddychać, i grubiej tam, gdzie chcę cień i ciężar.' }
+    ],
+    sketchImgs: ['wawel-sketch-process/600/400','wawel-notebook/600/400','atelier-desk/600/400'],
+    sketchCaption: 'Szkice robocze — etapy pracy nad ilustracją Wzgórza Wawelskiego',
+    details: [
+      { key: 'Materiał', val: '100% bawełna organiczna, gramatura 280 g/m²' },
+      { key: 'Wymiary', val: '42 × 38 cm, długość uchwytu 70 cm' },
+      { key: 'Druk', val: 'Sitodruk z tuszem wodnym, odporny na pranie 40°C' },
+      { key: 'Produkcja', val: 'Wyprodukowana w Polsce, materiał certyfikowany GOTS' },
+      { key: 'Pielęgnacja', val: 'Pranie ręczne lub w pralce 30°C, nie suszyć w suszarce' },
+      { key: 'Pakowanie', val: 'Pakowana w papier z recyklingu, bez plastiku' }
+    ],
+    related: ['pocztowka-smok', 'kubek-rynek', 'notes-kazimierz']
+  },
+
+  'pocztowka-smok': {
+    name: 'Pocztówka „Smok Wawelski"',
+    category: 'Pocztówka',
+    collection: 'Kolekcja Legendy',
+    collectionUrl: 'kolekcja-legendy.html',
+    price: 'od 9 zł',
+    heroImg: 'postcard-dragon/700/860',
+    tagline: 'Legenda, która założyła miasto — w formacie, który podróżuje dalej niż ty.',
+    legendLabel: 'Legenda',
+    legendTitle: 'Smok Wawelski',
+    legendText: [
+      'Dawno, dawno temu pod Wzgórzem Wawelskim w jaskini mieszkał smok. Pożerał owce, bydło, i — co najgorsze — porywał krakowskie dziewczęta. Król Krak obiecał rękę córki i pół królestwa temu, kto pokona bestię.',
+      'Wielu rycerzy próbowało. Wszyscy zginęli. Dopiero sprytny szewczyk Skuba wpadł na pomysł: nadział baranka na siarkę i podrzucił smokowi. Potwór pożarł przynętę, a siarka rozgorzała w jego żołądku. Smok biegł do Wisły i pił, i pił — aż pękł.',
+      'To właśnie dlatego Kraków istnieje. Nie dzięki sile, lecz dzięki przebiegłości. Ilustracja Smoka to hołd dla tej historii — bestia rysowana z szacunkiem, ale i z przymrużeniem oka, bo to w końcu opowieść o tym, że spryt pokonuje siłę.'
+    ],
+    legendQuote: '„Rysuję smoka tak, jakby był prawdziwy — bo dla Krakowa zawsze był."',
+    legendSketch: 'dragon-legend/500/600',
+    legendSketchSm: 'wawel-dragon-mug/500/300',
+    processTitle: 'Jak narysować smoka',
+    processIntro: 'Smok Wawelski jest jednym z najtrudniejszych motywów w ilustracji krakowskiej — zbyt znany, żeby go uprościć; zbyt mityczny, żeby go dosłownie odwzorować.',
+    steps: [
+      { num: '01', title: 'Badanie ikonografii', text: 'Przed rysowaniem — tygodnie oglądania. Posąg przy Jaskini Smoczej, średniowieczne bestiariusze, sceny z kronik. Chciałam narysować smoka, który jest krakowski, nie generyczny.' },
+      { num: '02', title: 'Charakter postaci', text: 'Smok musi mieć osobowość. Mój jest groźny, ale nie przerażający — bo w końcu to legenda dla dzieci i dorosłych. Dużo czasu zajęło mi znalezienie odpowiedniego wyrazu jego pyska.' },
+      { num: '03', title: 'Faktura łusek', text: 'Każda łuska rysowana osobno — drobnym piórkiem, cierpliwie. Właśnie ta żmudna robota daje ilustracji głębię, której nie da się osiągnąć cyfrowo.' }
+    ],
+    sketchImgs: ['wawel-dragon-a2/600/400','lajkonik-poster-a2/600/400','drawing-process/600/400'],
+    sketchCaption: 'Szkice łusek i wyrazu twarzy smoka — najdłuższy etap pracy',
+    details: [
+      { key: 'Format', val: 'A6 (10,5 × 14,8 cm)' },
+      { key: 'Papier', val: 'Papier artystyczny 350 g/m², faktura lekko ziarnista' },
+      { key: 'Druk', val: 'Druk offsetowy CMYK, kolory kalibrowane ręcznie' },
+      { key: 'Wykończenie', val: 'Matowy lakier UV, zaokrąglone narożniki' },
+      { key: 'Pakowanie', val: 'Pakowana pojedynczo w kopertę z papieru czerpanego' },
+      { key: 'Dostępność', val: 'Seria limitowana, numerowana na odwrocie' }
+    ],
+    related: ['torba-wawel', 'koszulka-lajkonik', 'plakat-sukiennice']
+  },
+
+  'kubek-rynek': {
+    name: 'Kubek „Krakowski Rynek"',
+    category: 'Kubek',
+    collection: 'Kolekcja Wawel',
+    collectionUrl: 'kolekcja-wawel.html',
+    price: 'od 45 zł',
+    heroImg: 'mug-rynek/700/860',
+    tagline: 'Każda kawa smakuje lepiej z widokiem na Rynek.',
+    legendLabel: 'Miejsce',
+    legendTitle: 'Rynek Główny',
+    legendText: [
+      'Rynek Główny w Krakowie ma 200 metrów długości — jest jednym z największych placów rynkowych w Europie. Ale jego wielkość to nie jest jego siła. Siłą jest to, co się na nim dzieje o każdej porze roku, dnia i nocy.',
+      'Hejnał z Kościoła Mariackiego, który urywa się w pół tonu — pamiątka po strzelniku zabitym w 1241 roku podczas najazdu tatarskiego. Sukiennice, gdzie handlowano suknem, a teraz można kupić bursztyn i krakowskie obwarzanki. Wieża Ratuszowa, z której widać cały plac jak na dłoni.',
+      'Ilustracja kubka obraca się dookoła — kiedy trzymasz go w rękach, przechodzisz przez Rynek o świcie, w południe i o zmierzchu. Trzy momenty, jedna kreska, jeden kubek.'
+    ],
+    legendQuote: '„Rynek jest jak żywy organizm — każdy wieczór inny. Próbuję uchwycić ten rytm w jednej linii."',
+    legendSketch: 'kazimierz-street-photo/500/600',
+    legendSketchSm: 'sukiennice-market/500/300',
+    processTitle: 'Ilustracja, która obraca się dookoła',
+    processIntro: 'Kubek to wyjątkowe płótno — ciągłe, cylindryczne, bez początku i końca. Kompozycja musiała być zaprojektowana tak, żeby plac Rynkowy płynnie przechodził sam w siebie.',
+    steps: [
+      { num: '01', title: 'Rozwinięcie kompozycji', text: 'Najpierw narysowałam rozwinięcie kubka na papierze A3 — pełne 360°. Musiałam zaplanować, żeby żaden budynek nie był „rozcięty" w miejscu sklejenia.' },
+      { num: '02', title: 'Trzy pory dnia', text: 'Lewa strona — Rynek o świcie, pusto, tylko gołębie. Środek — południe, tłum przy Sukiennicach. Prawa strona — zmierzch, latarnie, kafejki.' },
+      { num: '03', title: 'Transfer na ceramikę', text: 'Finalna ilustracja jest przenoszona na ceramikę metodą sublimacji. Wszystkie detale linii tuszowej pozostają widoczne — nawet najcieńsze kreski.' }
+    ],
+    sketchImgs: ['kazimierz-mug-dusk/600/400','remuh-synagogue-poster/600/400','ink-pen-paper/600/400'],
+    sketchCaption: 'Rozwinięcie kubka na papierze — szkic do przeniesienia na ceramikę',
+    details: [
+      { key: 'Pojemność', val: '330 ml' },
+      { key: 'Materiał', val: 'Ceramika z wypałem w 1200°C' },
+      { key: 'Druk', val: 'Sublimacja — ilustracja jest trwale wbudowana w szkliwo' },
+      { key: 'Bezpieczeństwo', val: 'Nadaje się do zmywarki i mikrofalówki' },
+      { key: 'Wymiary', val: 'Średnica 8 cm, wysokość 9,5 cm' },
+      { key: 'Pakowanie', val: 'W pudełku z ilustracją i opisem legendy' }
+    ],
+    related: ['torba-wawel', 'notes-kazimierz', 'plakat-sukiennice']
+  },
+
+  'notes-kazimierz': {
+    name: 'Notes „Kazimierz"',
+    category: 'Notes',
+    collection: 'Kolekcja Kazimierz',
+    collectionUrl: 'kolekcja-kazimierz.html',
+    price: 'od 39 zł',
+    heroImg: 'notebook-kazimierz/700/860',
+    tagline: 'Pisz w klimacie krakowskich podwórek i cichych kawiarnianek.',
+    legendLabel: 'Dzielnica',
+    legendTitle: 'Kazimierz',
+    legendText: [
+      'Kazimierz to dzielnica, która przeżyła więcej niż większość miast. Założona w XIV wieku jako osobne miasto przez króla Kazimierza Wielkiego, przez stulecia była centrum żydowskiego życia w Polsce. Synagogi, chedery, drukarnie hebrajskich ksiąg.',
+      'Dziś Kazimierz to mieszanina — galerie i kawiarnie w dawnych synagogach, bruk pamiętający sześć wieków, mury do których dotykasz i czujesz historię. To miejsce, które nie daje się uprościć.',
+      'Ilustracja notesa skupia się na szczegółach, które umykają turystom: klamka na starej bramie, napis po hebrajsku na ścianie kamienicy, latarnia na Placu Nowym o deszczowy wieczór. Kazimierz żyje w detalach.'
+    ],
+    legendQuote: '„W Kazimierzu chodzę z głową opuszczoną — żeby widzieć bruk, kamienie, cienie. Stamtąd biorę ilustracje."',
+    legendSketch: 'kazimierz-streets/500/600',
+    legendSketchSm: 'plac-nowy-postcard/500/300',
+    processTitle: 'Rysowanie z pamięci miejsca',
+    processIntro: 'Notes to jedyny produkt, gdzie ilustracja okładki i wewnętrzne elementy zostały zaprojektowane razem — margines, linie, ilustracje rozdziałowe. Całość tworzy spójny świat Kazimierza.',
+    steps: [
+      { num: '01', title: 'Spacer z notesem', text: 'Przez tydzień chodziłam po Kazimierzu ze starym notesem i rysowałam to, co przykuwało wzrok. Nie architekturę — szczegóły. Klamkę, okno, cień na murze.' },
+      { num: '02', title: 'Selekcja motywów', text: 'Z kilkudziesięciu szkiców wybrałam te, które razem opowiadają Kazimierz — a nie tylko go dokumentują. Zależało mi na nastroju, nie na dosłowności.' },
+      { num: '03', title: 'Projekt całościowy', text: 'Okładka, grzbiet, wewnętrzne ilustracje rozdziałowe, nadruk na marginesach — zaprojektowane jako jeden spójny świat. Kiedy otwierasz notes, wchodzisz do Kazimierza.' }
+    ],
+    sketchImgs: ['kazimierz-notebook-linen/600/400','stara-synagoga-card/600/400','kazimierz-street-photo/600/400'],
+    sketchCaption: 'Szkice detali Kazimierza — klamki, okna, fragmenty murów z których wybrano motywy',
+    details: [
+      { key: 'Format', val: 'A5 (14,8 × 21 cm)' },
+      { key: 'Papier', val: '120 g/m², kremowy, przyjazny piórku i atramentowi' },
+      { key: 'Oprawa', val: 'Twarda okładka w grubym kartonie z fakturą płótna' },
+      { key: 'Strony', val: '160 stron w linie, 8 ilustracji wewnętrznych' },
+      { key: 'Druk okładki', val: 'Sitodruk tuszem, wykończenie matowym lakierem' },
+      { key: 'Produkcja', val: 'Introligatornia w Krakowie, oprawa ręczna' }
+    ],
+    related: ['kubek-rynek', 'pocztowka-smok', 'torba-wawel']
+  },
+
+  'koszulka-lajkonik': {
+    name: 'Koszulka „Lajkonik"',
+    category: 'Koszulka',
+    collection: 'Kolekcja Legendy',
+    collectionUrl: 'kolekcja-legendy.html',
+    price: 'od 79 zł',
+    heroImg: 'tshirt-lajkonik/700/860',
+    tagline: 'Krakowska tradycja, której nie ma drugiej takiej w Polsce.',
+    legendLabel: 'Tradycja',
+    legendTitle: 'Lajkonik',
+    legendText: [
+      'Lajkonik to jedna z najbardziej oryginalnych i tajemniczych tradycji krakowskich. Raz do roku — w czwartek po Bożym Ciele — przez Kraków przechodzi jeździec na drewnianym koniu, w strojach tatarskich, wymachując buławą i dotykając nią przechodniów, którym ma przynosić to szczęście.',
+      'Legenda mówi, że tradycja sięga 1287 roku, kiedy flisacy z Zwierzyńca odparli najazd tatarski i wrócili do miasta w zdobycznych strojach. Pochód Lajkonika odbywa się od tamtej pory co roku, przechodząc z Zwierzyńca aż na Rynek Główny.',
+      'Ilustracja Lajkonika na koszulce to dynamiczny ruch — jeździec w pełnym galopie, buława uniesiona, koń drewniany a jednak żywy. To jeden z najtrudniejszych motywów, bo Lajkonik nigdy nie stoi w miejscu.'
+    ],
+    legendQuote: '„Lajkonik to ruch, rytm, radość. Mój rysunek musiał być równie nieuchwytny."',
+    legendSketch: 'lajkonik-tshirt-print/500/600',
+    legendSketchSm: 'lajkonik-poster-a2/500/300',
+    processTitle: 'Uchwycić ruch w tuszu',
+    processIntro: 'Lajkonik to wyjątkowe wyzwanie ilustratorskie: postać w ruchu, bogaty strój, drewniany koń — wszystko to musi zmieścić się w jednej ilustracji, która działa na koszulce.',
+    steps: [
+      { num: '01', title: 'Obserwacja pochodu', text: 'Przez trzy lata fotografowałam pochód Lajkonika. Nie żeby kopiować — żeby zrozumieć, jak się porusza, jak układa się strój, jak drewniany koń "biegnie". To był mój research.' },
+      { num: '02', title: 'Dynamika linii', text: 'Tusz musi dać wrażenie ruchu. Linie kładłam szybko, bez poprawek — celowo. Drobne niedoskonałości dają ilustracji energię, której nie ma w rysunku robionym powoli.' },
+      { num: '03', title: 'Adaptacja na koszulkę', text: 'Ilustracja na koszulce musi działać w jednym kolorze i na dużej powierzchni. Zredukowałam detale tak, żeby sylwetka była czytelna z odległości trzech metrów.' }
+    ],
+    sketchImgs: ['legends-tote-bag/600/400','twardowski-mug/600/400','drawing-process/600/400'],
+    sketchCaption: 'Szkice dynamiki ruchu — kilkadziesiąt prób zanim wyłoniła się właściwa kompozycja',
+    details: [
+      { key: 'Materiał', val: '100% bawełna organiczna, 180 g/m², certyfikat GOTS' },
+      { key: 'Rozmiary', val: 'XS, S, M, L, XL, XXL — krój unisex' },
+      { key: 'Druk', val: 'Sitodruk ręczny, tusz ekologiczny na bazie wody' },
+      { key: 'Kolor koszulki', val: 'Naturalna biel, piaskowy, antracyt' },
+      { key: 'Kolor nadruku', val: 'Czarny tusz, opcjonalnie z akcentem ceglanym' },
+      { key: 'Pielęgnacja', val: 'Pranie 30°C na lewej stronie, nie suszyć w suszarce' }
+    ],
+    related: ['pocztowka-smok', 'torba-wawel', 'plakat-sukiennice']
+  },
+
+  'plakat-sukiennice': {
+    name: 'Plakat „Sukiennice"',
+    category: 'Plakat',
+    collection: 'Kolekcja Wawel',
+    collectionUrl: 'kolekcja-wawel.html',
+    price: 'od 29 zł',
+    heroImg: 'poster-sukiennice/700/860',
+    tagline: 'Gotyk, renesans i sześć wieków historii — na jednej kartce papieru.',
+    legendLabel: 'Architektura',
+    legendTitle: 'Sukiennice',
+    legendText: [
+      'Sukiennice stoją na Rynku Głównym od XIII wieku. Pierwotnie były prostym rzędem kramów — miejscem, gdzie kupcy ze Wschodu i Zachodu wymieniali towary: sukno, jedwab, orientalne przyprawy. Przez Kraków szedł wtedy Szlak Bursztynowy.',
+      'W XVI wieku król Zygmunt Stary nakazał przebudowę. Gotycką budowlę nakryto renesansową attyką — tą charakterystyczną ząbkowaną koroną, którą znamy dziś. To właśnie to zderzenie epok sprawia, że Sukiennice są tak wyjątkowe architektonicznie.',
+      'Rysowanie Sukiennic zajęło sześć godzin. Każda arkada inna, każda attyka inna — pozornie ta sama forma, ale przy bliższym spojrzeniu pełna wariantów. Właśnie te drobne różnice są dla mnie najpiękniejsze w tej budowli.'
+    ],
+    legendQuote: '„Sukiennice rysowałam w jedno październikowe południe. Kiedy skończyłam, byłam głodna i szczęśliwa."',
+    legendSketch: 'sukiennice-market/500/600',
+    legendSketchSm: 'wawel-dawn-poster/500/300',
+    processTitle: 'Sześć godzin, jedna linia',
+    processIntro: 'Sukiennice to jeden z najtrudniejszych obiektów do narysowania w Krakowie — pozornie symetryczne, ale wypełnione detalami, które muszą być oddane precyzyjnie.',
+    steps: [
+      { num: '01', title: 'Geometria bazowa', text: 'Zaczęłam od układu arkadenowego — proporcje musiały być dokładne. Na szkicu ołówkowym zaznaczam wszystkie osie, zanim sięgnę po pióro. Tutaj błąd jest nie do naprawienia.' },
+      { num: '02', title: 'Attyki i detale', text: 'Każdy element attyki rysowany osobno — maskaron, wolutka, ząb. Przy Sukiennicach jest ich ponad sto. Nie rysowałam każdego identycznie, bo nie są identyczne. Każdy ma swoją twarz.' },
+      { num: '03', title: 'Światłocień tuszem', text: 'Głębię arkadenowych przejść budowałam przez kreskowanie — cienkie równoległe linie, gęstsze tam gdzie cień. To technika, która wymaga cierpliwości, ale daje rysunek z prawdziwą przestrzenią.' }
+    ],
+    sketchImgs: ['wawel-dawn-poster/600/400','wawel-hill-postcard/600/400','ink-pen-paper/600/400'],
+    sketchCaption: 'Fragment szkicu arkadenowego — geometria bazowa przed nałożeniem detali tuszem',
+    details: [
+      { key: 'Format', val: 'A3 (29,7 × 42 cm) lub A2 (42 × 59,4 cm)' },
+      { key: 'Papier', val: 'Papier artystyczny 200 g/m², matowy, archiwalny' },
+      { key: 'Druk', val: 'Druk pigmentowy giclée — odwzorowanie tonu tuszu' },
+      { key: 'Trwałość', val: 'Odporny na blaknięcie przez 80+ lat przy właściwym przechowywaniu' },
+      { key: 'Oprawa', val: 'Bez oprawy. Pasuje do standardowych ram IKEA Ribba A3/A2' },
+      { key: 'Pakowanie', val: 'Rolowany w tubę, zabezpieczony bibułką kwasowo-wolną' }
+    ],
+    related: ['kubek-rynek', 'torba-wawel', 'pocztowka-smok']
+  }
+};
+
+/* ═══════════════════════════════════════════
+   RENDER
+═══════════════════════════════════════════ */
+function img(seed, cls, alt) {
+  const src = seed.includes('/') ? `https://picsum.photos/seed/${seed}` : `https://picsum.photos/seed/${seed}/400/400`;
+  return `<img src="${src}" alt="${alt}" loading="lazy">`;
+}
+
+function render(id) {
+  const p = PRODUCTS[id];
+  const root = document.getElementById('root');
+
+  if (!p) {
+    root.innerHTML = `
+      <div class="not-found" style="padding-top:var(--nav-h)">
+        <h1>404</h1>
+        <p>Nie znaleziono produktu.</p>
+        <a href="index.html#products" style="font-family:var(--font-body);font-size:12px;letter-spacing:.15em;text-transform:uppercase;padding:13px 28px;background:var(--color-ink);color:var(--color-bg);display:inline-block">← Wróć do produktów</a>
+      </div>`;
+    return;
+  }
+
+  // update page title
+  document.title = `${p.name} — ${p.category} z ilustracją | Hejże Kraków`;
+
+  // --- SEO dynamiczne ---
+  const BASE = 'https://hejzekrakow.pl/';
+  const canonicalUrl = `${BASE}produkt.html?id=${id}`;
+  const ogDesc = `${p.name} — ${p.tagline}. Autorska ilustracja tuszem, kolekcja ${p.collection}. Cena od ${p.price}.`;
+  const setMeta = (sel, attr, val) => {
+    let el = document.querySelector(sel);
+    if(!el){ el = document.createElement('meta'); document.head.appendChild(el); }
+    el.setAttribute(attr, val);
+  };
+  setMeta('meta[name="description"]','content', ogDesc);
+  setMeta('meta[property="og:title"]','content', `${p.name} | Hejże Kraków`);
+  setMeta('meta[property="og:description"]','content', ogDesc);
+  setMeta('meta[property="og:url"]','content', canonicalUrl);
+  setMeta('meta[property="og:image"]','content', p.heroImg);
+  setMeta('meta[name="twitter:title"]','content', `${p.name} | Hejże Kraków`);
+  setMeta('meta[name="twitter:description"]','content', ogDesc);
+  setMeta('meta[name="twitter:image"]','content', p.heroImg);
+  let canon = document.querySelector('link[rel="canonical"]');
+  if(!canon){ canon = document.createElement('link'); canon.rel='canonical'; document.head.appendChild(canon); }
+  canon.href = canonicalUrl;
+
+  // --- Schema.org Product ---
+  let ldScript = document.getElementById('ld-json');
+  if(!ldScript){ ldScript = document.createElement('script'); ldScript.id='ld-json'; ldScript.type='application/ld+json'; document.head.appendChild(ldScript); }
+  ldScript.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": p.name,
+    "description": ogDesc,
+    "image": p.heroImg,
+    "url": canonicalUrl,
+    "brand": { "@type": "Brand", "name": "Hejże Kraków" },
+    "manufacturer": { "@type": "Person", "name": "Anna Milcarz" },
+    "category": p.category,
+    "offers": {
+      "@type": "Offer",
+      "price": p.price.replace(/[^0-9]/g,''),
+      "priceCurrency": "PLN",
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "Hejże Kraków", "url": BASE }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Hejże Kraków", "item": BASE },
+        { "@type": "ListItem", "position": 2, "name": p.collection, "item": `${BASE}${p.collectionUrl}` },
+        { "@type": "ListItem", "position": 3, "name": p.name, "item": canonicalUrl }
+      ]
+    }
+  });
+
+  const relatedHTML = p.related.slice(0,3).map(rid => {
+    const r = PRODUCTS[rid];
+    if (!r) return '';
+    return `
+      <a class="rel-card" href="produkt.html?id=${rid}">
+        <div class="rel-img-wrap">
+          ${img(r.heroImg, '', r.name)}
+          <div class="rel-hover"><span class="rel-cta">Zobacz produkt</span></div>
+        </div>
+        <div class="rel-info">
+          <span class="rel-cat">${r.category}</span>
+          <div class="rel-name">${r.name}</div>
+          <div class="rel-price">${r.price}</div>
+        </div>
+      </a>`;
+  }).join('');
+
+  root.innerHTML = `
+    <!-- HERO -->
+    <section class="p-hero">
+      <div class="p-hero-img">${img(p.heroImg,'','')}</div>
+      <div class="p-hero-text">
+        <a href="index.html#products" class="p-breadcrumb">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" width="14" height="14"><path d="M10 4 L6 8 L10 12"/></svg>
+          Produkty
+        </a>
+        <span class="label-sm">${p.category}</span>
+        <h1 class="p-name">${p.name}</h1>
+        <span class="ink-underline">
+          <svg viewBox="0 0 240 11" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path class="ink-path" d="M4,7 Q60,2 120,8 Q180,13 236,6"
+              stroke="#0D0D0B" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <p class="p-tagline">${p.tagline}</p>
+        <div class="p-price-row">
+          <span class="p-price">${p.price}</span>
+          <a href="${p.collectionUrl}" class="p-collection-link">${p.collection}</a>
+        </div>
+        <a href="index.html#contact" class="p-cta">Zamów / Zapytaj o produkt</a>
+        <div class="p-details-mini">
+          <div class="p-detail-mini">
+            <span class="p-detail-mini-lbl">Kolekcja</span>
+            <span class="p-detail-mini-val">${p.collection}</span>
+          </div>
+          <div class="p-detail-mini">
+            <span class="p-detail-mini-lbl">Kategoria</span>
+            <span class="p-detail-mini-val">${p.category}</span>
+          </div>
+          <div class="p-detail-mini">
+            <span class="p-detail-mini-lbl">Produkcja</span>
+            <span class="p-detail-mini-val">Kraków, Polska</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="ink-div" aria-hidden="true">
+      <svg viewBox="0 0 1440 44" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,10 C360,26 720,0 1080,18 C1260,26 1380,8 1440,14 L1440,44 L0,44Z" fill="#EDE8DF"/>
+        <circle cx="500" cy="14" r="3" fill="#0D0D0B" opacity=".06"/>
+        <circle cx="900" cy="10" r="2" fill="#0D0D0B" opacity=".05"/>
+      </svg>
+    </div>
+
+    <!-- LEGENDA I INSPIRACJA -->
+    <section class="p-legend fi">
+      <div class="container">
+        <div class="p-legend-bg-num" aria-hidden="true">01</div>
+        <div class="p-legend-inner">
+          <div>
+            <span class="label-sm">${p.legendLabel} i inspiracja</span>
+            <h2 class="p-legend-heading">${p.legendTitle}</h2>
+            <div class="p-legend-body">
+              ${p.legendText.map(t => `<p>${t}</p>`).join('')}
+            </div>
+          </div>
+          <div class="p-legend-img-col">
+            <div class="p-legend-img">${img(p.legendSketch,'','Szkic inspiracyjny')}</div>
+            <div class="p-legend-img-sm">${img(p.legendSketchSm,'','Inspiracja')}</div>
+          </div>
+        </div>
+        <div class="p-pull-quote fi d1">
+          <span class="p-pull-quote-mark" aria-hidden="true">"</span>
+          <blockquote>${p.legendQuote.replace(/^„|"$/g,'')}</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="ink-div" aria-hidden="true">
+      <svg viewBox="0 0 1440 44" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,16 C480,2 960,28 1440,8 L1440,44 L0,44Z" fill="#F9F6F0"/>
+        <circle cx="700" cy="12" r="3" fill="#0D0D0B" opacity=".06"/>
+      </svg>
+    </div>
+
+    <!-- PROCES TWÓRCZY -->
+    <section class="p-process fi">
+      <div class="container">
+        <div class="p-process-head">
+          <span class="label-sm">Proces twórczy</span>
+          <h2 class="p-process-heading">${p.processTitle}</h2>
+          <p class="p-process-intro">${p.processIntro}</p>
+        </div>
+        <div class="p-steps">
+          ${p.steps.map(s => `
+            <div class="p-step fi">
+              <div class="p-step-num">${s.num}</div>
+              <div class="p-step-title">${s.title}</div>
+              <div class="p-step-text">${s.text}</div>
+            </div>`).join('')}
+        </div>
+        <div class="p-sketch-gallery fi d1">
+          <div class="p-sketch-main">${img(p.sketchImgs[0],'','Szkic')}</div>
+          <div class="p-sketch-sm">${img(p.sketchImgs[1],'','Szkic')}</div>
+          <div class="p-sketch-sm">${img(p.sketchImgs[2],'','Szkic')}</div>
+        </div>
+        <p class="p-sketch-caption">${p.sketchCaption}</p>
+      </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="ink-div" aria-hidden="true">
+      <svg viewBox="0 0 1440 44" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,8 C300,24 700,2 1100,18 C1280,26 1380,10 1440,14 L1440,44 L0,44Z" fill="#F2EDE3"/>
+        <circle cx="300" cy="14" r="2.5" fill="#0D0D0B" opacity=".06"/>
+      </svg>
+    </div>
+
+    <!-- SZCZEGÓŁY -->
+    <section class="p-spec fi">
+      <div class="container">
+        <span class="label-sm">Szczegóły produktu</span>
+        <h2 class="p-spec-heading">Materiał i wykonanie</h2>
+        <div class="p-spec-table">
+          ${p.details.map(d => `
+            <div class="p-spec-row">
+              <span class="p-spec-key">${d.key}</span>
+              <span class="p-spec-val">${d.val}</span>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- POWIĄZANE -->
+    <section class="p-related fi">
+      <div class="container">
+        <span class="label-sm">Możesz też polubić</span>
+        <h2 class="p-related-heading">Inne produkty</h2>
+        <div class="p-related-grid">${relatedHTML}</div>
+      </div>
+    </section>
+  `;
+
+  // fade-in observer
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+}
+
+// Init
+const id = new URLSearchParams(window.location.search).get('id') || '';
+render(id);
+</script>
+</body>
+</html>
