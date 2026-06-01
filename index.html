@@ -110,6 +110,7 @@ nav.scrolled{background:rgba(249,246,240,.96);backdrop-filter:blur(8px);border-b
 .mob-menu ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:24px;}
 .mob-menu ul a{font-family:var(--font-display);font-size:34px;font-weight:300;color:var(--color-ink);}
 .mob-close{position:absolute;top:22px;right:22px;background:none;border:none;cursor:pointer;font-size:26px;color:var(--color-ink);}
+.mob-cta{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;padding:13px 32px;border:1px solid var(--color-ink);color:var(--color-ink);background:transparent;margin-top:12px;display:inline-block;}
 
 /* ─── HERO ─── */
 .hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding-top:var(--nav-h);}
@@ -334,6 +335,9 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
   .foot-main{grid-template-columns:1fr;}
   .foot-bottom{flex-direction:column;gap:8px;text-align:center;}
 }
+@media(max-width:640px){
+  .nav-btn-cta{display:none;}
+}
 @media(max-width:480px){
   .hero-ctas{flex-direction:column;}
   .btn-solid,.btn-ghost{text-align:center;}
@@ -379,7 +383,7 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
           <span class="lang-sep">|</span>
           <button id="btn-en" onclick="setLang('en')">EN</button>
         </div>
-        <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i18n="nav.cta">Zamów współpracę</button>
+        <button class="btn-outline nav-btn-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i18n="nav.cta">Współpraca</button>
         <button class="hamburger" id="ham" aria-label="Menu" onclick="toggleMob()">
           <span></span><span></span><span></span>
         </button>
@@ -398,6 +402,7 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
     <li><a href="#b2b" onclick="toggleMob()" data-i18n="nav.b2b">Dla Biznesu</a></li>
     <li><a href="#contact" onclick="toggleMob()" data-i18n="nav.contact">Kontakt</a></li>
   </ul>
+  <a href="#contact" onclick="toggleMob()" class="mob-cta" data-i18n="nav.cta.full">Zamów współpracę</a>
 </div>
 
 <!-- ═══════════════════════════════════════════════
@@ -1125,7 +1130,7 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
 const T = {
   pl: {
     'nav.collections':'Kolekcje','nav.about':'O marce','nav.studio':'Pracownia',
-    'nav.b2b':'Dla Biznesu','nav.contact':'Kontakt','nav.cta':'Zamów współpracę',
+    'nav.b2b':'Dla Biznesu','nav.contact':'Kontakt','nav.cta':'Współpraca','nav.cta.full':'Zamów współpracę',
     'hero.eyebrow':'Autorskie ilustracje · Kraków',
     'hero.h1a':'Kraków','hero.h1b':'rysowany','hero.h1c':'tuszem',
     'hero.sub':'Autorskie ilustracje na produktach, które opowiadają historię miasta',
@@ -1195,7 +1200,7 @@ const T = {
   },
   en: {
     'nav.collections':'Collections','nav.about':'About','nav.studio':'Studio',
-    'nav.b2b':'For Business','nav.contact':'Contact','nav.cta':'Order collaboration',
+    'nav.b2b':'For Business','nav.contact':'Contact','nav.cta':'Cooperation','nav.cta.full':'Order collaboration',
     'hero.eyebrow':'Original illustrations · Kraków',
     'hero.h1a':'Kraków','hero.h1b':'drawn in','hero.h1c':'ink',
     'hero.sub':'Original illustrations on products that tell the story of the city',
