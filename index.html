@@ -148,6 +148,13 @@ nav.scrolled{background:rgba(249,246,240,.96);backdrop-filter:blur(8px);border-b
 .ink-div{width:100%;overflow:hidden;line-height:0;display:block;}
 .ink-div svg{display:block;width:100%;}
 
+/* ─── ABOUT INTRO ─── */
+.about-intro{padding:clamp(52px,7vw,96px) 0;background:var(--color-bg-warm);}
+.about-intro-inner{max-width:740px;margin:0 auto;text-align:center;}
+.about-intro-p{font-family:var(--font-story);font-size:clamp(18px,2vw,23px);font-style:italic;color:var(--color-ink);line-height:1.7;margin-bottom:18px;}
+.about-intro-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--color-brick);border-bottom:1px solid var(--color-brick-light);padding-bottom:3px;margin-top:8px;transition:color .2s,border-color .2s;}
+.about-intro-link:hover{color:var(--color-brick-light);border-color:var(--color-brick-light);}
+
 /* ─── BRAND STRIP ─── */
 .brand-strip{padding:clamp(44px,5vw,72px) 0;background:var(--color-bg-warm);position:relative;}
 .brand-grid{display:grid;grid-template-columns:repeat(3,1fr);}
@@ -490,6 +497,20 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
     <circle cx="1100" cy="22" r="2.5" fill="#0D0D0B" opacity=".05"/>
   </svg>
 </div>
+
+<!-- ═══════════════════════════════════════════════
+     ABOUT INTRO
+════════════════════════════════════════════════ -->
+<section class="about-intro">
+  <div class="container">
+    <div class="about-intro-inner fi">
+      <p class="about-intro-p" data-i18n="about.p1">Hejże Kraków to autorska marka ilustracji i pamiątek inspirowanych historią, legendami oraz codziennym życiem Krakowa.</p>
+      <p class="about-intro-p" data-i18n="about.p2">Każdy projekt powstaje od ręcznego szkicu, a następnie trafia na starannie wykonane produkty użytkowe i wydruki artystyczne.</p>
+      <p class="about-intro-p" data-i18n="about.p3">Tworzymy przedmioty, które pozwalają zabrać ze sobą fragment opowieści o mieście.</p>
+      <a href="o-marce.html" class="about-intro-link" data-i18n="about.link">Poznaj naszą historię →</a>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════════
      BRAND STRIP
@@ -1135,6 +1156,10 @@ const T = {
     'hero.h1a':'Kraków','hero.h1b':'rysowany','hero.h1c':'tuszem',
     'hero.sub':'Autorskie ilustracje na produktach, które opowiadają historię miasta',
     'hero.cta1':'Zobacz kolekcje','hero.cta2':'Oferta dla firm',
+    'about.p1':'Hejże Kraków to autorska marka ilustracji i pamiątek inspirowanych historią, legendami oraz codziennym życiem Krakowa.',
+    'about.p2':'Każdy projekt powstaje od ręcznego szkicu, a następnie trafia na starannie wykonane produkty użytkowe i wydruki artystyczne.',
+    'about.p3':'Tworzymy przedmioty, które pozwalają zabrać ze sobą fragment opowieści o mieście.',
+    'about.link':'Poznaj naszą historię →',
     'strip.t1':'Rysowane ręcznie','strip.d1':'Każda ilustracja powstaje tuszem i piórkiem — żadnych cyfrowych skrótów, tylko ręczna kreska na papierze czerpanym.',
     'strip.t2':'Inspirowane legendami','strip.d2':'Historia Krakowa — smok, Wawel, Kazimierz — w każdym produkcie. Ilustracje, które niosą opowieść.',
     'strip.t3':'Produkowane lokalnie','strip.d3':'Z dbałością o jakość i autentyczność. Druk, produkcja i pakowanie — wszystko w Krakowie.',
@@ -1205,6 +1230,10 @@ const T = {
     'hero.h1a':'Kraków','hero.h1b':'drawn in','hero.h1c':'ink',
     'hero.sub':'Original illustrations on products that tell the story of the city',
     'hero.cta1':'See collections','hero.cta2':'Business offer',
+    'about.p1':'Hejże Kraków is an independent illustration brand inspired by the history, legends and everyday life of Kraków.',
+    'about.p2':'Every project begins with a hand-drawn sketch, then becomes a carefully crafted product or art print.',
+    'about.p3':'We create objects that let you take a piece of the city\'s story with you.',
+    'about.link':'Our story →',
     'strip.t1':'Hand-drawn','strip.d1':'Every illustration is made with ink and a dip pen — no digital shortcuts, only hand-drawn lines on thick paper.',
     'strip.t2':'Legend-inspired','strip.d2':'The history of Kraków — the dragon, Wawel, Kazimierz — in every product. Illustrations that carry a story.',
     'strip.t3':'Made locally','strip.d3':'With care for quality and authenticity. Printing, production and packaging — all in Kraków.',
