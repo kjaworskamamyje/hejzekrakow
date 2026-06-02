@@ -218,6 +218,13 @@ nav.scrolled{background:rgba(249,246,240,.96);backdrop-filter:blur(8px);border-b
 .story-link{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brick);border-bottom:1px solid var(--color-brick-light);padding-bottom:2px;transition:color .2s;}
 .story-link:hover{color:var(--color-brick-light);}
 
+/* ─── STORIES MORE ─── */
+.stories-more{text-align:center;padding-top:60px;border-top:1px solid var(--color-border);margin-top:72px;}
+.stories-more-hint{font-family:var(--font-body);font-size:12px;font-weight:300;letter-spacing:.12em;color:var(--color-text-light);margin-bottom:22px;text-transform:uppercase;}
+.stories-more-btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-body);font-size:12px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-ink);padding:14px 32px;transition:background .25s,color .25s;}
+.stories-more-btn:hover{background:var(--color-ink);color:var(--color-bg);}
+.stories-more-count{font-family:var(--font-display);font-size:16px;font-weight:300;opacity:.5;}
+
 /* ─── B2B ─── */
 .b2b{padding:var(--sp) 0;background:var(--color-bg-dark);color:var(--color-bg);}
 .b2b-head{margin-bottom:56px;}
@@ -743,59 +750,13 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
         </div>
       </div>
 
-      <div class="story fi d1">
-        <div class="story-num" aria-hidden="true">02</div>
-        <div class="story-img">
-          <img src="https://picsum.photos/seed/lajkonik-krakow/500/600" alt="Lajkonik" loading="lazy">
-        </div>
-        <div class="story-txt">
-          <span class="label" data-i18n="story2.label">Tradycja</span>
-          <h3 class="story-title" data-i18n="story2.title">Lajkonik</h3>
-          <p class="story-body" data-i18n="story2.body">Brodaty jeździec w tatarskim stroju, który co roku przemierza ulice Krakowa — to jedna z najbardziej niezwykłych tradycji w Polsce. Ilustracja próbuje uchwycić ten moment, gdy historia zamienia się w taniec.</p>
-          <a href="historia.html?id=lajkonik" class="story-link" data-i18n="story.read">Czytaj więcej →</a>
-        </div>
-      </div>
-
-      <div class="story fi d2">
-        <div class="story-num" aria-hidden="true">03</div>
-        <div class="story-img">
-          <img src="https://picsum.photos/seed/mariacki-tower-krakow/500/600" alt="Hejnał Mariacki" loading="lazy">
-        </div>
-        <div class="story-txt">
-          <span class="label" data-i18n="story3.label">Muzyka</span>
-          <h3 class="story-title" data-i18n="story3.title">Hejnał z Wieży Mariackiej</h3>
-          <p class="story-body" data-i18n="story3.body">Cztery strony świata, cztery razy dziennie — i zawsze ten sam urwany dźwięk. Trębacz, który oddał życie ostrzegając miasto, żyje w tej chwilowej ciszy między nutami.</p>
-          <a href="historia.html?id=hejnal-mariacki" class="story-link" data-i18n="story.read">Czytaj więcej →</a>
-        </div>
-      </div>
-
-      <div class="story fi d1">
-        <div class="story-num" aria-hidden="true">04</div>
-        <div class="story-img">
-          <img src="https://picsum.photos/seed/krakow-pigeons-square/500/600" alt="Gołębie na Rynku" loading="lazy">
-        </div>
-        <div class="story-txt">
-          <span class="label" data-i18n="story4.label">Zaklęcie</span>
-          <h3 class="story-title" data-i18n="story4.title">Gołębie na Rynku</h3>
-          <p class="story-body" data-i18n="story4.body">Każdy, kto stał na Rynku Głównym i patrzył, jak setki gołębi unoszą się w powietrze, wie że coś tu jest niezwykłego. Legenda mówi, że to rycerze księcia Henryka, zaklęci przez czarownicę. Czekają.</p>
-          <a href="historia.html?id=golebie-rynek" class="story-link" data-i18n="story.read">Czytaj więcej →</a>
-        </div>
-      </div>
-
-      <div class="story fi d2">
-        <div class="story-num" aria-hidden="true">05</div>
-        <div class="story-img">
-          <img src="https://picsum.photos/seed/twardowski-moon-legend/500/600" alt="Pan Twardowski" loading="lazy">
-        </div>
-        <div class="story-txt">
-          <span class="label" data-i18n="story5.label">Pakt</span>
-          <h3 class="story-title" data-i18n="story5.title">Pan Twardowski</h3>
-          <p class="story-body" data-i18n="story5.body">Sprzedał duszę diabłu, by poznać tajemnice świata. Oszukał śmierć, uciekł na Księżyc — i tam siedzi do dziś, na pajęczej sieci, patrząc na Kraków z góry. Polska wersja Fausta, pełna humoru i melancholii.</p>
-          <a href="historia.html?id=twardowski" class="story-link" data-i18n="story.read">Czytaj więcej →</a>
-        </div>
-      </div>
-
     </div>
+
+    <div class="stories-more fi">
+      <p class="stories-more-hint">Lajkonik · Hejnał Mariacki · Gołębie na Rynku · Pan Twardowski</p>
+      <a href="legendy.html" class="stories-more-btn">Wszystkie legendy <span class="stories-more-count">+4</span></a>
+    </div>
+
   </div>
 </section>
 

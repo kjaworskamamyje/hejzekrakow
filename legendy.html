@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legendy Krakowa — Hejże Kraków | Ilustracje krakowskich legend</title>
+<meta name="description" content="Pięć krakowskich legend opowiedzianych ilustracją tuszem — Smok Wawelski, Lajkonik, Hejnał Mariacki, Gołębie na Rynku, Pan Twardowski. Poznaj historię każdej ilustracji.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hejzekrakow.pl/legendy.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Legendy Krakowa — Hejże Kraków">
+<meta property="og:description" content="Pięć krakowskich legend opowiedzianych ilustracją tuszem. Smok Wawelski, Lajkonik, Hejnał, Gołębie, Pan Twardowski.">
+<meta property="og:url" content="https://hejzekrakow.pl/legendy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital@1&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-bg:#F9F6F0;--color-bg-warm:#F2EDE3;--color-bg-dark:#1A1A18;
+  --color-text:#1A1A18;--color-text-light:#555250;--color-ink:#0D0D0B;
+  --color-brick:#9B3A2A;--color-brick-light:#C4614E;--color-paper:#EDE8DF;
+  --color-border:#D8D0C4;
+  --font-display:'Cormorant Garamond',serif;--font-story:'EB Garamond',serif;--font-body:'Jost',sans-serif;
+  --nav-h:72px;--sp:clamp(64px,8vw,120px);--max:1280px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.035;pointer-events:none;z-index:9000;}
+img{display:block;width:100%;height:100%;object-fit:cover;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,64px);}
+.label{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:var(--color-brick);display:block;margin-bottom:16px;}
+
+/* fade-in */
+.fi{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+.fi.on{opacity:1;transform:none;}
+.fi.d1{transition-delay:.1s;}.fi.d2{transition-delay:.2s;}.fi.d3{transition-delay:.3s;}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);display:flex;align-items:center;transition:background .3s,border-color .3s;}
+nav.scrolled{background:rgba(249,246,240,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-border);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-ink);flex-shrink:0;}
+.nav-logo svg{width:22px;height:22px;flex-shrink:0;}
+.nav-right{display:flex;align-items:center;gap:18px;flex-shrink:0;}
+.btn-outline{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;padding:9px 18px;border:1px solid var(--color-ink);color:var(--color-ink);background:transparent;cursor:pointer;transition:background .25s,color .25s;white-space:nowrap;display:inline-block;}
+.btn-outline:hover{background:var(--color-ink);color:var(--color-bg);}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px;}
+.hamburger span{display:block;width:22px;height:1px;background:var(--color-ink);transition:transform .3s;}
+.mob-menu{display:none;position:fixed;inset:0;background:var(--color-bg);z-index:600;flex-direction:column;align-items:center;justify-content:center;gap:28px;}
+.mob-menu.open{display:flex;}
+.mob-menu ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:24px;}
+.mob-menu ul a{font-family:var(--font-display);font-size:34px;font-weight:300;color:var(--color-ink);}
+.mob-close{position:absolute;top:22px;right:22px;background:none;border:none;cursor:pointer;font-size:26px;color:var(--color-ink);}
+.mob-cta{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;padding:13px 32px;border:1px solid var(--color-ink);color:var(--color-ink);background:transparent;margin-top:12px;display:inline-block;}
+
+/* ─── HERO ─── */
+.hero{padding-top:calc(var(--nav-h) + clamp(52px,7vw,100px));padding-bottom:clamp(52px,7vw,96px);background:var(--color-bg-dark);position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;opacity:.18;}
+.hero-bg img{filter:sepia(25%) contrast(1.1);}
+.hero-content{position:relative;z-index:1;}
+.hero-eyebrow{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--color-brick-light);display:block;margin-bottom:22px;}
+.hero-h1{font-family:var(--font-display);font-size:clamp(44px,6vw,82px);font-weight:300;color:#fff;line-height:1.05;margin-bottom:26px;}
+.hero-sub{font-family:var(--font-story);font-size:clamp(16px,1.8vw,21px);font-style:italic;color:rgba(249,246,240,.72);max-width:560px;line-height:1.7;}
+
+/* ink divider */
+.ink-div{width:100%;overflow:hidden;line-height:0;display:block;}
+.ink-div svg{display:block;width:100%;}
+
+/* ─── STORIES ─── */
+.stories{padding:var(--sp) 0;background:var(--color-paper);}
+.stories-list{display:flex;flex-direction:column;gap:80px;}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center;position:relative;}
+.story:nth-child(even){direction:rtl;}
+.story:nth-child(even)>*{direction:ltr;}
+.story-num{position:absolute;font-family:var(--font-display);font-size:clamp(90px,13vw,170px);font-weight:300;color:var(--color-ink);opacity:.04;line-height:1;top:50%;transform:translateY(-50%);left:-10px;pointer-events:none;z-index:0;}
+.story:nth-child(even) .story-num{left:auto;right:-10px;}
+.story-img{aspect-ratio:4/5;overflow:hidden;}
+.story-img img{width:100%;height:100%;object-fit:cover;filter:sepia(22%) contrast(1.08) saturate(.8);transition:transform .6s;}
+.story-img:hover img{transform:scale(1.03);}
+.story-txt{position:relative;z-index:1;}
+.story-title{font-family:var(--font-display);font-size:clamp(26px,3.2vw,44px);font-weight:400;color:var(--color-ink);margin-bottom:18px;}
+.story-body{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--color-text-light);line-height:1.85;margin-bottom:24px;}
+.story-link{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brick);border-bottom:1px solid var(--color-brick-light);padding-bottom:2px;transition:color .2s;}
+.story-link:hover{color:var(--color-brick-light);}
+
+/* ─── FOOTER ─── */
+footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,5vw,72px) 0 0;}
+.foot-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(28px,3.5vw,52px);padding-bottom:clamp(36px,4vw,56px);border-bottom:1px solid rgba(255,255,255,.1);}
+.foot-logo{font-family:var(--font-display);font-size:21px;font-weight:400;color:var(--color-bg);margin-bottom:10px;display:flex;align-items:center;gap:9px;}
+.foot-tagline{font-family:var(--font-display);font-size:14px;font-style:italic;font-weight:300;color:rgba(249,246,240,.62);}
+.foot-nav-lbl{font-family:var(--font-body);font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(249,246,240,.55);margin-bottom:18px;display:block;}
+.foot-nav-list{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.foot-nav-list a{font-family:var(--font-body);font-size:14px;font-weight:300;color:rgba(249,246,240,.75);transition:color .2s;}
+.foot-nav-list a:hover{color:var(--color-bg);}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;padding:18px 0;font-family:var(--font-body);font-size:12px;font-weight:300;color:rgba(249,246,240,.48);}
+.foot-bottom a{color:rgba(249,246,240,.55);transition:color .2s;}
+.foot-bottom a:hover{color:rgba(249,246,240,.85);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .hamburger{display:flex;}
+  .btn-outline.nav-btn-cta{display:none;}
+}
+@media(max-width:768px){
+  .story{grid-template-columns:1fr;}
+  .story:nth-child(even){direction:ltr;}
+  .story-num{display:none;}
+  .foot-main{grid-template-columns:1fr;}
+  .foot-bottom{flex-direction:column;gap:8px;text-align:center;}
+}
+@media(max-width:640px){
+  .nav-btn-cta{display:none;}
+}
+@media(prefers-reduced-motion:reduce){
+  .fi{opacity:1;transform:none;}
+  *{transition-duration:.01ms!important;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M11 2 L17 9 L11 20 L5 9 Z" fill="currentColor" opacity=".12"/>
+          <path d="M11 2 L17 9 L11 17 L5 9 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <line x1="11" y1="17" x2="11" y2="21" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M9 19 L11 17 L13 19" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <line x1="11" y1="9" x2="11" y2="17" stroke="currentColor" stroke-width=".8" opacity=".4"/>
+        </svg>
+        Hejże Kraków
+      </a>
+      <div class="nav-right">
+        <a href="index.html" style="font-family:var(--font-body);font-size:12px;font-weight:300;letter-spacing:.08em;color:var(--color-text-light);transition:color .2s;" onmouseover="this.style.color='var(--color-brick)'" onmouseout="this.style.color='var(--color-text-light)'">← Strona główna</a>
+        <a href="index.html#contact" class="btn-outline nav-btn-cta">Współpraca</a>
+        <button class="hamburger" id="ham" aria-label="Menu" onclick="toggleMob()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mob-menu">
+  <button class="mob-close" onclick="toggleMob()" aria-label="Zamknij">✕</button>
+  <ul>
+    <li><a href="index.html" onclick="toggleMob()">Strona główna</a></li>
+    <li><a href="index.html#collections" onclick="toggleMob()">Kolekcje</a></li>
+    <li><a href="artystka.html" onclick="toggleMob()">Artystka</a></li>
+    <li><a href="index.html#contact" onclick="toggleMob()">Kontakt</a></li>
+  </ul>
+  <a href="index.html#contact" onclick="toggleMob()" class="mob-cta">Zamów współpracę</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://picsum.photos/seed/krakow-old-town/1400/700" alt="" aria-hidden="true">
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Krakowskie legendy</span>
+      <h1 class="hero-h1">Pięć historii,<br>które żyją w mieście</h1>
+      <p class="hero-sub">Smok, jeździec, trębacz, rycerze i czarnoksiężnik — opowiedziani kreską tuszem.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INK DIVIDER -->
+<div class="ink-div" aria-hidden="true">
+  <svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,16 C360,42 720,4 1080,28 C1260,40 1360,12 1440,18 L1440,52 L0,52Z" fill="#EDE8DF"/>
+  </svg>
+</div>
+
+<!-- LEGENDS -->
+<section class="stories">
+  <div class="container">
+    <div class="stories-list">
+
+      <div class="story fi">
+        <div class="story-num" aria-hidden="true">01</div>
+        <div class="story-img">
+          <img src="https://picsum.photos/seed/dragon-legend/500/600" alt="Smok Wawelski" loading="lazy">
+        </div>
+        <div class="story-txt">
+          <span class="label">Legenda</span>
+          <h2 class="story-title">Smok Wawelski</h2>
+          <p class="story-body">Smok Wawelski to serce krakowskiej mitologii. Ilustracja powstała z jednego długiego oddechu — pióro nie odrywało się od papieru. W każdej skali ukryta jest historia królewskiego strachu i chłopskiej przebiegłości, która uratowała miasto.</p>
+          <a href="historia.html?id=smok-wawelski" class="story-link">Czytaj historię →</a>
+        </div>
+      </div>
+
+      <div class="story fi">
+        <div class="story-num" aria-hidden="true">02</div>
+        <div class="story-img">
+          <img src="https://picsum.photos/seed/lajkonik-krakow/500/600" alt="Lajkonik" loading="lazy">
+        </div>
+        <div class="story-txt">
+          <span class="label">Tradycja</span>
+          <h2 class="story-title">Lajkonik</h2>
+          <p class="story-body">Brodaty jeździec w tatarskim stroju, który co roku przemierza ulice Krakowa — to jedna z najbardziej niezwykłych tradycji w Polsce. Ilustracja próbuje uchwycić ten moment, gdy historia zamienia się w taniec.</p>
+          <a href="historia.html?id=lajkonik" class="story-link">Czytaj historię →</a>
+        </div>
+      </div>
+
+      <div class="story fi">
+        <div class="story-num" aria-hidden="true">03</div>
+        <div class="story-img">
+          <img src="https://picsum.photos/seed/mariacki-tower-krakow/500/600" alt="Hejnał Mariacki" loading="lazy">
+        </div>
+        <div class="story-txt">
+          <span class="label">Muzyka</span>
+          <h2 class="story-title">Hejnał z Wieży Mariackiej</h2>
+          <p class="story-body">Cztery strony świata, cztery razy dziennie — i zawsze ten sam urwany dźwięk. Trębacz, który oddał życie ostrzegając miasto, żyje w tej chwilowej ciszy między nutami.</p>
+          <a href="historia.html?id=hejnal-mariacki" class="story-link">Czytaj historię →</a>
+        </div>
+      </div>
+
+      <div class="story fi">
+        <div class="story-num" aria-hidden="true">04</div>
+        <div class="story-img">
+          <img src="https://picsum.photos/seed/krakow-pigeons-square/500/600" alt="Gołębie na Rynku" loading="lazy">
+        </div>
+        <div class="story-txt">
+          <span class="label">Zaklęcie</span>
+          <h2 class="story-title">Gołębie na Rynku</h2>
+          <p class="story-body">Każdy, kto stał na Rynku Głównym i patrzył, jak setki gołębi unoszą się w powietrze, wie że coś tu jest niezwykłego. Legenda mówi, że to rycerze księcia Henryka, zaklęci przez czarownicę. Czekają.</p>
+          <a href="historia.html?id=golebie-rynek" class="story-link">Czytaj historię →</a>
+        </div>
+      </div>
+
+      <div class="story fi">
+        <div class="story-num" aria-hidden="true">05</div>
+        <div class="story-img">
+          <img src="https://picsum.photos/seed/twardowski-moon-legend/500/600" alt="Pan Twardowski" loading="lazy">
+        </div>
+        <div class="story-txt">
+          <span class="label">Pakt</span>
+          <h2 class="story-title">Pan Twardowski</h2>
+          <p class="story-body">Sprzedał duszę diabłu, by poznać tajemnice świata. Oszukał śmierć, uciekł na Księżyc — i tam siedzi do dziś, na pajęczej sieci, patrząc na Kraków z góry. Polska wersja Fausta, pełna humoru i melancholii.</p>
+          <a href="historia.html?id=twardowski" class="story-link">Czytaj historię →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-main">
+      <div>
+        <div class="foot-logo">
+          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="20" height="20">
+            <path d="M11 2 L17 9 L11 20 L5 9 Z" fill="currentColor" opacity=".15"/>
+            <path d="M11 2 L17 9 L11 17 L5 9 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <line x1="11" y1="17" x2="11" y2="21" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          Hejże Kraków
+        </div>
+        <div class="foot-tagline">Kraków rysowany tuszem</div>
+      </div>
+      <div>
+        <span class="foot-nav-lbl">Nawigacja</span>
+        <ul class="foot-nav-list">
+          <li><a href="index.html">Strona główna</a></li>
+          <li><a href="index.html#collections">Kolekcje</a></li>
+          <li><a href="artystka.html">O artystce</a></li>
+          <li><a href="index.html#contact">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="foot-nav-lbl">Legendy</span>
+        <ul class="foot-nav-list">
+          <li><a href="historia.html?id=smok-wawelski">Smok Wawelski</a></li>
+          <li><a href="historia.html?id=lajkonik">Lajkonik</a></li>
+          <li><a href="historia.html?id=hejnal-mariacki">Hejnał Mariacki</a></li>
+          <li><a href="historia.html?id=golebie-rynek">Gołębie na Rynku</a></li>
+          <li><a href="historia.html?id=twardowski">Pan Twardowski</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Hejże Kraków. Wszelkie prawa zastrzeżone.</span>
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+function toggleMob() {
+  document.getElementById('mob-menu').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mob-menu').classList.contains('open') ? 'hidden' : '';
+}
+const fi = document.querySelectorAll('.fi');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, {threshold: 0.12});
+fi.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
