@@ -333,9 +333,8 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
   .brand-grid{grid-template-columns:1fr;}
   .brand-tile{border-right:none;border-bottom:1px solid var(--color-border);}
   .brand-tile:last-child{border-bottom:none;}
-  .coll-grid{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:10px;}
-  .coll-grid::-webkit-scrollbar{display:none;}
-  .coll-card,.coll-card:first-child{min-width:280px;min-height:360px;flex-shrink:0;}
+  .coll-grid{display:flex;flex-direction:column;gap:10px;}
+  .coll-card,.coll-card:first-child{min-width:unset;width:100%;min-height:260px;flex-shrink:unset;grid-row:unset;}
   .prod-grid{grid-template-columns:1fr;}
   .story{grid-template-columns:1fr;}
   .story:nth-child(even){direction:ltr;}
