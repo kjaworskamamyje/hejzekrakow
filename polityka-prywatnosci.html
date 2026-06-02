@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polityka prywatności — Hejże Kraków</title>
+<meta name="description" content="Polityka prywatności serwisu Hejże Kraków. Informacje o przetwarzaniu danych osobowych zgodnie z RODO.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://hejzekrakow.pl/polityka-prywatnosci.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital@1&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-bg:#F9F6F0;--color-bg-warm:#F2EDE3;--color-bg-dark:#1A1A18;
+  --color-text:#1A1A18;--color-text-light:#7A7570;--color-ink:#0D0D0B;
+  --color-brick:#9B3A2A;--color-brick-light:#C4614E;--color-paper:#EDE8DF;
+  --color-border:#D8D0C4;
+  --font-display:'Cormorant Garamond',serif;--font-story:'EB Garamond',serif;--font-body:'Jost',sans-serif;
+  --nav-h:72px;--max:1280px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-weight:300;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.035;pointer-events:none;z-index:9000;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,64px);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);display:flex;align-items:center;background:rgba(249,246,240,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-border);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-ink);}
+.nav-logo svg{width:22px;height:22px;flex-shrink:0;}
+.nav-back{font-family:var(--font-body);font-size:12px;font-weight:300;letter-spacing:.1em;color:var(--color-text-light);display:flex;align-items:center;gap:6px;transition:color .2s;}
+.nav-back:hover{color:var(--color-brick);}
+
+/* HERO */
+.pp-hero{padding-top:calc(var(--nav-h) + clamp(48px,6vw,96px));padding-bottom:clamp(40px,5vw,72px);background:var(--color-bg-warm);border-bottom:1px solid var(--color-border);}
+.pp-label{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:var(--color-brick);display:block;margin-bottom:18px;}
+.pp-h1{font-family:var(--font-display);font-size:clamp(36px,5vw,68px);font-weight:300;color:var(--color-ink);line-height:1.08;margin-bottom:20px;}
+.pp-meta{font-family:var(--font-body);font-size:13px;font-weight:300;color:var(--color-text-light);}
+
+/* CONTENT */
+.pp-content{max-width:760px;margin:0 auto;padding:clamp(48px,6vw,96px) clamp(20px,4vw,64px);}
+.pp-section{margin-bottom:56px;}
+.pp-h2{font-family:var(--font-display);font-size:clamp(22px,2.8vw,34px);font-weight:400;color:var(--color-ink);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--color-border);}
+.pp-h3{font-family:var(--font-display);font-size:clamp(17px,2vw,22px);font-weight:400;color:var(--color-ink);margin:28px 0 12px;}
+.pp-p{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--color-text-light);line-height:1.85;margin-bottom:16px;}
+.pp-p strong{font-weight:400;color:var(--color-text);}
+.pp-ul{list-style:none;margin-bottom:16px;}
+.pp-ul li{font-family:var(--font-body);font-size:15px;font-weight:300;color:var(--color-text-light);line-height:1.85;padding-left:18px;position:relative;margin-bottom:8px;}
+.pp-ul li::before{content:'—';position:absolute;left:0;color:var(--color-brick);opacity:.7;}
+.pp-box{background:var(--color-paper);border-left:3px solid var(--color-brick);padding:20px 24px;margin:24px 0;}
+.pp-box p{font-family:var(--font-body);font-size:14px;font-weight:300;color:var(--color-text);line-height:1.8;margin:0;}
+.pp-box p strong{font-weight:400;}
+.pp-email{color:var(--color-brick);border-bottom:1px solid var(--color-brick-light);padding-bottom:1px;transition:color .2s;}
+.pp-email:hover{color:var(--color-brick-light);}
+.pp-toc{background:var(--color-bg-warm);border:1px solid var(--color-border);padding:28px 32px;margin-bottom:56px;}
+.pp-toc-title{font-family:var(--font-body);font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--color-text-light);margin-bottom:16px;display:block;}
+.pp-toc ol{padding-left:18px;}
+.pp-toc ol li{font-family:var(--font-body);font-size:14px;font-weight:300;color:var(--color-text-light);margin-bottom:8px;line-height:1.5;}
+.pp-toc ol li a{color:var(--color-ink);border-bottom:1px solid var(--color-border);padding-bottom:1px;transition:color .2s,border-color .2s;}
+.pp-toc ol li a:hover{color:var(--color-brick);border-color:var(--color-brick-light);}
+
+/* FOOTER */
+footer{background:var(--color-bg-dark);padding:clamp(32px,4vw,52px) 0;}
+.foot-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.foot-logo{font-family:var(--font-display);font-size:18px;font-weight:400;color:rgba(249,246,240,.6);display:flex;align-items:center;gap:8px;}
+.foot-copy{font-family:var(--font-body);font-size:12px;font-weight:300;color:rgba(249,246,240,.22);}
+.foot-back{font-family:var(--font-body);font-size:12px;font-weight:300;color:rgba(249,246,240,.28);transition:color .2s;}
+.foot-back:hover{color:rgba(249,246,240,.56);}
+
+@media(max-width:640px){
+  .foot-row{flex-direction:column;text-align:center;}
+  .pp-toc{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M11 2 L17 9 L11 20 L5 9 Z" fill="currentColor" opacity=".12"/>
+          <path d="M11 2 L17 9 L11 17 L5 9 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <line x1="11" y1="17" x2="11" y2="21" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M9 19 L11 17 L13 19" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <line x1="11" y1="9" x2="11" y2="17" stroke="currentColor" stroke-width=".8" opacity=".4"/>
+        </svg>
+        Hejże Kraków
+      </a>
+      <a href="index.html" class="nav-back">
+        ← Strona główna
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="pp-hero">
+  <div class="container">
+    <span class="pp-label">Dokument prawny</span>
+    <h1 class="pp-h1">Polityka prywatności</h1>
+    <p class="pp-meta">Ostatnia aktualizacja: czerwiec 2025</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<main class="pp-content">
+
+  <!-- Dane administratora -->
+  <div class="pp-box">
+    <p><strong>Administrator danych osobowych:</strong><br>
+    Anna Milcarz, prowadząca działalność pod marką Hejże Kraków<br>
+    Kraków, Polska<br>
+    E-mail kontaktowy: <a href="mailto:kontakt@hejzekrakow.pl" class="pp-email">kontakt@hejzekrakow.pl</a></p>
+  </div>
+
+  <!-- Spis treści -->
+  <div class="pp-toc">
+    <span class="pp-toc-title">Spis treści</span>
+    <ol>
+      <li><a href="#dane">Jakie dane zbieramy</a></li>
+      <li><a href="#cel">Cel i podstawa przetwarzania</a></li>
+      <li><a href="#cookies">Pliki cookie i pamięć lokalna</a></li>
+      <li><a href="#przechowywanie">Czas przechowywania danych</a></li>
+      <li><a href="#prawa">Twoje prawa</a></li>
+      <li><a href="#bezpieczenstwo">Bezpieczeństwo danych</a></li>
+      <li><a href="#kontakt">Kontakt w sprawie danych</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. Jakie dane zbieramy -->
+  <div class="pp-section" id="dane">
+    <h2 class="pp-h2">1. Jakie dane zbieramy</h2>
+
+    <h3 class="pp-h3">Formularz kontaktowy</h3>
+    <p class="pp-p">Gdy wysyłasz do nas wiadomość przez formularz kontaktowy, zbieramy:</p>
+    <ul class="pp-ul">
+      <li>imię i nazwisko (lub nazwa firmy)</li>
+      <li>adres e-mail</li>
+      <li>treść wiadomości oraz wybrany typ zapytania</li>
+    </ul>
+    <p class="pp-p">Podanie tych danych jest dobrowolne, ale niezbędne do udzielenia odpowiedzi.</p>
+
+    <h3 class="pp-h3">Dane techniczne</h3>
+    <p class="pp-p">Serwis może automatycznie rejestrować podstawowe dane techniczne, takie jak adres IP, typ przeglądarki i system operacyjny — wyłącznie w celach diagnostycznych i bezpieczeństwa serwera. Dane te nie są łączone z Twoją tożsamością.</p>
+
+    <h3 class="pp-h3">Dane, których nie zbieramy</h3>
+    <ul class="pp-ul">
+      <li>nie prowadzimy sklepu internetowego — nie przetwarzamy danych płatniczych</li>
+      <li>nie korzystamy z zewnętrznych narzędzi śledzących (Google Analytics, Facebook Pixel itp.)</li>
+      <li>nie profilujemy użytkowników ani nie wyświetlamy reklam</li>
+    </ul>
+  </div>
+
+  <!-- 2. Cel i podstawa -->
+  <div class="pp-section" id="cel">
+    <h2 class="pp-h2">2. Cel i podstawa przetwarzania</h2>
+    <p class="pp-p">Dane z formularza kontaktowego przetwarzamy w celu:</p>
+    <ul class="pp-ul">
+      <li><strong>odpowiedzi na zapytanie</strong> — podstawa prawna: art. 6 ust. 1 lit. b RODO (podjęcie działań na żądanie osoby przed zawarciem umowy) lub art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes administratora)</li>
+      <li><strong>nawiązania i realizacji współpracy</strong> — jeśli zapytanie przekształci się w zamówienie, przetwarzanie odbywa się na podstawie art. 6 ust. 1 lit. b RODO (wykonanie umowy)</li>
+    </ul>
+    <p class="pp-p">Nie wysyłamy newslettera ani materiałów marketingowych bez wyraźnej zgody.</p>
+  </div>
+
+  <!-- 3. Cookies -->
+  <div class="pp-section" id="cookies">
+    <h2 class="pp-h2">3. Pliki cookie i pamięć lokalna</h2>
+    <p class="pp-p">Serwis <strong>nie ustawia plików cookie</strong> służących do śledzenia. Korzystamy wyłącznie z przeglądarki <strong>localStorage</strong> — pamięci lokalnej Twojego urządzenia — w celach technicznych:</p>
+    <ul class="pp-ul">
+      <li><strong>hejze_lang</strong> — zapamiętanie wybranego języka (PL lub EN)</li>
+      <li><strong>hejze_cms</strong> — dane panelu administracyjnego (tylko dla administratora serwisu, dostęp chroniony hasłem)</li>
+    </ul>
+    <p class="pp-p">Dane z localStorage pozostają wyłącznie na Twoim urządzeniu i nie są przesyłane na żaden serwer. Możesz je usunąć w każdej chwili w ustawieniach przeglądarki (Narzędzia deweloperskie → Aplikacja → Local Storage).</p>
+    <p class="pp-p">Strona jest hostowana na <strong>GitHub Pages</strong>. GitHub może zbierać podstawowe dane techniczne zgodnie z własną <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener" class="pp-email">polityką prywatności GitHub</a>.</p>
+  </div>
+
+  <!-- 4. Czas przechowywania -->
+  <div class="pp-section" id="przechowywanie">
+    <h2 class="pp-h2">4. Czas przechowywania danych</h2>
+    <ul class="pp-ul">
+      <li>dane z formularza kontaktowego — przez czas niezbędny do obsługi zapytania, a w przypadku nawiązania współpracy — przez okres wymagany przepisami podatkowymi (do 5 lat)</li>
+      <li>dane techniczne serwera — maksymalnie 90 dni od momentu rejestracji</li>
+      <li>dane w localStorage — do czasu ich ręcznego usunięcia przez użytkownika lub wyczyszczenia danych przeglądarki</li>
+    </ul>
+  </div>
+
+  <!-- 5. Twoje prawa -->
+  <div class="pp-section" id="prawa">
+    <h2 class="pp-h2">5. Twoje prawa</h2>
+    <p class="pp-p">Na podstawie RODO (Rozporządzenie o Ochronie Danych Osobowych) przysługują Ci następujące prawa:</p>
+    <ul class="pp-ul">
+      <li><strong>prawo dostępu</strong> — możesz zażądać informacji o tym, jakie Twoje dane przetwarzamy</li>
+      <li><strong>prawo do sprostowania</strong> — możesz poprosić o poprawienie nieprawidłowych danych</li>
+      <li><strong>prawo do usunięcia</strong> — tzw. „prawo do bycia zapomnianym"</li>
+      <li><strong>prawo do ograniczenia przetwarzania</strong> — możesz zażądać wstrzymania przetwarzania Twoich danych</li>
+      <li><strong>prawo do przenoszenia danych</strong> — możesz otrzymać swoje dane w ustrukturyzowanym formacie</li>
+      <li><strong>prawo do sprzeciwu</strong> — wobec przetwarzania opartego na prawnie uzasadnionym interesie</li>
+    </ul>
+    <p class="pp-p">Aby skorzystać z powyższych praw, skontaktuj się z nami pod adresem: <a href="mailto:kontakt@hejzekrakow.pl" class="pp-email">kontakt@hejzekrakow.pl</a></p>
+    <p class="pp-p">Masz również prawo złożyć skargę do organu nadzorczego — <strong>Prezesa Urzędu Ochrony Danych Osobowych (UODO)</strong>, ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl" target="_blank" rel="noopener" class="pp-email">uodo.gov.pl</a>.</p>
+  </div>
+
+  <!-- 6. Bezpieczeństwo -->
+  <div class="pp-section" id="bezpieczenstwo">
+    <h2 class="pp-h2">6. Bezpieczeństwo danych</h2>
+    <p class="pp-p">Stosujemy techniczne i organizacyjne środki ochrony danych odpowiednie do ryzyka, w tym:</p>
+    <ul class="pp-ul">
+      <li>transmisja danych szyfrowana protokołem HTTPS</li>
+      <li>dostęp do panelu administracyjnego chroniony hasłem</li>
+      <li>dane kontaktowe przechowywane wyłącznie w korespondencji e-mail, bez zewnętrznych baz danych</li>
+    </ul>
+    <p class="pp-p">Nie udostępniamy Twoich danych osobom trzecim, partnerom handlowym ani nie sprzedajemy ich w żadnej formie.</p>
+  </div>
+
+  <!-- 7. Kontakt -->
+  <div class="pp-section" id="kontakt">
+    <h2 class="pp-h2">7. Kontakt w sprawie danych</h2>
+    <div class="pp-box">
+      <p>We wszystkich sprawach dotyczących ochrony danych osobowych możesz się skontaktować bezpośrednio z administratorem:<br><br>
+      <strong>Anna Milcarz / Hejże Kraków</strong><br>
+      E-mail: <a href="mailto:kontakt@hejzekrakow.pl" class="pp-email">kontakt@hejzekrakow.pl</a><br>
+      Odpowiedzi udzielamy w terminie do 30 dni od otrzymania zapytania.</p>
+    </div>
+    <p class="pp-p">Niniejsza polityka prywatności może być aktualizowana. O istotnych zmianach będziemy informować poprzez umieszczenie zaktualizowanej wersji na tej stronie z nową datą aktualizacji.</p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-row">
+      <a href="index.html" class="foot-logo">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="18" height="18">
+          <path d="M11 2 L17 9 L11 20 L5 9 Z" fill="currentColor" opacity=".2"/>
+          <path d="M11 2 L17 9 L11 17 L5 9 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <line x1="11" y1="17" x2="11" y2="21" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        Hejże Kraków
+      </a>
+      <span class="foot-copy">© 2025 Hejże Kraków. Wszelkie prawa zastrzeżone.</span>
+      <a href="index.html" class="foot-back">← Wróć na stronę główną</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
