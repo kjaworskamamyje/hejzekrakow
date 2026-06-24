@@ -383,6 +383,7 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
       </a>
 
       <ul class="nav-links">
+        <li><a href="#products" data-i18n="nav.products">Produkty</a></li>
         <li><a href="o-marce.html" data-i18n="nav.about">O marce</a></li>
         <li><a href="#pracownia" data-i18n="nav.studio">Pracownia</a></li>
         <li><a href="#b2b" data-i18n="nav.b2b">Dla Biznesu</a></li>
@@ -408,6 +409,7 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
 <div class="mob-menu" id="mob-menu">
   <button class="mob-close" onclick="toggleMob()" aria-label="Zamknij">✕</button>
   <ul>
+    <li><a href="#products" onclick="toggleMob()" data-i18n="nav.products">Produkty</a></li>
     <li><a href="o-marce.html" onclick="toggleMob()" data-i18n="nav.about">O marce</a></li>
     <li><a href="#pracownia" onclick="toggleMob()" data-i18n="nav.studio">Pracownia</a></li>
     <li><a href="#b2b" onclick="toggleMob()" data-i18n="nav.b2b">Dla Biznesu</a></li>
@@ -1056,12 +1058,12 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
 // ─── TRANSLATIONS ────────────────────────────────
 const T = {
   pl: {
-    'nav.collections':'Kolekcje','nav.about':'O marce','nav.studio':'Pracownia',
+    'nav.products':'Produkty','nav.about':'O marce','nav.studio':'Pracownia',
     'nav.b2b':'Dla Biznesu','nav.contact':'Kontakt','nav.cta':'Współpraca','nav.cta.full':'Zamów współpracę',
     'hero.eyebrow':'Autorskie ilustracje · Kraków',
     'hero.h1a':'Kraków','hero.h1b':'rysowany','hero.h1c':'tuszem',
     'hero.sub':'Autorskie ilustracje na produktach, które opowiadają historię miasta',
-    'hero.cta1':'Zobacz kolekcje','hero.cta2':'Oferta dla firm',
+    'hero.cta1':'Zobacz produkty','hero.cta2':'Oferta dla firm',
     'about.p1':'Hejże Kraków to autorska marka ilustracji i pamiątek inspirowanych historią, legendami oraz codziennym życiem Krakowa.',
     'about.p2':'Każdy projekt powstaje od ręcznego szkicu, a następnie trafia na starannie wykonane produkty użytkowe i wydruki artystyczne.',
     'about.p3':'Tworzymy przedmioty, które pozwalają zabrać ze sobą fragment opowieści o mieście.',
@@ -1130,12 +1132,12 @@ const T = {
     'footer.privacy':'Polityka prywatności',
   },
   en: {
-    'nav.collections':'Collections','nav.about':'About','nav.studio':'Studio',
+    'nav.products':'Products','nav.about':'About','nav.studio':'Studio',
     'nav.b2b':'For Business','nav.contact':'Contact','nav.cta':'Cooperation','nav.cta.full':'Order collaboration',
     'hero.eyebrow':'Original illustrations · Kraków',
     'hero.h1a':'Kraków','hero.h1b':'drawn in','hero.h1c':'ink',
     'hero.sub':'Original illustrations on products that tell the story of the city',
-    'hero.cta1':'See collections','hero.cta2':'Business offer',
+    'hero.cta1':'See products','hero.cta2':'Business offer',
     'about.p1':'Hejże Kraków is an independent illustration brand inspired by the history, legends and everyday life of Kraków.',
     'about.p2':'Every project begins with a hand-drawn sketch, then becomes a carefully crafted product or art print.',
     'about.p3':'We create objects that let you take a piece of the city\'s story with you.',
