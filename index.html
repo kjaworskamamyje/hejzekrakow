@@ -297,6 +297,19 @@ nav.scrolled{background:rgba(249,246,240,.96);backdrop-filter:blur(8px);border-b
 .ty-title{font-family:var(--font-display);font-size:28px;font-weight:300;color:var(--color-ink);margin-bottom:10px;}
 .ty-text{font-family:var(--font-body);font-size:14px;font-weight:300;color:var(--color-text-light);}
 
+/* ─── GDZIE KUPIĆ ─── */
+.gdzie-section{padding:var(--sp) 0;background:var(--color-bg-dark);}
+.gdzie-h2{font-family:var(--font-display);font-size:clamp(30px,3.5vw,52px);font-weight:300;color:var(--color-bg);line-height:1.1;margin-bottom:12px;}
+.gdzie-sub{font-family:var(--font-body);font-size:14px;font-weight:300;color:rgba(249,246,240,.62);margin-bottom:52px;max-width:500px;line-height:1.7;}
+.gdzie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.gdzie-card{padding:36px 32px;border:1px solid rgba(249,246,240,.1);transition:border-color .3s;}
+.gdzie-card:hover{border-color:rgba(155,58,42,.5);}
+.gdzie-card-icon{font-family:var(--font-display);font-size:32px;font-weight:300;color:var(--color-brick);margin-bottom:20px;line-height:1;}
+.gdzie-card-title{font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-bg);margin-bottom:10px;line-height:1.2;}
+.gdzie-card-body{font-family:var(--font-body);font-size:13px;font-weight:300;color:rgba(249,246,240,.62);line-height:1.75;margin-bottom:20px;}
+.gdzie-card-link{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--color-brick-light);border-bottom:1px solid rgba(196,97,78,.3);padding-bottom:2px;transition:all .2s;}
+.gdzie-card:hover .gdzie-card-link{border-color:var(--color-brick-light);}
+
 /* ─── FOOTER ─── */
 footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,5vw,72px) 0 0;}
 .foot-main{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(28px,3.5vw,52px);padding-bottom:clamp(36px,4vw,56px);border-bottom:1px solid rgba(255,255,255,.1);}
@@ -330,6 +343,7 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
   .prod-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:768px){
+  .gdzie-grid{grid-template-columns:1fr;}
   .brand-grid{grid-template-columns:1fr;}
   .brand-tile{border-right:none;border-bottom:1px solid var(--color-border);}
   .brand-tile:last-child{border-bottom:none;}
@@ -908,23 +922,11 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
         <h2 class="contact-h2" data-i18n="contact.heading">Zacznijmy razem coś wyjątkowego</h2>
         <p class="contact-intro" data-i18n="contact.intro">Niezależnie czy jesteś właścicielem sklepu, hotelu, czy szukasz oryginalnego upominku firmowego — chętnie porozmawiamy o współpracy.</p>
 
-        <div class="contact-map">
-          <!-- Map placeholder with ink-style illustration -->
-          <svg width="100%" height="100%" viewBox="0 0 600 190" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0" aria-label="Mapa Krakowa">
-            <!-- simplified street grid sketch -->
-            <rect width="600" height="190" fill="#EDE8DF"/>
-            <line x1="0" y1="95" x2="600" y2="95" stroke="#D8D0C4" stroke-width="8"/>
-            <line x1="300" y1="0" x2="300" y2="190" stroke="#D8D0C4" stroke-width="6"/>
-            <line x1="0" y1="50" x2="600" y2="50" stroke="#D8D0C4" stroke-width="3"/>
-            <line x1="0" y1="140" x2="600" y2="140" stroke="#D8D0C4" stroke-width="3"/>
-            <line x1="150" y1="0" x2="150" y2="190" stroke="#D8D0C4" stroke-width="3"/>
-            <line x1="450" y1="0" x2="450" y2="190" stroke="#D8D0C4" stroke-width="3"/>
-            <!-- Rynek marker -->
-            <circle cx="300" cy="95" r="20" fill="none" stroke="#9B3A2A" stroke-width="1.5"/>
-            <circle cx="300" cy="95" r="5" fill="#9B3A2A"/>
-            <line x1="300" y1="75" x2="300" y2="65" stroke="#9B3A2A" stroke-width="1.5"/>
-            <text x="316" y="90" font-family="Cormorant Garamond,serif" font-size="11" fill="#7A7570">Rynek Główny</text>
-          </svg>
+        <div class="contact-map" style="padding:0;overflow:hidden;border:1px solid var(--color-border);">
+          <iframe
+            src="https://maps.google.com/maps?q=Hello+Handmade+Florja%C5%84ska+20+Krak%C3%B3w&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            width="100%" height="190" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Hello Handmade, Floriańska 20, Kraków"></iframe>
         </div>
 
         <div class="contact-details">
@@ -990,6 +992,43 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
           <div class="ty-title" data-i18n="form.ty.title">Dziękujemy!</div>
           <div class="ty-text" data-i18n="form.ty.text">Odezwiemy się w ciągu 24 godzin.</div>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     GDZIE KUPIĆ
+════════════════════════════════════════════════ -->
+<section class="gdzie-section" id="gdzie-kupic">
+  <div class="container">
+    <div class="fi">
+      <span class="label" style="color:var(--color-brick-light);">Znajdź moje prace</span>
+      <h2 class="gdzie-h2">Gdzie kupić ilustracje</h2>
+      <p class="gdzie-sub">Moje produkty są dostępne stacjonarnie w Krakowie i przez internet. Każda rzecz jest oryginalnie zilustrowana — bez stocków, bez szablonów.</p>
+    </div>
+    <div class="gdzie-grid">
+
+      <div class="gdzie-card fi">
+        <div class="gdzie-card-icon">I</div>
+        <h3 class="gdzie-card-title">Instagram</h3>
+        <p class="gdzie-card-body">Bieżące prace, szkice z procesu, nowe kolekcje i zakulisowe momenty z pracowni. Tu pojawiam się z moją codzienną pracą.</p>
+        <a href="https://www.instagram.com/art_mil_an/" target="_blank" rel="noopener" class="gdzie-card-link">@art_mil_an →</a>
+      </div>
+
+      <div class="gdzie-card fi d1">
+        <div class="gdzie-card-icon">H</div>
+        <h3 class="gdzie-card-title">Hello Handmade</h3>
+        <p class="gdzie-card-body">Sklep stacjonarny przy ul. Floriańskiej 20 w Krakowie. Moje kubki, torby, koszulki, notesy, ołówki, ściereczki i pocztówki do kupienia stacjonarnie.</p>
+        <a href="https://hellohandmade.pl" target="_blank" rel="noopener" class="gdzie-card-link">hellohandmade.pl →</a>
+      </div>
+
+      <div class="gdzie-card fi d2">
+        <div class="gdzie-card-icon">Z</div>
+        <h3 class="gdzie-card-title">Zamówienia indywidualne</h3>
+        <p class="gdzie-card-body">Zamówienia produktów dla Twojej firmy, eventu, hotelu — seria z Twoim motywem. Napisz, chętnie porozmawiam i wycenię zlecenie.</p>
+        <a href="#contact" class="gdzie-card-link">Napisz do mnie →</a>
       </div>
 
     </div>
