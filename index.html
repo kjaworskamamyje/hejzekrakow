@@ -91,6 +91,7 @@ nav.scrolled{background:rgba(249,246,240,.96);backdrop-filter:blur(8px);border-b
 .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;}
 .nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-ink);flex-shrink:0;}
 .nav-logo svg{width:22px;height:22px;flex-shrink:0;}
+.nav-logo img,.foot-logo img{height:38px;width:auto;object-fit:contain;flex-shrink:0;}
 .nav-links{display:flex;gap:32px;list-style:none;margin-left:clamp(32px,4vw,72px);}
 .nav-links a{font-family:var(--font-body);font-size:13px;font-weight:300;letter-spacing:.06em;color:var(--color-text);transition:color .2s;}
 .nav-links a:hover{color:var(--color-brick);}
@@ -386,14 +387,7 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M11 2 L17 9 L11 20 L5 9 Z" fill="currentColor" opacity=".12"/>
-          <path d="M11 2 L17 9 L11 17 L5 9 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
-          <line x1="11" y1="17" x2="11" y2="21" stroke="currentColor" stroke-width="1.2"/>
-          <path d="M9 19 L11 17 L13 19" stroke="currentColor" stroke-width="1.2" fill="none"/>
-          <line x1="11" y1="9" x2="11" y2="17" stroke="currentColor" stroke-width=".8" opacity=".4"/>
-        </svg>
-        Hejże Kraków
+        <img src="img/logo.svg" alt="Hejże Kraków" style="height:38px;width:auto;display:block;">
       </a>
 
       <ul class="nav-links">
@@ -1044,11 +1038,7 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
 
       <div>
         <div class="foot-logo">
-          <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true">
-            <path d="M11 2 L17 9 L11 17 L5 9 Z" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".7"/>
-            <line x1="11" y1="17" x2="11" y2="21" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-          Hejże Kraków
+          <img src="img/logo-white.svg" alt="Hejże Kraków" style="height:32px;width:auto;display:block;">
         </div>
         <div class="foot-tagline" data-i18n="footer.tagline">Kraków rysowany tuszem</div>
       </div>
