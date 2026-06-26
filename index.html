@@ -376,6 +376,25 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
   .fi{opacity:1;transform:none;}
   *{transition-duration:.01ms!important;}
 }
+
+/* ─── PRODUCT MODAL ─── */
+.prod-modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(26,26,24,.88);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:clamp(16px,4vw,48px);}
+.prod-modal.open{display:flex;}
+.prod-modal-inner{background:var(--color-bg);max-width:800px;width:100%;display:grid;grid-template-columns:1fr 1fr;max-height:90vh;overflow:hidden;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.35);}
+.prod-modal-img{overflow:hidden;}
+.prod-modal-img img{width:100%;height:100%;object-fit:cover;filter:sepia(10%) contrast(1.05) saturate(.88);}
+.prod-modal-body{padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;overflow-y:auto;}
+.prod-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;font-size:24px;color:var(--color-ink);z-index:1;line-height:1;}
+.prod-modal-cat{font-family:var(--font-body);font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--color-brick);margin-bottom:14px;display:block;}
+.prod-modal-name{font-family:var(--font-display);font-size:clamp(20px,2.6vw,32px);font-weight:300;color:var(--color-ink);margin-bottom:14px;line-height:1.15;}
+.prod-modal-price{font-family:var(--font-body);font-size:20px;font-weight:300;color:var(--color-brick);margin-bottom:24px;letter-spacing:.04em;}
+.prod-modal-desc{font-family:var(--font-body);font-size:14px;font-weight:300;color:var(--color-text-light);line-height:1.85;flex:1;}
+.prod-modal-cta{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;padding:14px 24px;background:var(--color-ink);color:var(--color-bg);border:none;cursor:pointer;display:block;margin-top:28px;text-align:center;transition:background .25s;text-decoration:none;}
+.prod-modal-cta:hover{background:var(--color-brick);}
+@media(max-width:640px){
+  .prod-modal-inner{grid-template-columns:1fr;max-height:95vh;overflow-y:auto;}
+  .prod-modal-img{max-height:220px;}
+}
 </style>
 </head>
 <body>
@@ -1703,7 +1722,95 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     document.getElementById('thankyou').classList.add('show');
   }
 });
+
+// ─── PRODUCT MODAL ───────────────────────────────
+const CAT_DESC = {
+  torby: 'Torba bawełniana 140 g/m². Wykonana z naturalnej bawełny, przestronna i wytrzymała. Nadruk autorskiej ilustracji tuszem, drukowanej sitodrukową techniką.',
+  koszulki: '100% bawełna, jersey, bez szwów bocznych, krój klasyczny unisex. Gramatura 155 g/m². Dostępna w kolorach: czarny, biały, granat. Vegan, OEKO-TEX® STANDARD 100. Pranie w 40°C, prasowanie po wewnętrznej stronie. Druk sitodruk.',
+  kubki: 'Kubek ceramiczny Classic z autorską panoramą Krakowa. Druk kalkomania ceramiczna wypiekana w piecu. Odporny na zmywanie i do użycia w mikrofali.',
+  olowki: 'Ołówek temperowany z kolorową gumką, wykonany z naturalnego drewna. Jeden z 5 wzorów z symbolami Krakowa: Hejnał, Smok, Lajkonik, Dorożka, Pierogi.',
+  sciereczki: '100% bawełna organiczna, wymiary 70×50 cm, z zawieszką. Wzór z autorskimi symbolami Krakowa. Może służyć jako ściereczka kuchenna lub dekoracja.',
+  notesy: 'Papier Materica Craft naturalny, 32 kartkowe, format 10,5×15 cm. Idealne do szkiców, notatek i zapisków z podróży po Krakowie.',
+  kartki: 'Papier kredowy, druk cyfrowy wysokiej jakości. Autorska ilustracja Krakowa — idealna jako pamiątka lub pocztówka wysłana z serca miasta.',
+  plakaty: 'Wydruk artystyczny wysokiej jakości na papierze fotograficznym. Autorska ilustracja krakowskich widoków. Dostępny w formacie A4 i A3.',
+};
+
+const PROD_DESC = {
+  'prod-torba-hejnal-nat':    'Torba bawełniana 140 g/m², rozmiar 38×42 cm, długi uchwyt. Naturalna bawełna z nadrukiem ilustracji „Hejnał z wieży Mariackiej".',
+  'prod-torba-twardowski':    'Torba bawełniana 140 g/m², kolor czarny, rozmiar 38×42 cm. Nadruk ilustracji „Pan Twardowski na księżycu".',
+  'prod-torba-obwarzanek':    'Torba bawełniana 140 g/m², kolor naturalny, rozmiar 38×42 cm. Nadruk ilustracji „Rynek krakowski – obwarzanek".',
+  'prod-torba-hejnal-czarna': 'Torba bawełniana 140 g/m², kolor czarny, z bocznym klinem — większa pojemność. Nadruk ilustracji „Hejnał z wieży Mariackiej".',
+  'prod-torba-alicja':        'Torba bawełniana 140 g/m², kolor czarny, rozmiar 38×42 cm. Nadruk ilustracji „Alicja w Zaczarowanym Krakowie".',
+  'prod-koszulka-twardowski': '100% bawełna unisex, gramatura 155 g/m², kolor czarny. Druk sitodruk. OEKO-TEX® STANDARD 100. Nadruk „Pan Twardowski na księżycu".',
+  'prod-koszulka-alicja':     '100% bawełna, krój damski, kolor biały. Druk sitodruk. OEKO-TEX® STANDARD 100. Nadruk „Alicja w Zaczarowanym Krakowie".',
+  'prod-kubek-czarny':        'Kubek ceramiczny Classic 330 ml. Druk kalkomania ceramiczna, wypiekana w piecu. Panorama Krakowa — nadruk czarno-biały. Zmywarka i mikrofala OK.',
+  'prod-kubek-kolorowy':      'Kubek ceramiczny Classic 330 ml. Druk kalkomania ceramiczna, wypiekana w piecu. Panorama Krakowa — nadruk kolorowy. Zmywarka i mikrofala OK.',
+  'prod-sciereczka-szara':    '100% bawełna organiczna, wymiary 70×50 cm, z zawieszką, kolor szary. Wzór z autorskimi symbolami Krakowa.',
+  'prod-sciereczka-biala':    '100% bawełna organiczna, wymiary 70×50 cm, z zawieszką, kolor biały. Wzór z autorskimi symbolami Krakowa.',
+  'prod-sciereczka-nat':      '100% bawełna organiczna, wymiary 70×50 cm, z zawieszką, kolor naturalny. Wzór z autorskimi symbolami Krakowa.',
+  'prod-notes-dorozka':       'Papier Materica Craft naturalny, 32 kartki, format 10,5×15 cm. Okładka z ilustracją dorożki.',
+  'prod-notes-smok':          'Papier Materica Craft naturalny, 32 kartki, format 10,5×15 cm. Okładka z ilustracją Smoka Wawelskiego.',
+  'prod-notes-golebie':       'Papier Materica Craft naturalny, 32 kartki, format 10,5×15 cm. Okładka z ilustracją gołębi na Rynku.',
+  'prod-notes-hejnal':        'Papier Materica Craft naturalny, 32 kartki, format 10,5×15 cm. Okładka z ilustracją hejnału.',
+};
+
+function getProductKey(imgSrc) {
+  const match = imgSrc.match(/img\/(prod-[^.]+)/);
+  return match ? match[1] : null;
+}
+
+const modal = document.getElementById('prod-modal');
+const modalImg = document.getElementById('modal-img');
+const modalCat = document.getElementById('modal-cat');
+const modalName = document.getElementById('modal-name');
+const modalPrice = document.getElementById('modal-price');
+const modalDesc = document.getElementById('modal-desc');
+
+document.querySelectorAll('.prod-card').forEach(card => {
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', () => {
+    const img = card.querySelector('img');
+    const cat = card.querySelector('.prod-cat').textContent;
+    const name = card.querySelector('.prod-name').textContent;
+    const price = card.querySelector('.prod-price').textContent;
+    const catKey = card.dataset.cat;
+    const prodKey = getProductKey(img.src);
+    const desc = PROD_DESC[prodKey] || CAT_DESC[catKey] || '';
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    modalCat.textContent = cat;
+    modalName.textContent = name;
+    modalPrice.textContent = price;
+    modalDesc.textContent = desc;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeModal() {
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
+
+<!-- PRODUCT MODAL -->
+<div class="prod-modal" id="prod-modal" role="dialog" aria-modal="true">
+  <div class="prod-modal-inner">
+    <div class="prod-modal-img">
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="prod-modal-body">
+      <button class="prod-modal-close" onclick="closeModal()" aria-label="Zamknij">✕</button>
+      <span class="prod-modal-cat" id="modal-cat"></span>
+      <h2 class="prod-modal-name" id="modal-name"></h2>
+      <div class="prod-modal-price" id="modal-price"></div>
+      <p class="prod-modal-desc" id="modal-desc"></p>
+      <a href="#contact" class="prod-modal-cta" onclick="closeModal()">Zapytaj o produkt →</a>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
