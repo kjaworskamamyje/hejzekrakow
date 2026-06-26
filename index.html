@@ -188,7 +188,7 @@ nav.scrolled{background:rgba(249,246,240,.96);backdrop-filter:blur(8px);border-b
 .pill:hover{border-color:var(--color-ink);color:var(--color-ink);}
 .pill.active{background:var(--color-ink);border-color:var(--color-ink);color:var(--color-bg);}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;}
-.prod-card{background:var(--color-bg);}
+.prod-card{background:var(--color-bg);cursor:pointer;}
 .prod-card[hidden]{display:none;}
 .prod-img-wrap{position:relative;aspect-ratio:1;overflow:hidden;}
 .prod-img-wrap img{width:100%;height:100%;object-fit:cover;filter:sepia(18%) contrast(1.03) saturate(.87) brightness(1.02);transition:transform .5s;}
@@ -1742,75 +1742,62 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 
 
 // ─── PRODUCT MODAL ───────────────────────────────
-const CAT_DESC = {
-  torby: 'Torba bawełniana 140 g/m². Wykonana z naturalnej bawełny, przestronna i wytrzymała. Nadruk autorskiej ilustracji tuszem, drukowanej sitodrukową techniką.',
-  koszulki: '100% bawełna, jersey, bez szwów bocznych, krój klasyczny unisex. Gramatura 155 g/m². Dostępna w kolorach: czarny, biały, granat. Vegan, OEKO-TEX® STANDARD 100. Pranie w 40°C, prasowanie po wewnętrznej stronie. Druk sitodruk.',
+var PROD_DESC = {
+  torby: 'Torba bawełniana 140 g/m², rozmiar 38x42 cm, długi uchwyt. Naturalna bawełna z nadrukiem autorskiej ilustracji tuszem.',
+  koszulki: '100% bawełna, jersey, bez szwów bocznych, krój klasyczny unisex. Gramatura 155 g/m². Vegan, OEKO-TEX STANDARD 100. Pranie w 40°C, prasowanie po wewnętrznej stronie. Druk sitodruk.',
   kubki: 'Kubek ceramiczny Classic z autorską panoramą Krakowa. Druk kalkomania ceramiczna wypiekana w piecu. Odporny na zmywanie i do użycia w mikrofali.',
-  olowki: 'Ołówek temperowany z kolorową gumką, wykonany z naturalnego drewna. Jeden z 5 wzorów z symbolami Krakowa: Hejnał, Smok, Lajkonik, Dorożka, Pierogi.',
-  sciereczki: '100% bawełna organiczna, wymiary 70×50 cm, z zawieszką. Wzór z autorskimi symbolami Krakowa. Może służyć jako ściereczka kuchenna lub dekoracja.',
-  notesy: 'Papier Materica Craft naturalny, 32 kartkowe, format 10,5×15 cm. Idealne do szkiców, notatek i zapisków z podróży po Krakowie.',
-  kartki: 'Papier kredowy, druk cyfrowy wysokiej jakości. Autorska ilustracja Krakowa — idealna jako pamiątka lub pocztówka wysłana z serca miasta.',
-  plakaty: 'Wydruk artystyczny wysokiej jakości na papierze fotograficznym. Autorska ilustracja krakowskich widoków. Dostępny w formacie A4 i A3.',
+  olowki: 'Ołówek temperowany z kolorową gumką, wykonany z naturalnego drewna. Jeden z 5 wzorów z symbolami Krakowa.',
+  sciereczki: '100% bawełna organiczna, wymiary 70x50 cm, z zawieszką. Wzór z autorskimi symbolami Krakowa.',
+  notesy: 'Papier Materica Craft naturalny, 32 kartkowe, format 10,5x15 cm.',
+  kartki: 'Papier kredowy, druk cyfrowy wysokiej jakości. Autorska ilustracja Krakowa.',
+  plakaty: 'Wydruk artystyczny na papierze fotograficznym. Dostępny w formacie A4 i A3.'
 };
 
-const PROD_DESC = {
-  'prod-torba-hejnal-nat':    'Torba bawełniana 140 g/m², rozmiar 38×42 cm, długi uchwyt. Naturalna bawełna z nadrukiem ilustracji „Hejnał z wieży Mariackiej".',
-  'prod-torba-twardowski':    'Torba bawełniana 140 g/m², kolor czarny, rozmiar 38×42 cm. Nadruk ilustracji „Pan Twardowski na księżycu".',
-  'prod-torba-obwarzanek':    'Torba bawełniana 140 g/m², kolor naturalny, rozmiar 38×42 cm. Nadruk ilustracji „Rynek krakowski – obwarzanek".',
-  'prod-torba-hejnal-czarna': 'Torba bawełniana 140 g/m², kolor czarny, z bocznym klinem — większa pojemność. Nadruk ilustracji „Hejnał z wieży Mariackiej".',
-  'prod-torba-alicja':        'Torba bawełniana 140 g/m², kolor czarny, rozmiar 38×42 cm. Nadruk ilustracji „Alicja w Zaczarowanym Krakowie".',
-  'prod-koszulka-twardowski': '100% bawełna unisex, gramatura 155 g/m², kolor czarny. Druk sitodruk. OEKO-TEX® STANDARD 100. Nadruk „Pan Twardowski na księżycu".',
-  'prod-koszulka-alicja':     '100% bawełna, krój damski, kolor biały. Druk sitodruk. OEKO-TEX® STANDARD 100. Nadruk „Alicja w Zaczarowanym Krakowie".',
-  'prod-kubek-czarny':        'Kubek ceramiczny Classic 330 ml. Druk kalkomania ceramiczna, wypiekana w piecu. Panorama Krakowa — nadruk czarno-biały. Zmywarka i mikrofala OK.',
-  'prod-kubek-kolorowy':      'Kubek ceramiczny Classic 330 ml. Druk kalkomania ceramiczna, wypiekana w piecu. Panorama Krakowa — nadruk kolorowy. Zmywarka i mikrofala OK.',
-  'prod-sciereczka-szara':    '100% bawełna organiczna, wymiary 70×50 cm, z zawieszką, kolor szary. Wzór z autorskimi symbolami Krakowa.',
-  'prod-sciereczka-biala':    '100% bawełna organiczna, wymiary 70×50 cm, z zawieszką, kolor biały. Wzór z autorskimi symbolami Krakowa.',
-  'prod-sciereczka-nat':      '100% bawełna organiczna, wymiary 70×50 cm, z zawieszką, kolor naturalny. Wzór z autorskimi symbolami Krakowa.',
-  'prod-notes-dorozka':       'Papier Materica Craft naturalny, 32 kartki, format 10,5×15 cm. Okładka z ilustracją dorożki.',
-  'prod-notes-smok':          'Papier Materica Craft naturalny, 32 kartki, format 10,5×15 cm. Okładka z ilustracją Smoka Wawelskiego.',
-  'prod-notes-golebie':       'Papier Materica Craft naturalny, 32 kartki, format 10,5×15 cm. Okładka z ilustracją gołębi na Rynku.',
-  'prod-notes-hejnal':        'Papier Materica Craft naturalny, 32 kartki, format 10,5×15 cm. Okładka z ilustracją hejnału.',
-};
+function openProductModal(card) {
+  var img = card.querySelector('img');
+  var cat = card.querySelector('.prod-cat');
+  var name = card.querySelector('.prod-name');
+  var price = card.querySelector('.prod-price');
+  var catKey = card.getAttribute('data-cat');
 
-function getProductKey(imgSrc) {
-  const match = imgSrc.match(/img\/(prod-[^.]+)/);
-  return match ? match[1] : null;
+  document.getElementById('modal-img').src = img ? img.src : '';
+  document.getElementById('modal-img').alt = img ? img.alt : '';
+  document.getElementById('modal-cat').textContent = cat ? cat.textContent : '';
+  document.getElementById('modal-name').textContent = name ? name.textContent : '';
+  document.getElementById('modal-price').textContent = price ? price.textContent : '';
+  document.getElementById('modal-desc').textContent = PROD_DESC[catKey] || '';
+
+  var modal = document.getElementById('prod-modal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
 }
-
-const modal = document.getElementById('prod-modal');
-const modalImg = document.getElementById('modal-img');
-const modalCat = document.getElementById('modal-cat');
-const modalName = document.getElementById('modal-name');
-const modalPrice = document.getElementById('modal-price');
-const modalDesc = document.getElementById('modal-desc');
-
-document.querySelectorAll('.prod-card').forEach(card => {
-  card.style.cursor = 'pointer';
-  card.addEventListener('click', () => {
-    const img = card.querySelector('img');
-    const cat = card.querySelector('.prod-cat').textContent;
-    const name = card.querySelector('.prod-name').textContent;
-    const price = card.querySelector('.prod-price').textContent;
-    const catKey = card.dataset.cat;
-    const prodKey = getProductKey(img.src);
-    const desc = PROD_DESC[prodKey] || CAT_DESC[catKey] || '';
-    modalImg.src = img.src;
-    modalImg.alt = img.alt;
-    modalCat.textContent = cat;
-    modalName.textContent = name;
-    modalPrice.textContent = price;
-    modalDesc.textContent = desc;
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-});
 
 function closeModal() {
-  modal.classList.remove('open');
+  var modal = document.getElementById('prod-modal');
+  if (modal) { modal.style.display = 'none'; }
   document.body.style.overflow = '';
 }
-modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Event delegation na gridzie produktów
+var prodGrid = document.getElementById('prod-grid');
+if (prodGrid) {
+  prodGrid.addEventListener('click', function(e) {
+    var card = e.target.closest('.prod-card');
+    if (card) openProductModal(card);
+  });
+}
+
+// Zamknij po kliknięciu tła modala
+var modalEl = document.getElementById('prod-modal');
+if (modalEl) {
+  modalEl.addEventListener('click', function(e) {
+    if (e.target === modalEl) closeModal();
+  });
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
 </script>
 
 
