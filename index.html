@@ -1478,6 +1478,43 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
 </div>
 
 <script>
+// Opisy kategorii produktów
+var PROD_DESC = {
+  torby:'Torba bawełniana 140 g/m², rozmiar 38x42 cm. Naturalna bawełna z nadrukiem autorskiej ilustracji.',
+  koszulki:'100% bawełna unisex, gramatura 155 g/m². OEKO-TEX STANDARD 100. Pranie 40°C. Druk sitodruk.',
+  kubki:'Kubek ceramiczny Classic 330 ml. Druk kalkomania ceramiczna wypiekana w piecu. Odporny na zmywanie i mikrofalę.',
+  olowki:'Ołówek temperowany z kolorową gumką, naturalne drewno. Symbole Krakowa — 5 wzorów.',
+  sciereczki:'100% bawełna organiczna, 70x50 cm, z zawieszką. Wzór z symbolami Krakowa.',
+  notesy:'Papier Materica Craft naturalny, 32 kartki, format 10,5x15 cm.',
+  kartki:'Papier kredowy, druk cyfrowy. Autorska ilustracja Krakowa.',
+  plakaty:'Wydruk artystyczny, papier fotograficzny. Format A4 i A3.'
+};
+
+function openProductModal(card) {
+  var img = card.querySelector('img');
+  var cat = card.querySelector('.prod-cat');
+  var name = card.querySelector('.prod-name');
+  var price = card.querySelector('.prod-price');
+  document.getElementById('modal-img').src = img ? img.src : '';
+  document.getElementById('modal-cat').textContent = cat ? cat.textContent : '';
+  document.getElementById('modal-name').textContent = name ? name.textContent : '';
+  document.getElementById('modal-price').textContent = price ? price.textContent : '';
+  document.getElementById('modal-desc').textContent = PROD_DESC[card.getAttribute('data-cat')] || '';
+  document.getElementById('prod-modal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('prod-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('prod-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
+
+<script>
 // ─── TRANSLATIONS ────────────────────────────────
 const T = {
   pl: {
@@ -1742,46 +1779,6 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 });
 
 
-// ─── PRODUCT MODAL ───────────────────────────────
-var PROD_DESC = {
-  torby: 'Torba bawełniana 140 g/m², rozmiar 38x42 cm, długi uchwyt. Naturalna bawełna z nadrukiem autorskiej ilustracji tuszem.',
-  koszulki: '100% bawełna, jersey, bez szwów bocznych, krój klasyczny unisex. Gramatura 155 g/m². Vegan, OEKO-TEX STANDARD 100. Pranie w 40°C, prasowanie po wewnętrznej stronie. Druk sitodruk.',
-  kubki: 'Kubek ceramiczny Classic z autorską panoramą Krakowa. Druk kalkomania ceramiczna wypiekana w piecu. Odporny na zmywanie i do użycia w mikrofali.',
-  olowki: 'Ołówek temperowany z kolorową gumką, wykonany z naturalnego drewna. Jeden z 5 wzorów z symbolami Krakowa.',
-  sciereczki: '100% bawełna organiczna, wymiary 70x50 cm, z zawieszką. Wzór z autorskimi symbolami Krakowa.',
-  notesy: 'Papier Materica Craft naturalny, 32 kartkowe, format 10,5x15 cm.',
-  kartki: 'Papier kredowy, druk cyfrowy wysokiej jakości. Autorska ilustracja Krakowa.',
-  plakaty: 'Wydruk artystyczny na papierze fotograficznym. Dostępny w formacie A4 i A3.'
-};
-
-function openProductModal(card) {
-  var img = card.querySelector('img');
-  var cat = card.querySelector('.prod-cat');
-  var name = card.querySelector('.prod-name');
-  var price = card.querySelector('.prod-price');
-  var catKey = card.getAttribute('data-cat');
-
-  document.getElementById('modal-img').src = img ? img.src : '';
-  document.getElementById('modal-img').alt = img ? img.alt : '';
-  document.getElementById('modal-cat').textContent = cat ? cat.textContent : '';
-  document.getElementById('modal-name').textContent = name ? name.textContent : '';
-  document.getElementById('modal-price').textContent = price ? price.textContent : '';
-  document.getElementById('modal-desc').textContent = PROD_DESC[catKey] || '';
-
-  var modal = document.getElementById('prod-modal');
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  var modal = document.getElementById('prod-modal');
-  if (modal) { modal.style.display = 'none'; }
-  document.body.style.overflow = '';
-}
-
-document.getElementById('prod-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
