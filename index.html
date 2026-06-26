@@ -1701,6 +1701,7 @@ document.querySelectorAll('.pill').forEach(pill => {
 // ─── DRAG SCROLL (collections on mobile) ─────────
 (function() {
   const el = document.getElementById('coll-grid');
+  if (!el) return;
   let down = false, sx = 0, sl = 0;
   el.addEventListener('mousedown', e => { down = true; sx = e.pageX - el.offsetLeft; sl = el.scrollLeft; el.style.cursor = 'grabbing'; });
   document.addEventListener('mouseup', () => { down = false; el.style.cursor = ''; });
