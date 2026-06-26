@@ -582,91 +582,448 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
       <span class="label" data-i18n="prod.label">produkty</span>
       <h2 class="h2" data-i18n="prod.heading">Kraków opowiedziany kreską tuszu</h2>
       <p style="font-family:var(--font-story);font-size:clamp(16px,1.8vw,20px);font-style:italic;color:var(--color-text-light);margin-top:16px;max-width:560px;line-height:1.7;" data-i18n="prod.sub">Ręcznie rysowane ilustracje inspirowane legendami, architekturą i codziennym życiem miasta.</p>
-    </div>
-
-    <div class="filter-pills" role="group" aria-label="Filtr produktów">
-      <button class="pill active" data-filter="all" data-i18n="prod.f0">Wszystkie</button>
-      <button class="pill" data-filter="torby" data-i18n="prod.f1">Torby</button>
-      <button class="pill" data-filter="koszulki" data-i18n="prod.f2">Koszulki</button>
-      <button class="pill" data-filter="kubki" data-i18n="prod.f3">Kubki</button>
-      <button class="pill" data-filter="notesy" data-i18n="prod.f4">Notesy</button>
-      <button class="pill" data-filter="pocztowki" data-i18n="prod.f5">Pocztówki</button>
-      <button class="pill" data-filter="plakaty" data-i18n="prod.f6">Plakaty</button>
+      <div class="filter-pills">
+        <button class="pill active" data-filter="all" data-i18n="filter.all">Wszystkie</button>
+        <button class="pill" data-filter="torby" data-i18n="filter.torby">Torby</button>
+        <button class="pill" data-filter="koszulki" data-i18n="filter.koszulki">Koszulki</button>
+        <button class="pill" data-filter="kubki" data-i18n="filter.kubki">Kubki</button>
+        <button class="pill" data-filter="olowki" data-i18n="filter.olowki">Ołówki</button>
+        <button class="pill" data-filter="sciereczki" data-i18n="filter.sciereczki">Ściereczki</button>
+        <button class="pill" data-filter="notesy" data-i18n="filter.notesy">Notesy</button>
+        <button class="pill" data-filter="kartki" data-i18n="filter.kartki">Kartki</button>
+        <button class="pill" data-filter="plakaty" data-i18n="filter.plakaty">Plakaty</button>
+      </div>
     </div>
 
     <div class="prod-grid" id="prod-grid">
 
-      <a class="prod-card fi" data-cat="torby" href="produkt.html?id=torba-wawel">
+      <!-- TORBY -->
+      <div class="prod-card fi" data-cat="torby">
         <div class="prod-img-wrap">
-          <img data-cms-img="prod-img-1" src="img/torba-1.jpg" alt="Torba Wawel" loading="lazy">
-          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Dowiedz się więcej</span></div>
+          <img src="img/prod-torba-hejnal-nat.jpg" alt="Torba Hejnał naturalna" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
         </div>
         <div class="prod-info">
-          <span class="prod-cat" data-i18n="prod.cat1">Torba</span>
-          <div class="prod-name" data-i18n="prod.name1">Torba płócienna „Wawel"</div>
-          <div class="prod-price" data-i18n="prod.price1">od 59 zł</div>
+          <span class="prod-cat">Torba</span>
+          <div class="prod-name">Torba płócienna naturalna „Hejnał z wieży Mariackiej"</div>
+          <div class="prod-price">40 zł</div>
         </div>
-      </a>
+      </div>
 
-      <a class="prod-card fi d1" data-cat="pocztowki" href="produkt.html?id=pocztowka-smok">
+      <div class="prod-card fi d1" data-cat="torby">
         <div class="prod-img-wrap">
-          <img data-cms-img="prod-img-2" src="img/notes-smok.jpg" alt="Pocztówka Smok" loading="lazy">
-          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Dowiedz się więcej</span></div>
+          <img src="img/prod-torba-twardowski.jpg" alt="Torba Pan Twardowski czarna" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
         </div>
         <div class="prod-info">
-          <span class="prod-cat" data-i18n="prod.cat2">Pocztówka</span>
-          <div class="prod-name" data-i18n="prod.name2">Pocztówka „Smok Wawelski"</div>
-          <div class="prod-price" data-i18n="prod.price2">od 9 zł</div>
+          <span class="prod-cat">Torba</span>
+          <div class="prod-name">Torba płócienna czarna „Pan Twardowski na księżycu"</div>
+          <div class="prod-price">40 zł</div>
         </div>
-      </a>
+      </div>
 
-      <a class="prod-card fi d2" data-cat="kubki" href="produkt.html?id=kubek-rynek">
+      <div class="prod-card fi d2" data-cat="torby">
         <div class="prod-img-wrap">
-          <img data-cms-img="prod-img-3" src="img/kubek-1.jpg" alt="Kubek Rynek" loading="lazy">
-          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Dowiedz się więcej</span></div>
+          <img src="img/prod-torba-obwarzanek.jpg" alt="Torba Obwarzanek" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
         </div>
         <div class="prod-info">
-          <span class="prod-cat" data-i18n="prod.cat3">Kubek</span>
-          <div class="prod-name" data-i18n="prod.name3">Kubek „Krakowski Rynek"</div>
-          <div class="prod-price" data-i18n="prod.price3">od 45 zł</div>
+          <span class="prod-cat">Torba</span>
+          <div class="prod-name">Torba płócienna naturalna „Rynek krakowski – obwarzanek"</div>
+          <div class="prod-price">40 zł</div>
         </div>
-      </a>
+      </div>
 
-      <a class="prod-card fi d1" data-cat="notesy" href="produkt.html?id=notes-kazimierz">
+      <div class="prod-card fi" data-cat="torby">
         <div class="prod-img-wrap">
-          <img data-cms-img="prod-img-4" src="img/notes-dorozka.jpg" alt="Notes Kazimierz" loading="lazy">
-          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Dowiedz się więcej</span></div>
+          <img src="img/prod-torba-hejnal-czarna.jpg" alt="Torba Hejnał czarna z klinem" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
         </div>
         <div class="prod-info">
-          <span class="prod-cat" data-i18n="prod.cat4">Notes</span>
-          <div class="prod-name" data-i18n="prod.name4">Notes „Kazimierz"</div>
-          <div class="prod-price" data-i18n="prod.price4">od 39 zł</div>
+          <span class="prod-cat">Torba</span>
+          <div class="prod-name">Torba płócienna czarna „Hejnał z wieży Mariackiej" z klinem</div>
+          <div class="prod-price">49 zł</div>
         </div>
-      </a>
+      </div>
 
-      <a class="prod-card fi d2" data-cat="koszulki" href="produkt.html?id=koszulka-lajkonik">
+      <div class="prod-card fi d1" data-cat="torby">
         <div class="prod-img-wrap">
-          <img data-cms-img="prod-img-5" src="img/koszulka-damska.jpg" alt="Koszulka Lajkonik" loading="lazy">
-          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Dowiedz się więcej</span></div>
+          <img src="img/prod-torba-alicja.jpg" alt="Torba Alicja w Zaczarowanym Krakowie" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
         </div>
         <div class="prod-info">
-          <span class="prod-cat" data-i18n="prod.cat5">Koszulka</span>
-          <div class="prod-name" data-i18n="prod.name5">Koszulka „Lajkonik"</div>
-          <div class="prod-price" data-i18n="prod.price5">od 79 zł</div>
+          <span class="prod-cat">Torba</span>
+          <div class="prod-name">Torba płócienna czarna „Alicja w Zaczarowanym Krakowie"</div>
+          <div class="prod-price">40 zł</div>
         </div>
-      </a>
+      </div>
 
-      <a class="prod-card fi d3" data-cat="plakaty" href="produkt.html?id=plakat-sukiennice">
+      <!-- KOSZULKI -->
+      <div class="prod-card fi" data-cat="koszulki">
         <div class="prod-img-wrap">
-          <img data-cms-img="prod-img-6" src="img/obrazek-dorozka.jpg" alt="Plakat Sukiennice" loading="lazy">
-          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Dowiedz się więcej</span></div>
+          <img src="img/prod-koszulka-twardowski.jpg" alt="Koszulka Pan Twardowski czarna" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
         </div>
         <div class="prod-info">
-          <span class="prod-cat" data-i18n="prod.cat6">Plakat</span>
-          <div class="prod-name" data-i18n="prod.name6">Plakat „Sukiennice"</div>
-          <div class="prod-price" data-i18n="prod.price6">od 29 zł</div>
+          <span class="prod-cat">Koszulka</span>
+          <div class="prod-name">Koszulka uniwersalna czarna „Pan Twardowski na księżycu"</div>
+          <div class="prod-price">od 79 zł</div>
         </div>
-      </a>
+      </div>
+
+      <div class="prod-card fi d1" data-cat="koszulki">
+        <div class="prod-img-wrap">
+          <img src="img/legenda-smok.jpg" alt="Koszulka Smok Wawelski" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Koszulka</span>
+          <div class="prod-name">Koszulka dziecięca „Smok Wawelski"</div>
+          <div class="prod-price">od 59 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d2" data-cat="koszulki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-koszulka-alicja.jpg" alt="Koszulka damska Alicja biała" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Koszulka</span>
+          <div class="prod-name">Koszulka damska biała „Alicja w Zaczarowanym Krakowie"</div>
+          <div class="prod-price">od 69 zł</div>
+        </div>
+      </div>
+
+      <!-- KUBKI -->
+      <div class="prod-card fi" data-cat="kubki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-kubek-czarny.jpg" alt="Kubek Panorama Krakowa czarno-biały" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Kubek</span>
+          <div class="prod-name">Kubek ceramiczny Classic Panorama Krakowa – nadruk czarny</div>
+          <div class="prod-price">od 45 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d1" data-cat="kubki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-kubek-kolorowy.jpg" alt="Kubek Panorama Krakowa kolorowy" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Kubek</span>
+          <div class="prod-name">Kubek ceramiczny Classic Panorama Krakowa – nadruk kolorowy</div>
+          <div class="prod-price">od 45 zł</div>
+        </div>
+      </div>
+
+      <!-- OŁÓWKI -->
+      <div class="prod-card fi" data-cat="olowki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-olowek-hejnal.jpg" alt="Ołówek Hejnał" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Ołówek</span>
+          <div class="prod-name">Ołówek z kolorową gumką „Kraków – Hejnał"</div>
+          <div class="prod-price">od 8 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d1" data-cat="olowki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-olowek-lajkonik.jpg" alt="Ołówek Lajkonik" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Ołówek</span>
+          <div class="prod-name">Ołówek z kolorową gumką „Kraków – Lajkonik"</div>
+          <div class="prod-price">od 8 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d2" data-cat="olowki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-olowek-hejnal.jpg" alt="Ołówek Smok" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Ołówek</span>
+          <div class="prod-name">Ołówek z kolorową gumką „Kraków – Smok"</div>
+          <div class="prod-price">od 8 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi" data-cat="olowki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-olowek-lajkonik.jpg" alt="Ołówek Dorożka" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Ołówek</span>
+          <div class="prod-name">Ołówek z kolorową gumką „Kraków – Dorożka"</div>
+          <div class="prod-price">od 8 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d1" data-cat="olowki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-olowek-hejnal.jpg" alt="Ołówek Pierogi" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Ołówek</span>
+          <div class="prod-name">Ołówek z kolorową gumką „Polska – pierogi"</div>
+          <div class="prod-price">od 8 zł</div>
+        </div>
+      </div>
+
+      <!-- ŚCIERECZKI -->
+      <div class="prod-card fi" data-cat="sciereczki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-sciereczka-szara.jpg" alt="Ściereczka szara" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Ściereczka</span>
+          <div class="prod-name">Ściereczka „Hejże Kraków" z symbolami Krakowa – szara</div>
+          <div class="prod-price">od 45 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d1" data-cat="sciereczki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-sciereczka-biala.jpg" alt="Ściereczka biała" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Ściereczka</span>
+          <div class="prod-name">Ściereczka „Hejże Kraków" z symbolami Krakowa – biała</div>
+          <div class="prod-price">od 45 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d2" data-cat="sciereczki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-sciereczka-nat.jpg" alt="Ściereczka naturalna" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Ściereczka</span>
+          <div class="prod-name">Ściereczka „Hejże Kraków" z symbolami Krakowa – naturalna</div>
+          <div class="prod-price">od 45 zł</div>
+        </div>
+      </div>
+
+      <!-- NOTESY -->
+      <div class="prod-card fi" data-cat="notesy">
+        <div class="prod-img-wrap">
+          <img src="img/prod-notes-dorozka.jpg" alt="Notes z dorożką" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Notes</span>
+          <div class="prod-name">Notes z dorożką</div>
+          <div class="prod-price">od 15 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d1" data-cat="notesy">
+        <div class="prod-img-wrap">
+          <img src="img/prod-notes-smok.jpg" alt="Notes ze smokiem" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Notes</span>
+          <div class="prod-name">Notes ze smokiem</div>
+          <div class="prod-price">od 15 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d2" data-cat="notesy">
+        <div class="prod-img-wrap">
+          <img src="img/prod-notes-golebie.jpg" alt="Notes z gołębiami" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Notes</span>
+          <div class="prod-name">Notes z gołębiami</div>
+          <div class="prod-price">od 15 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi" data-cat="notesy">
+        <div class="prod-img-wrap">
+          <img src="img/prod-notes-hejnal.jpg" alt="Notes z hejnałem" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Notes</span>
+          <div class="prod-name">Notes z hejnałem</div>
+          <div class="prod-price">od 15 zł</div>
+        </div>
+      </div>
+
+      <!-- KARTKI -->
+      <div class="prod-card fi" data-cat="kartki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-kartka-kopiec.jpg" alt="Kartka widok z kopca Kraka" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Kartka</span>
+          <div class="prod-name">Widok z kopca Kraka na Podgórze i Kazimierz</div>
+          <div class="prod-price">od 9 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d1" data-cat="kartki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-kartka-legenda.jpg" alt="Kartka Legenda budzi się nocą" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Kartka</span>
+          <div class="prod-name">Legenda budzi się nocą</div>
+          <div class="prod-price">od 9 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d2" data-cat="kartki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-kartka-sienna.jpg" alt="Kartka Ulica Sienna" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Kartka</span>
+          <div class="prod-name">Ulica Sienna</div>
+          <div class="prod-price">od 9 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi" data-cat="kartki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-kartka-wawel-czas.jpg" alt="Kartka Wawel odmierza czas" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Kartka</span>
+          <div class="prod-name">Wawel odmierza czas</div>
+          <div class="prod-price">od 9 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d1" data-cat="kartki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-kartka-zegar.jpg" alt="Kartka Zegar z Wieży Ratuszowej" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Kartka</span>
+          <div class="prod-name">Zegar z Wieży Ratuszowej</div>
+          <div class="prod-price">od 9 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d2" data-cat="kartki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-kartka-wisla.jpg" alt="Kartka Widok na Wisłę" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Kartka</span>
+          <div class="prod-name">Widok na Wisłę</div>
+          <div class="prod-price">od 9 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi" data-cat="kartki">
+        <div class="prod-img-wrap">
+          <img src="img/prod-kartka-wawel.jpg" alt="Kartka Widok na Wawel" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Kartka</span>
+          <div class="prod-name">Widok na Wawel</div>
+          <div class="prod-price">od 9 zł</div>
+        </div>
+      </div>
+
+      <!-- PLAKATY -->
+      <div class="prod-card fi" data-cat="plakaty">
+        <div class="prod-img-wrap">
+          <img src="img/prod-plakat-kopiec.jpg" alt="Plakat widok z kopca Kraka" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Plakat</span>
+          <div class="prod-name">Widok z kopca Kraka na Podgórze i Kazimierz</div>
+          <div class="prod-price">od 29 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d1" data-cat="plakaty">
+        <div class="prod-img-wrap">
+          <img src="img/prod-kartka-legenda.jpg" alt="Plakat Legenda budzi się nocą" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Plakat</span>
+          <div class="prod-name">Legenda budzi się nocą</div>
+          <div class="prod-price">od 29 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d2" data-cat="plakaty">
+        <div class="prod-img-wrap">
+          <img src="img/prod-plakat-coffee.jpg" alt="Plakat Coffee widok z Cricoteka" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Plakat</span>
+          <div class="prod-name">Coffee – widok z Cricoteka</div>
+          <div class="prod-price">od 29 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi" data-cat="plakaty">
+        <div class="prod-img-wrap">
+          <img src="img/prod-plakat-zegar.jpg" alt="Plakat Zegar z Wieży Ratuszowej" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Plakat</span>
+          <div class="prod-name">Zegar z Wieży Ratuszowej</div>
+          <div class="prod-price">od 29 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d1" data-cat="plakaty">
+        <div class="prod-img-wrap">
+          <img src="img/prod-plakat-wawel.jpg" alt="Plakat Wawel odmierza czas" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Plakat</span>
+          <div class="prod-name">Wawel odmierza czas</div>
+          <div class="prod-price">od 29 zł</div>
+        </div>
+      </div>
+
+      <div class="prod-card fi d2" data-cat="plakaty">
+        <div class="prod-img-wrap">
+          <img src="img/prod-plakat-wisla.jpg" alt="Plakat Widok na Wisłę" loading="lazy">
+          <div class="prod-hover"><span class="prod-hover-cta" data-i18n="prod.more">Zobacz więcej</span></div>
+        </div>
+        <div class="prod-info">
+          <span class="prod-cat">Plakat</span>
+          <div class="prod-name">Widok na Wisłę</div>
+          <div class="prod-price">od 29 zł</div>
+        </div>
+      </div>
 
     </div>
   </div>
