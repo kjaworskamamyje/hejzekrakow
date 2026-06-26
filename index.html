@@ -1460,6 +1460,23 @@ footer{background:var(--color-bg-dark);color:var(--color-bg);padding:clamp(44px,
 <!-- ═══════════════════════════════════════════════
      JAVASCRIPT
 ════════════════════════════════════════════════ -->
+<!-- PRODUCT MODAL -->
+<div class="prod-modal" id="prod-modal" role="dialog" aria-modal="true">
+  <div class="prod-modal-inner">
+    <div class="prod-modal-img">
+      <img id="modal-img" src="" alt="">
+    </div>
+    <div class="prod-modal-body">
+      <button class="prod-modal-close" onclick="closeModal()" aria-label="Zamknij">✕</button>
+      <span class="prod-modal-cat" id="modal-cat"></span>
+      <h2 class="prod-modal-name" id="modal-name"></h2>
+      <div class="prod-modal-price" id="modal-price"></div>
+      <p class="prod-modal-desc" id="modal-desc"></p>
+      <a href="#contact" class="prod-modal-cta" onclick="closeModal()">Zapytaj o produkt →</a>
+    </div>
+  </div>
+</div>
+
 <script>
 // ─── TRANSLATIONS ────────────────────────────────
 const T = {
@@ -1723,22 +1740,6 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   }
 });
 
-<!-- PRODUCT MODAL -->
-<div class="prod-modal" id="prod-modal" role="dialog" aria-modal="true">
-  <div class="prod-modal-inner">
-    <div class="prod-modal-img">
-      <img id="modal-img" src="" alt="">
-    </div>
-    <div class="prod-modal-body">
-      <button class="prod-modal-close" onclick="closeModal()" aria-label="Zamknij">✕</button>
-      <span class="prod-modal-cat" id="modal-cat"></span>
-      <h2 class="prod-modal-name" id="modal-name"></h2>
-      <div class="prod-modal-price" id="modal-price"></div>
-      <p class="prod-modal-desc" id="modal-desc"></p>
-      <a href="#contact" class="prod-modal-cta" onclick="closeModal()">Zapytaj o produkt →</a>
-    </div>
-  </div>
-</div>
 
 // ─── PRODUCT MODAL ───────────────────────────────
 const CAT_DESC = {
